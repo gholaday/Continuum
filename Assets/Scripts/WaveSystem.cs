@@ -84,6 +84,13 @@ public class WaveSystem : MonoBehaviour {
 
 	IEnumerator WaveSpawn(int wave)
 	{
+		if(wave == 5)
+		{
+			//Debug.Log ("rock");
+			StartRockWave();
+			StopCoroutine("WaveSpawn");
+		}
+			
 
 		while(enemiesYetToSpawn > 0)
 		{
@@ -92,6 +99,7 @@ public class WaveSystem : MonoBehaviour {
 			GameObject go = enemyWaves[wave-1].enemies[Random.Range(0,9)];
 			Instantiate(go,spawnSpot.transform.position,Quaternion.identity);
 			enemiesYetToSpawn--;
+			//Debug.Log ("not rock");
 
 
 		}
@@ -110,14 +118,13 @@ public class WaveSystem : MonoBehaviour {
 
 			break;
 		case 3:
-			spawnTimer -= 0.1f;
-			otherSpawnTimer = spawnTimer;
+
 			break;
 		case 4: 
 
 			break;
 		case 5:
-			spawnTimer = 0.1f;
+			spawnTimer = 0f;
 			break;
 		case 6:
 
@@ -132,8 +139,7 @@ public class WaveSystem : MonoBehaviour {
 			break;
 
 		case 9:
-			spawnTimer -= 0.1f;
-			otherSpawnTimer = spawnTimer;
+
 			break;
 
 		case 10:
@@ -141,6 +147,12 @@ public class WaveSystem : MonoBehaviour {
 			break;
 
 		}
+	}
+
+	void StartRockWave()
+	{
+		//Need to put in logic here. Will spawn a gameobject prefab that
+		//contains the rock pattern
 	}
 
 }
