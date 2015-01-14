@@ -77,19 +77,15 @@ public class WaveSystem : MonoBehaviour {
 		waveDisplay.enabled = true;
 		yield return new WaitForSeconds(3.5f);
 		waveDisplay.enabled = false;
-		StartCoroutine("WaveSpawn",waveNumber);
 		WaveModifier(waveNumber);
+		StartCoroutine("WaveSpawn",waveNumber);
+
 
 	}
 
 	IEnumerator WaveSpawn(int wave)
 	{
-		if(wave == 5)
-		{
-			//Debug.Log ("rock");
-			StartRockWave();
-			StopCoroutine("WaveSpawn");
-		}
+
 			
 
 		while(enemiesYetToSpawn > 0)

@@ -46,9 +46,11 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\AdjustToScreenRatio.cs" />
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
      <Compile Include="Assets\Scripts\DieOnDetect.cs" />
      <Compile Include="Assets\Scripts\EnemyBulletBurst.cs" />
+     <Compile Include="Assets\Scripts\EnemyTankMovement.cs" />
      <Compile Include="Assets\Scripts\FadeUpAway.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\MeteorMovement.cs" />

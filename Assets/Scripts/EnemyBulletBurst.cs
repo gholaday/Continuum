@@ -30,11 +30,10 @@ public class EnemyBulletBurst : MonoBehaviour {
 		}
 		else
 		{
-			Instantiate(bullet, transform.position, new Quaternion(0,0,0,0));
-			Instantiate(bullet, transform.position, new Quaternion(0,0,90,90));
-			Instantiate(bullet, transform.position, new Quaternion(0,0,180,0));
-			Instantiate(bullet, transform.position, new Quaternion(0,0,90,-90));
-
+			Instantiate(bullet, transform.position, Quaternion.Euler(0,0,0));
+			Instantiate(bullet, transform.position, Quaternion.Euler(0,0,90));
+			Instantiate(bullet, transform.position, Quaternion.Euler(0,0,180));
+			Instantiate(bullet, transform.position, Quaternion.Euler(0,0,270));
 			Destroy (gameObject);
 		
 		}
@@ -44,7 +43,7 @@ public class EnemyBulletBurst : MonoBehaviour {
 
 	IEnumerator Explode()
 	{
-		yield return new WaitForSeconds(1.2f);
+		yield return new WaitForSeconds(Random.Range(0.8f,1.4f));
 		SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
 		sr.color = new Color(255,0,0,255);
 		yield return new WaitForSeconds(0.3f);

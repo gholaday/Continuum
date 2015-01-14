@@ -4,15 +4,16 @@ using System.Collections;
 public class enemyMovement : MonoBehaviour {
 
 	public float speed = 5.0f;
-	int ranHeight;
-	float posy;
-	int ranStop;
+
+	private float ranHeight;
+	private float posy;
+	private int ranStop;
 
 
 
 	// Use this for initialization
 	void Start () {
-		ranHeight = Random.Range(-3,5);
+		ranHeight = Random.Range(-0.5f,5.5f);
 		ranStop = Random.Range(-25,25);
 
 
