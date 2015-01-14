@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
      <Compile Include="Assets\Scripts\DieOnDetect.cs" />
      <Compile Include="Assets\Scripts\EnemyBulletBurst.cs" />
+     <Compile Include="Assets\Scripts\EnemySeekerAI.cs" />
      <Compile Include="Assets\Scripts\EnemyTankMovement.cs" />
      <Compile Include="Assets\Scripts\FadeUpAway.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
