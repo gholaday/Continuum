@@ -62,7 +62,7 @@ public class EnemySeekerAI : MonoBehaviour {
 			{
 				if(hit.collider.tag == "Player")
 				{
-					Debug.Log("player found");
+
 					foundTarget = true;
 					go = hit.transform;
 				}
@@ -75,7 +75,7 @@ public class EnemySeekerAI : MonoBehaviour {
 			speed = 15.0f;
 
 			transform.position += Vector3.down * speed * Time.deltaTime;
-			transform.position += go.position / 1.5f * Time.deltaTime;
+			transform.position -= go.position / 20.0f * Time.deltaTime;
 
 			/*Vector3 dir = transform.position - go.position;
 			float angle = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg;

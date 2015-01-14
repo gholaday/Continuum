@@ -13,13 +13,15 @@ public class WaveSystem : MonoBehaviour {
 	public float spawnTimer = 1.0f;
 	public Transform spawnSpot;
 	public int posy = 20;
+
+	public int enemiesToSpawn;
 	
 	public EnemiesArray[] enemyWaves;
 
 	float screenRatio;
 	float widthOrtho;
 
-	float otherSpawnTimer;
+	public float otherSpawnTimer;
 
 	[SerializeField] int enemiesYetToSpawn;
 
@@ -35,8 +37,9 @@ public class WaveSystem : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	
-		enemiesLeft = 10;
-		enemiesYetToSpawn = enemiesLeft;
+		enemiesToSpawn = 10;
+		enemiesYetToSpawn = enemiesToSpawn;
+		enemiesLeft = enemiesToSpawn;
 		waveDisplay.text = "Wave " + 1;
 		StartCoroutine("WaveStart");
 		otherSpawnTimer = spawnTimer;
@@ -59,13 +62,19 @@ public class WaveSystem : MonoBehaviour {
 		if(enemiesLeft <= 0)
 		{
 			waveNumber++;
-			enemiesLeft = waveNumber * 10;
 
-			if(waveNumber > 4){
-				enemiesLeft = waveNumber * 10 + Random.Range(10,30);
+
+			if(waveNumber < 4){
+				enemiesToSpawn = waveNumber * 10;
+
+			}
+			else
+			{
+				enemiesToSpawn += Random.Range(8,15);
 			}
 
-			enemiesYetToSpawn = enemiesLeft;
+			enemiesLeft = enemiesToSpawn;
+			enemiesYetToSpawn = enemiesToSpawn;
 			StartCoroutine("WaveStart");
 		}
 
@@ -123,12 +132,12 @@ public class WaveSystem : MonoBehaviour {
 			spawnTimer = 0f;
 			break;
 		case 6:
-
+			spawnTimer = otherSpawnTimer;
+			spawnTimer -= 0.05f;
+			otherSpawnTimer = spawnTimer;
 			break;
 		case 7:
-			spawnTimer = otherSpawnTimer;
-			spawnTimer -= 0.1f;
-			otherSpawnTimer = spawnTimer;
+
 			break;
 		case 8:
 
