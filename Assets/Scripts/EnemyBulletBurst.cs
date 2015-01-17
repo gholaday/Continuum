@@ -43,7 +43,7 @@ public class EnemyBulletBurst : MonoBehaviour {
 
 	IEnumerator Explode()
 	{
-		yield return new WaitForSeconds(Random.Range(0.8f,1.4f));
+		yield return new WaitForSeconds(Random.Range(0.6f,1.0f));
 		SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
 		sr.color = new Color(255,0,0,255);
 		yield return new WaitForSeconds(0.3f);

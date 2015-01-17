@@ -12,6 +12,9 @@ public class playerDeath : MonoBehaviour {
 	public AudioSource shieldDown;
 	//public AudioClip clip;
 
+	public GameManager gm;
+	public GameObject manager;
+
 	float slowMoTime;
 
 	float invulTimer = 1.0f;
@@ -21,6 +24,10 @@ public class playerDeath : MonoBehaviour {
 	void Start () {
 
 		gameObject.layer = 15;
+
+		manager = GameObject.Find("GameManager");
+		gm = manager.GetComponent<GameManager>();
+
 
 
 	}
@@ -103,6 +110,11 @@ public class playerDeath : MonoBehaviour {
 			shoot.cooldown -= .025f;
 		}
 
+		else if(other.tag == "ExtraLife")
+		{
+			gm.playerLives++;
+			//insert sound later
+		}
 
 	}
 

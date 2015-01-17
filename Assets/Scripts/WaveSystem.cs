@@ -62,17 +62,7 @@ public class WaveSystem : MonoBehaviour {
 		if(enemiesLeft <= 0)
 		{
 			waveNumber++;
-
-
-			if(waveNumber < 4){
-				enemiesToSpawn = waveNumber * 10;
-
-			}
-			else
-			{
-				enemiesToSpawn += Random.Range(8,15);
-			}
-
+			enemiesToSpawn += Random.Range(8,15);
 			enemiesLeft = enemiesToSpawn;
 			enemiesYetToSpawn = enemiesToSpawn;
 			StartCoroutine("WaveStart");
@@ -132,9 +122,9 @@ public class WaveSystem : MonoBehaviour {
 			spawnTimer = 0f;
 			break;
 		case 6:
-			spawnTimer = otherSpawnTimer;
-			spawnTimer -= 0.05f;
-			otherSpawnTimer = spawnTimer;
+			//spawnTimer = otherSpawnTimer;
+			//spawnTimer -= 0.05f;
+			//otherSpawnTimer = spawnTimer;
 			break;
 		case 7:
 

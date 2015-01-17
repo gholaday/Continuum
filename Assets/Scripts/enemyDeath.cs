@@ -5,7 +5,7 @@ public class enemyDeath : MonoBehaviour {
 
 	public GameObject death = null;
 	public int health = 1;
-	public int powerupChance = 15;
+	//public int powerupChance = 15;
 	public Transform[] powerups;
 	public float pointsValue = 100;
 	//public AudioClip clip;
@@ -56,10 +56,14 @@ public class enemyDeath : MonoBehaviour {
 				{
 					Instantiate(death,transform.position,death.transform.rotation);		
 				}
-				if(powerUpSpawn >= 100 - powerupChance)
+				if(powerUpSpawn >= 75)
 				{
-					if(powerups.Length > 0)
-					Instantiate(powerups[powerups.Length - 1 ], transform.position, Quaternion.Euler(0,0,0));
+					Instantiate(powerups[0], transform.position, Quaternion.Euler(0,0,0));
+					
+				}
+				else if(powerUpSpawn >= 0 && powerUpSpawn <= 5 && powerups.Length > 1)
+				{
+					Instantiate(powerups[1], transform.position, Quaternion.Euler(0,0,0));
 				}
 			}
 
