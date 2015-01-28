@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\FadeUpAway.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\MeteorMovement.cs" />
+     <Compile Include="Assets\Scripts\MusicBounce.cs" />
      <Compile Include="Assets\Scripts\ParticleSystemAutoDestroy.cs" />
      <Compile Include="Assets\Scripts\PlayerLaser.cs" />
      <Compile Include="Assets\Scripts\PowerUp.cs" />

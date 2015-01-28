@@ -69,7 +69,8 @@ public class playerDeath : MonoBehaviour {
 				Instantiate(death,transform.position,death.transform.rotation);	
 				
 			}
-			
+
+			//gm.playerFireRate = shoot.cooldown;
 			Destroy(gameObject);
 			
 			

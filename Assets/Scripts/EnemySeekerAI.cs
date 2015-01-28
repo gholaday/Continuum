@@ -82,6 +82,10 @@ public class EnemySeekerAI : MonoBehaviour {
 				transform.position += Vector3.down * speed * Time.deltaTime;
 				transform.position -= go.position / 20.0f * Time.deltaTime;
 			}
+			else
+			{
+				transform.position += Vector3.down * speed * Time.deltaTime;
+			}
 
 
 			/*Vector3 dir = transform.position - go.position;

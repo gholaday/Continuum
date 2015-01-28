@@ -3,7 +3,8 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
-	
+
+	//public AudioClip recordScratch;
 
 	public Text lives;
 	public Text scoreDisplay;
@@ -43,6 +44,8 @@ public class GameManager : MonoBehaviour {
 	public static float totalMultiplier;
 
 	int multiplierFontSize;
+	bool isSpawning = false;
+
 
 
 
@@ -56,7 +59,7 @@ public class GameManager : MonoBehaviour {
 		currentMultiplier = 1.0f;
 		multiplierFontSize = multiplierDisplay.fontSize;
 	
-		spawnPos = new Vector2(0,0);
+		spawnPos = new Vector2(0,-4);
 		highScore = PlayerPrefs.GetFloat("High Score");
 		ready.enabled = true;
 
@@ -183,17 +186,9 @@ public class GameManager : MonoBehaviour {
 		}
 		//If we cant find the ship(i.e we are dead) and lives are greater than 0, spawn a new ship and deduct a live
 		//Then we can also call our code to display the flavor text
-		else if(ship == null && firstSpawn == false)
+		else if(ship == null && firstSpawn == false && !isSpawning)
 		{
-			playerLives -= 1;
-			if(playerLives > 0)
-			{
-				currentMultiplier = 1.0f;
-				Instantiate(player,spawnPos, transform.rotation);
-				deadText.CrossFadeAlpha(255,1,false);
-				deadText.text = deadFlavorText[Random.Range(0,deadFlavorText.Length)];
-				deadText.CrossFadeAlpha(0,2,false);
-			}
+			Respawn();
 		}
 
 	}
@@ -220,14 +215,33 @@ public class GameManager : MonoBehaviour {
 				
 	}
 
+	void Respawn()
+	{
+		playerLives -= 1;
+		if(playerLives > 0)
+		{
+			currentMultiplier = 1.0f;
+			StartCoroutine("SpawnPlayer");
+			deadText.CrossFadeAlpha(255,1,false);
+			deadText.text = deadFlavorText[Random.Range(0,deadFlavorText.Length)];
+			deadText.CrossFadeAlpha(0,2,false);
+		}
+	}
+
 	void GameOver()
 	{
 		lives.text = "0";
 		gameOverUI.SetActive(true);
 
-		//audio.Stop();
 		
 		PlayerPrefs.SetFloat("High Score", highScore);
 	}
 
+	IEnumerator SpawnPlayer()
+	{
+		isSpawning = true;
+		yield return new WaitForSeconds(1.0f);
+		Instantiate(player,spawnPos,transform.rotation);
+		isSpawning = false;
+	}
 }

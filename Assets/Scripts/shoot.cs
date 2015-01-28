@@ -5,8 +5,9 @@ public class shoot: MonoBehaviour {
 	
 	public GameObject bullet;
 	public Transform bulletSpawn;
-	public static float cooldown = 1.0f;
-	public float pubCooldown;
+	[SerializeField]
+	public static float cooldown = 0.25f;
+	public float maxCooldown = 0.25f;
 	public bool isShooting = false;
 	public AudioSource shootSound;
 	private float countdown;
@@ -16,14 +17,20 @@ public class shoot: MonoBehaviour {
 
 
 	void Start(){
-		countdown = cooldown;
-		cooldown = pubCooldown;
 
+		countdown = cooldown;
+		cooldown += .1f;
+	
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
+		if(cooldown > maxCooldown)
+		{
+			cooldown = maxCooldown;
+		}
+	
 
 		countdown -= Time.deltaTime;
 

@@ -122,9 +122,9 @@ public class WaveSystem : MonoBehaviour {
 			spawnTimer = 0f;
 			break;
 		case 6:
-			//spawnTimer = otherSpawnTimer;
-			//spawnTimer -= 0.05f;
-			//otherSpawnTimer = spawnTimer;
+			spawnTimer = otherSpawnTimer;
+			spawnTimer -= 0.05f;
+			otherSpawnTimer = spawnTimer;
 			break;
 		case 7:
 
