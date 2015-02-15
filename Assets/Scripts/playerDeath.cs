@@ -12,8 +12,8 @@ public class playerDeath : MonoBehaviour {
 	public AudioSource shieldDown;
 	//public AudioClip clip;
 
-	public GameManager gm;
-	public GameObject manager;
+	private GameManager gm;
+	private GameObject manager;
 
 	float slowMoTime;
 

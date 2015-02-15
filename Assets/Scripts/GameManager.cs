@@ -160,7 +160,7 @@ public class GameManager : MonoBehaviour {
 		if(!firstSpawn)
 		{
 			lives.text = (playerLives - 1).ToString();
-			scoreDisplay.text = "Score:  " + score.ToString();
+			scoreDisplay.text = "Score:" + (score/10).ToString();
 			multiplierDisplay.text = "x" + totalMultiplier.ToString();
 		}
 
@@ -171,7 +171,7 @@ public class GameManager : MonoBehaviour {
 			highScore = score;
 		}
 
-		highScoreDisplay.text = "High Score:  " + highScore.ToString();
+		highScoreDisplay.text = "High Score:" + highScore.ToString();
 
 		//Displays game over text when lives are zero, prompt for reset
 		if(playerLives <= 0)
