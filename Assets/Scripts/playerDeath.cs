@@ -6,14 +6,14 @@ public class playerDeath : MonoBehaviour {
 	public GameObject death;
 	public GameObject coolDownText;
 	public int hitpoints = 2;
-	//public bool gameOver = false;
 	public Transform shield;
 	public bool shieldSound = false;
 	public AudioSource shieldDown;
-	//public AudioClip clip;
+	public float shakeAmount = 0.1f;
 
 	private GameManager gm;
 	private GameObject manager;
+	private CameraShake camShake;
 
 	float slowMoTime;
 
@@ -27,8 +27,7 @@ public class playerDeath : MonoBehaviour {
 
 		manager = GameObject.Find("GameManager");
 		gm = manager.GetComponent<GameManager>();
-
-
+		camShake = GameObject.Find("Main Camera").GetComponent<CameraShake>();
 
 	}
 
@@ -83,6 +82,7 @@ public class playerDeath : MonoBehaviour {
 		if(other.tag == "Enemy" || other.tag == "Meteor")
 
 		{
+			OnHitShake();
 			gameObject.layer = 15;
 			hitpoints -= 1;
 
@@ -121,7 +121,10 @@ public class playerDeath : MonoBehaviour {
 
 
 
-
+	void OnHitShake()
+	{
+		camShake.shake = shakeAmount;
+	}
 
 
 

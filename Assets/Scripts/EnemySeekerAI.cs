@@ -12,6 +12,7 @@ public class EnemySeekerAI : MonoBehaviour {
 	
 	private bool start = true;
 	private bool foundTarget = false;
+	private bool ifFound = false;
 	
 	private float chance;
 	
@@ -31,11 +32,11 @@ public class EnemySeekerAI : MonoBehaviour {
 		posy = transform.position.y;
 		
 		//only move down untill the objects y pos is == to the random y pos generated at start
-		if(posy >= height)
+		if(posy >= height || (ifFound && !foundTarget))
 		{
 			transform.position += new Vector3(0,-1,0)* speed * Time.deltaTime;
 		}
-		else if(!foundTarget)
+		else if(!foundTarget && !ifFound)
 		{
 			speed = 3.0f; 
 
@@ -65,6 +66,7 @@ public class EnemySeekerAI : MonoBehaviour {
 					if(hit.transform != null)
 					{
 						foundTarget = true;
+						ifFound = true;
 						go = hit.transform;
 					}
 
@@ -72,6 +74,7 @@ public class EnemySeekerAI : MonoBehaviour {
 
 			}
 		}
+
 		
 		if(foundTarget)
 		{
@@ -89,10 +92,7 @@ public class EnemySeekerAI : MonoBehaviour {
 			}
 
 
-			/*Vector3 dir = transform.position - go.position;
-			float angle = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg;
-			transform.localRotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-			*/
+
 		}
 	}
 	

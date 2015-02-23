@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\AdjustToScreenRatio.cs" />
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
+     <Compile Include="Assets\Scripts\CameraShake.cs" />
      <Compile Include="Assets\Scripts\DieOnDetect.cs" />
      <Compile Include="Assets\Scripts\EnemyBulletBurst.cs" />
      <Compile Include="Assets\Scripts\EnemySeekerAI.cs" />
