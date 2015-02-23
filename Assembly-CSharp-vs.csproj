@@ -59,7 +59,9 @@
      <Compile Include="Assets\Scripts\ParticleSystemAutoDestroy.cs" />
      <Compile Include="Assets\Scripts\PlayerLaser.cs" />
      <Compile Include="Assets\Scripts\PowerUp.cs" />
+     <Compile Include="Assets\Scripts\SceneChange.cs" />
      <Compile Include="Assets\Scripts\TextBounce.cs" />
+     <Compile Include="Assets\Scripts\TextFlash.cs" />
      <Compile Include="Assets\Scripts\TimerDestroy.cs" />
      <Compile Include="Assets\Scripts\WaveSystem.cs" />
      <Compile Include="Assets\Scripts\bulletMovement.cs" />

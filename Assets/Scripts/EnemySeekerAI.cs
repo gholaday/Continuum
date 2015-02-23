@@ -77,13 +77,14 @@ public class EnemySeekerAI : MonoBehaviour {
 		{
 			speed = 15.0f;
 
-			if(go.gameObject != null)
+			if(go != null)
 			{
 				transform.position += Vector3.down * speed * Time.deltaTime;
 				transform.position -= go.position / 20.0f * Time.deltaTime;
 			}
 			else
 			{
+				foundTarget = false;
 				transform.position += Vector3.down * speed * Time.deltaTime;
 			}
 
