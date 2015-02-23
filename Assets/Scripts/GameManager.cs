@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour {
 			audio.pitch += Time.deltaTime * 2;
 		}
 
-		if(audio.pitch <= .5f)
+		if(audio.pitch <= .5f && playerLives > 0)
 			audio.pitch = .5f;
 
 		if(audio.pitch >= 1.0f)
@@ -181,7 +181,7 @@ public class GameManager : MonoBehaviour {
 
 			if(Input.GetKey(KeyCode.Return))
 			{
-				Application.LoadLevel(0);
+				Application.LoadLevel(Application.loadedLevel);
 			}
 		}
 		//If we cant find the ship(i.e we are dead) and lives are greater than 0, spawn a new ship and deduct a live
@@ -233,8 +233,9 @@ public class GameManager : MonoBehaviour {
 		lives.text = "0";
 		gameOverUI.SetActive(true);
 
-		
 		PlayerPrefs.SetFloat("High Score", highScore);
+		
+		StartCoroutine("PitchSlow");
 	}
 
 	IEnumerator SpawnPlayer()
@@ -244,4 +245,13 @@ public class GameManager : MonoBehaviour {
 		Instantiate(player,spawnPos,transform.rotation);
 		isSpawning = false;
 	}
+
+	IEnumerator PitchSlow()
+	{
+		audio.pitch -= .01f;
+		yield return new WaitForSeconds(.5f);
+		if(audio.pitch > 0)
+			StartCoroutine("PitchSlow");
+	}
+
 }
