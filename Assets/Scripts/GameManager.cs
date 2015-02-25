@@ -113,6 +113,7 @@ public class GameManager : MonoBehaviour {
 
 		ChangeSlowMoColor();
 
+
 		if(Input.GetButtonDown("Cancel"))
 		{
 			isPaused = !isPaused;
@@ -127,6 +128,7 @@ public class GameManager : MonoBehaviour {
 			pauseUI.SetActive(false);
 			Time.timeScale = 1;
 		}
+
 
 		if(firstSpawn)
 		{
@@ -248,7 +250,7 @@ public class GameManager : MonoBehaviour {
 
 	IEnumerator PitchSlow()
 	{
-		audio.pitch -= .01f;
+		audio.pitch -= .015f;
 		yield return new WaitForSeconds(.5f);
 		if(audio.pitch > 0)
 			StartCoroutine("PitchSlow");
