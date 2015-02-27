@@ -1,17 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class enemyDeath : MonoBehaviour {
 
 	public GameObject death = null;
 	public int health = 1;
-	//public int powerupChance = 15;
 	public Transform[] powerups;
 	public float pointsValue = 100;
-	//public AudioClip clip;
-
-
-
+	public GameObject pointsText = null;
+	
 	int powerUpSpawn;
 
 	float multiplier;
@@ -21,12 +19,14 @@ public class enemyDeath : MonoBehaviour {
 
 	bool oneTime = true;
 
+	Color color;
+
 	void Start()
 	{
 		powerUpSpawn = Random.Range(0,100);
 		ws = GameObject.Find("EnemySpawner").GetComponent<WaveSystem>();
 		sr = GetComponentInChildren<SpriteRenderer>();
-
+		color = new Color(255,255,255,255);
 
 	}
 	
@@ -52,10 +52,19 @@ public class enemyDeath : MonoBehaviour {
 
 				Destroy(gameObject);
 				if(death != null)
-			
 				{
 					Instantiate(death,transform.position,death.transform.rotation);		
 				}
+
+				if(pointsText != null)
+				{
+					GameObject text = Instantiate(pointsText, transform.position, Quaternion.identity) as GameObject;
+					text.GetComponent<Text>().text = pointsValue.ToString();
+					text.GetComponent<Text>().color = color;
+
+
+				}
+
 				if(powerUpSpawn >= 75)
 				{
 					Instantiate(powerups[0], transform.position, Quaternion.Euler(0,0,0));

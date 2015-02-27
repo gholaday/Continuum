@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class PowerUp : MonoBehaviour {
 
 	public float fallSpeed = 5.0f;
+	public GameObject powerUpText;
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +27,8 @@ public class PowerUp : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
+		if(powerUpText != null)
+			Instantiate(powerUpText, transform.position + new Vector3(0,1,0), Quaternion.identity);
 
 		Destroy(gameObject);
 

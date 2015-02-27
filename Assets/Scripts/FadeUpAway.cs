@@ -4,6 +4,8 @@ using System.Collections;
 public class FadeUpAway : MonoBehaviour {
 	
 	Color imageAlpha;
+	public Vector3 direction;
+	public float lifetime = 1.1f;
 
 
 	// Use this for initialization
@@ -20,9 +22,9 @@ public class FadeUpAway : MonoBehaviour {
 
 		renderer.material.color = imageAlpha;
 
-		transform.position += new Vector3(0,Time.deltaTime,0);
+		transform.position += direction * Time.deltaTime;
 
-		Destroy(gameObject,1.1f);
+		Destroy(gameObject,lifetime);
 
 	}
 }

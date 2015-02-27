@@ -46,10 +46,14 @@ public class playerMovement : MonoBehaviour {
 		{
 
 			Time.timeScale = 0.25f;
-			slowmoTime -= .60f;
+			slowmoTime -= 80.0f * Time.deltaTime;
 			moveSpeed = slowmoMoveSpeed;
 	
-		}	
+		}
+		else 
+		{
+			slowmoTime += 15.0f * Time.deltaTime;
+		}
 
 		if(Input.GetButtonUp("Jump") && spawn == true || slowmoTime <= 0)
 		{
@@ -57,7 +61,7 @@ public class playerMovement : MonoBehaviour {
 			moveSpeed = 8.0f;
 		}
 
-		slowmoTime += .15f;
+
 
 
 

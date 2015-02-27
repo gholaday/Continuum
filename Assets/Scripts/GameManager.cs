@@ -133,7 +133,7 @@ public class GameManager : MonoBehaviour {
 		if(firstSpawn)
 		{
 			initialSpawn -= Time.deltaTime;
-			slowTimeBar.value += 1.2f;
+			slowTimeBar.value += 80.0f * Time.deltaTime;
 
 			if(initialSpawn <= 0)
 			{
@@ -250,9 +250,9 @@ public class GameManager : MonoBehaviour {
 
 	IEnumerator PitchSlow()
 	{
-		audio.pitch -= .015f;
-		yield return new WaitForSeconds(.5f);
-		if(audio.pitch > 0)
+		audio.pitch -= .01f;
+		yield return new WaitForSeconds(.75f);
+		if(audio.pitch > .4f)
 			StartCoroutine("PitchSlow");
 	}
 
