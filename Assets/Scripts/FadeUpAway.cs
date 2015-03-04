@@ -11,7 +11,7 @@ public class FadeUpAway : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	
-		imageAlpha = renderer.material.color;
+		imageAlpha = GetComponent<Renderer>().material.color;
 	}
 	
 	// Update is called once per frame
@@ -20,7 +20,7 @@ public class FadeUpAway : MonoBehaviour {
 
 		imageAlpha.a -= Time.deltaTime;
 
-		renderer.material.color = imageAlpha;
+		GetComponent<Renderer>().material.color = imageAlpha;
 
 		transform.position += direction * Time.deltaTime;
 

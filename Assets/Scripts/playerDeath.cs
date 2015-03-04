@@ -41,13 +41,13 @@ public class playerDeath : MonoBehaviour {
 			if(invulTimer % .1 >= .05)
 			{
 		
-				renderer.enabled = false;
+				GetComponent<Renderer>().enabled = false;
 
 
 			}
 			else
 			{
-				renderer.enabled = true;
+				GetComponent<Renderer>().enabled = true;
 			}
 		}
 
@@ -55,7 +55,7 @@ public class playerDeath : MonoBehaviour {
 		if(invulTimer <= 0)
 		{
 			gameObject.layer = 11;
-			renderer.enabled = true;
+			GetComponent<Renderer>().enabled = true;
 			invulTimer = 1.0f;
 		}
 

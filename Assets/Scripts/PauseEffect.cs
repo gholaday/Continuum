@@ -38,7 +38,7 @@ public class PauseEffect : MonoBehaviour {
 	{
 		hud.SetActive(false);
 		//Time.timeScale = 0.0f;
-		GameObject.Find("GameManager").audio.pitch = 0;
+		GameObject.Find("GameManager").GetComponent<AudioSource>().pitch = 0;
 		yield return new WaitForSeconds(.5f);
 		transform.position = Vector3.Lerp(initialPos, endPos, lerpTime);
 	}

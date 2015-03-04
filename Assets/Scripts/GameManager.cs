@@ -77,18 +77,18 @@ public class GameManager : MonoBehaviour {
 
 		if(Time.timeScale <= .5f)
 		{
-			audio.pitch -= Time.deltaTime * 2;
+			GetComponent<AudioSource>().pitch -= Time.deltaTime * 2;
 		}
 		else
 		{
-			audio.pitch += Time.deltaTime * 2;
+			GetComponent<AudioSource>().pitch += Time.deltaTime * 2;
 		}
 
-		if(audio.pitch <= .5f && playerLives > 0)
-			audio.pitch = .5f;
+		if(GetComponent<AudioSource>().pitch <= .5f && playerLives > 0)
+			GetComponent<AudioSource>().pitch = .5f;
 
-		if(audio.pitch >= 1.0f)
-			audio.pitch = 1.0f;
+		if(GetComponent<AudioSource>().pitch >= 1.0f)
+			GetComponent<AudioSource>().pitch = 1.0f;
 
 		totalMultiplier = currentMultiplier * slowMoMulitiplier;
 
@@ -122,7 +122,7 @@ public class GameManager : MonoBehaviour {
 		if(isPaused)
 		{
 			Time.timeScale = 0;
-			audio.pitch = 0;
+			GetComponent<AudioSource>().pitch = 0;
 			pauseUI.SetActive(true);
 		}else{
 			pauseUI.SetActive(false);
@@ -250,9 +250,9 @@ public class GameManager : MonoBehaviour {
 
 	IEnumerator PitchSlow()
 	{
-		audio.pitch -= .01f;
+		GetComponent<AudioSource>().pitch -= .01f;
 		yield return new WaitForSeconds(.75f);
-		if(audio.pitch > .4f)
+		if(GetComponent<AudioSource>().pitch > .4f)
 			StartCoroutine("PitchSlow");
 	}
 
