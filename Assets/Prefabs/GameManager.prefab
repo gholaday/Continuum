@@ -116,16 +116,19 @@ MonoBehaviour:
   ready: {fileID: 0}
   multiplierDisplay: {fileID: 0}
   newHighScoreDisplay: {fileID: 0}
+  extraLifeScore: {fileID: 0}
   slowTimeBar: {fileID: 0}
   deadFlavorText:
   - Get rekt
   - Not even close
   - You are an embarrasement
   - ez game ez life
+  - Its like you arent even trying
   gameOverUI: {fileID: 0}
   pauseUI: {fileID: 0}
   player: {fileID: 100000, guid: 50ac5c356a1d58a428714c5e0ad1c24d, type: 2}
   highScore: 0
+  scoreToExtraLife: 999999
   playerLives: 1
   slowMoMulitiplier: 0
 --- !u!1001 &100100000

@@ -48,6 +48,7 @@ public class enemyDeath : MonoBehaviour {
 				//AudioSource.PlayClipAtPoint(clip,transform.position);
 				GameManager.currentMultiplier++;
 				GameManager.score += pointsValue * GameManager.totalMultiplier;
+				GameManager.extraLifeScoreCounter += pointsValue * GameManager.totalMultiplier;
 				ws.enemiesLeft--;
 
 				Destroy(gameObject);
@@ -67,6 +68,7 @@ public class enemyDeath : MonoBehaviour {
 
 				if(powerUpSpawn >= 75)
 				{
+					if(powerups.Length > 0)
 					Instantiate(powerups[0], transform.position, Quaternion.Euler(0,0,0));
 					
 				}

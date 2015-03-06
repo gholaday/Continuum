@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
 	public Text ready;
 	public Text multiplierDisplay;
 	public Text newHighScoreDisplay;
+	public Text extraLifeScore;
 
 	public Slider slowTimeBar;
 
@@ -26,6 +27,8 @@ public class GameManager : MonoBehaviour {
 
 	public static float score;
 	public float highScore;
+	public float scoreToExtraLife;
+	public static float extraLifeScoreCounter;
 	public int playerLives = 3;
 
 	float initialSpawn = 2.0f;
@@ -46,13 +49,12 @@ public class GameManager : MonoBehaviour {
 	int multiplierFontSize;
 	bool isSpawning = false;
 
-
-
-
+	
 	// Use this for initialization
 	void Start () {
 
 		score = 0;
+		extraLifeScoreCounter = 0;
 		slowMo = 0;
 		slowTimeBar.value = 1;
 		totalMultiplier = 1.0f;
@@ -69,6 +71,7 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	void Update () {
+
 
 		if(Time.timeSinceLevelLoad > 3.0f)
 		{
@@ -162,7 +165,7 @@ public class GameManager : MonoBehaviour {
 		if(!firstSpawn)
 		{
 			lives.text = (playerLives - 1).ToString();
-			scoreDisplay.text = "Score:" + (score/10).ToString();
+			scoreDisplay.text = "Score:" + (score).ToString();
 			multiplierDisplay.text = "x" + totalMultiplier.ToString();
 		}
 
@@ -191,6 +194,13 @@ public class GameManager : MonoBehaviour {
 		else if(ship == null && firstSpawn == false && !isSpawning)
 		{
 			Respawn();
+		}
+
+		if(extraLifeScoreCounter > scoreToExtraLife)
+		{
+			StartCoroutine("ExtraLifeOnScoreDisplay");
+			playerLives++;
+			extraLifeScoreCounter = 0;
 		}
 
 	}
@@ -254,6 +264,24 @@ public class GameManager : MonoBehaviour {
 		yield return new WaitForSeconds(.75f);
 		if(GetComponent<AudioSource>().pitch > .4f)
 			StartCoroutine("PitchSlow");
+	}
+
+	IEnumerator ExtraLifeOnScoreDisplay()
+	{
+
+		extraLifeScore.enabled = true;
+		yield return new WaitForSeconds(.5f);
+		extraLifeScore.enabled = false;
+		yield return new WaitForSeconds(.5f);
+		extraLifeScore.enabled = true;
+		yield return new WaitForSeconds(.5f);
+		extraLifeScore.enabled = false;
+		yield return new WaitForSeconds(.5f);
+		extraLifeScore.enabled = true;
+		yield return new WaitForSeconds(.5f);
+		extraLifeScore.enabled = false;
+
+
 	}
 
 }

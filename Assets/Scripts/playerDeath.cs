@@ -25,7 +25,11 @@ public class playerDeath : MonoBehaviour {
 		gameObject.layer = 15;
 
 		manager = GameObject.Find("GameManager");
-		gm = manager.GetComponent<GameManager>();
+		if(manager != null)
+		{
+			gm = manager.GetComponent<GameManager>();
+		}
+
 		camShake = GameObject.Find("Main Camera").GetComponent<CameraShake>();
 
 	}
@@ -92,7 +96,7 @@ public class playerDeath : MonoBehaviour {
 			if(hitpoints < 2 && shieldSound == false)
 			{
 				shield.gameObject.SetActive(false);
-				shieldDown.Play();
+				//shieldDown.Play();
 				shieldSound = true;
 				
 			}
