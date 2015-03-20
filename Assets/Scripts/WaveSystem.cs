@@ -62,7 +62,7 @@ public class WaveSystem : MonoBehaviour {
 		if(enemiesLeft <= 0)
 		{
 			waveNumber++;
-			enemiesToSpawn += Random.Range(8,15);
+			enemiesToSpawn += Random.Range(4,8);
 			enemiesLeft = enemiesToSpawn;
 			enemiesYetToSpawn = enemiesToSpawn;
 			StartCoroutine("WaveStart");

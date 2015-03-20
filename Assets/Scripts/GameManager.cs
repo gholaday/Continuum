@@ -254,6 +254,9 @@ public class GameManager : MonoBehaviour {
 		PlayerPrefs.SetFloat("High Score", highScore);
 		
 		StartCoroutine("PitchSlow");
+
+		GetComponent<EndGameStats>().enabled = true;
+	
 	}
 
 	IEnumerator SpawnPlayer()
@@ -266,7 +269,9 @@ public class GameManager : MonoBehaviour {
 
 	IEnumerator PitchSlow()
 	{
-		GetComponent<AudioSource>().pitch -= .01f;
+		if(GetComponent<AudioSource>().pitch > 0.01f)
+			GetComponent<AudioSource>().pitch -= .01f;
+
 		yield return new WaitForSeconds(.75f);
 		if(GetComponent<AudioSource>().pitch > .4f)
 			StartCoroutine("PitchSlow");

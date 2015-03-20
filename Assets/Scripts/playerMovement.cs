@@ -17,6 +17,7 @@ public class playerMovement : MonoBehaviour {
 	void Start () {
 
 		spawn = true;
+		Cursor.visible = false;
 
 
 	}
@@ -30,8 +31,10 @@ public class playerMovement : MonoBehaviour {
 		Vector3 pos = transform.position;
 
 		pos.y += Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
+		//pos.y += Input.GetAxis("Mouse Y") * moveSpeed * Time.deltaTime;
 
 		pos.x += Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
+		//pos.x += Input.GetAxis("Mouse X") * moveSpeed * Time.deltaTime;
 
 
 		//Slow mo
