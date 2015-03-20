@@ -16,6 +16,7 @@ public class enemyDeath : MonoBehaviour {
 
 	WaveSystem ws;
 	SpriteRenderer sr;
+	PlayerScore ps;
 
 	bool oneTime = true;
 
@@ -26,6 +27,7 @@ public class enemyDeath : MonoBehaviour {
 		powerUpSpawn = Random.Range(0,100);
 		ws = GameObject.Find("EnemySpawner").GetComponent<WaveSystem>();
 		sr = GetComponentInChildren<SpriteRenderer>();
+		ps = GameObject.Find("GameManager").GetComponent<PlayerScore>();
 		color = new Color(255,255,255,255);
 
 	}
@@ -47,7 +49,8 @@ public class enemyDeath : MonoBehaviour {
 				oneTime = false;
 				//AudioSource.PlayClipAtPoint(clip,transform.position);
 				GameManager.currentMultiplier++;
-				GameManager.score += pointsValue * GameManager.totalMultiplier;
+				//GameManager.score += pointsValue * GameManager.totalMultiplier;
+				ps.IncreaseScore(pointsValue,GameManager.totalMultiplier);
 				GameManager.extraLifeScoreCounter += pointsValue * GameManager.totalMultiplier;
 				ws.enemiesLeft--;
 
@@ -60,7 +63,7 @@ public class enemyDeath : MonoBehaviour {
 				if(pointsText != null)
 				{
 					GameObject text = Instantiate(pointsText, transform.position, Quaternion.identity) as GameObject;
-					text.GetComponent<Text>().text = pointsValue.ToString();
+					text.GetComponent<Text>().text = (pointsValue * GameManager.totalMultiplier).ToString();
 					text.GetComponent<Text>().color = color;
 
 

@@ -25,11 +25,17 @@ public class GameManager : MonoBehaviour {
 	public GameObject player;
 	private GameObject ship;
 
-	public static float score;
+
+	//public static float score;
 	public float highScore;
 	public float scoreToExtraLife;
 	public static float extraLifeScoreCounter;
 	public int playerLives = 3;
+
+
+
+	PlayerScore score;
+	int displayScore = 0;
 
 	float initialSpawn = 2.0f;
 	public static float slowMo = 0;
@@ -48,12 +54,12 @@ public class GameManager : MonoBehaviour {
 
 	int multiplierFontSize;
 	bool isSpawning = false;
-
-	
+		
 	// Use this for initialization
 	void Start () {
 
-		score = 0;
+		score = GetComponent<PlayerScore>();
+		score.SetScore(0);
 		extraLifeScoreCounter = 0;
 		slowMo = 0;
 		slowTimeBar.value = 1;
@@ -66,7 +72,6 @@ public class GameManager : MonoBehaviour {
 		ready.enabled = true;
 
 		originalColor = new Color(255,255,255,.5f);
-	
 
 	}
 	
@@ -165,15 +170,16 @@ public class GameManager : MonoBehaviour {
 		if(!firstSpawn)
 		{
 			lives.text = (playerLives - 1).ToString();
-			scoreDisplay.text = "Score:" + (score).ToString();
+			CountTo(score.GetScore());
+			scoreDisplay.text = "Score:" + (displayScore).ToString();
 			multiplierDisplay.text = "x" + totalMultiplier.ToString();
 		}
 
 
-		if(score > highScore)
+		if(score.GetScore() > highScore)
 		{
 			newHighScoreDisplay.enabled = true;
-			highScore = score;
+			highScore = score.GetScore();
 		}
 
 		highScoreDisplay.text = "High Score:" + highScore.ToString();
@@ -280,7 +286,16 @@ public class GameManager : MonoBehaviour {
 		extraLifeScore.enabled = true;
 		yield return new WaitForSeconds(.5f);
 		extraLifeScore.enabled = false;
+	
+	}
 
+	void CountTo (int target) {
+
+		if(displayScore != score.GetScore())
+		{
+			int start = displayScore;
+			displayScore = (int)Mathf.Lerp (start, target + 9, .1f);
+		}
 
 	}
 

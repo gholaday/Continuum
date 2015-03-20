@@ -27,7 +27,7 @@ public class PowerUp : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		if(powerUpText != null)
+		if(powerUpText != null && other.tag == "Player")
 			Instantiate(powerUpText, transform.position + new Vector3(0,1,0), Quaternion.identity);
 
 		Destroy(gameObject);

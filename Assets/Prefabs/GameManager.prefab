@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
   - 82: {fileID: 8200000}
+  - 114: {fileID: 11413282}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -128,9 +129,20 @@ MonoBehaviour:
   pauseUI: {fileID: 0}
   player: {fileID: 100000, guid: 50ac5c356a1d58a428714c5e0ad1c24d, type: 2}
   highScore: 0
-  scoreToExtraLife: 999999
-  playerLives: 1
+  scoreToExtraLife: 99999
+  playerLives: 3
   slowMoMulitiplier: 0
+--- !u!114 &11413282
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11683188b4f5b2f4c9bd08b8fba724f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
