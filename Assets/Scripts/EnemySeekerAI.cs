@@ -34,14 +34,14 @@ public class EnemySeekerAI : MonoBehaviour {
 		//only move down untill the objects y pos is == to the random y pos generated at start
 		if(posy >= height || (ifFound && !foundTarget))
 		{
-			transform.position += new Vector3(0,-1,0)* speed * Time.deltaTime;
+			transform.position += new Vector3(0,-1,0)* speed * Time.deltaTime * playerMovement.timeStop;
 		}
 		else if(!foundTarget && !ifFound)
 		{
 			speed = 3.0f; 
 
 
-			transform.position += new Vector3(direction,0,0)* speed * Time.deltaTime;
+			transform.position += new Vector3(direction,0,0)* speed * Time.deltaTime * playerMovement.timeStop;
 			
 			if(start)
 			{
@@ -82,13 +82,13 @@ public class EnemySeekerAI : MonoBehaviour {
 
 			if(go != null)
 			{
-				transform.position += Vector3.down * speed * Time.deltaTime;
-				transform.position -= go.position / 20.0f * Time.deltaTime;
+				transform.position += Vector3.down * speed * Time.deltaTime * playerMovement.timeStop;
+				transform.position -= go.position / 20.0f * Time.deltaTime * playerMovement.timeStop;
 			}
 			else
 			{
 				foundTarget = false;
-				transform.position += Vector3.down * speed * Time.deltaTime;
+				transform.position += Vector3.down * speed * Time.deltaTime * playerMovement.timeStop;
 			}
 
 

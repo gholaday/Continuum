@@ -27,7 +27,7 @@ public class enemyShoot: MonoBehaviour {
 			countdown = cooldown; 
 		}
 		
-		if(canShoot == true)
+		if(canShoot == true && playerMovement.timeStop == 1)
 		{
 			if(tripleShot)
 			{

@@ -17,11 +17,11 @@ public class MeteorMovement : MonoBehaviour {
 	
 		//Vector3 pos = transform.position;
 
-		transform.position -= new Vector3(0,1,0)* fallSpeed * Time.deltaTime;
+		transform.position -= new Vector3(0,1,0)* fallSpeed * Time.deltaTime * playerMovement.timeStop;
 
 		//transform.position = pos;
 
-		transform.Rotate(new Vector3(0,0,1), rotSpeed);
+		transform.Rotate(new Vector3(0,0,1) * playerMovement.timeStop, rotSpeed);
 
 	}
 }

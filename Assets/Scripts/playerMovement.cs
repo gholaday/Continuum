@@ -8,14 +8,19 @@ public class playerMovement : MonoBehaviour {
 	public float slowmoTime = 0;
 	public float slowmoMoveSpeed = 12.0f;
 
+	public static int timeStop = 1;
+
 
 	float shipBoundaryRadius = 0.5f;
 	bool spawn = false;
+
+	bool mouseControl = false;
 
 	//public 
 
 	void Start () {
 
+		timeStop = 1;
 		spawn = true;
 		Cursor.visible = false;
 
@@ -27,15 +32,29 @@ public class playerMovement : MonoBehaviour {
 
 		GameManager.slowMo = slowmoTime;
 
+		if(Input.GetKey(KeyCode.LeftShift))
+			timeStop = 0;
+		else
+			timeStop = 1;
+
 		//Our basic up/down/left/right movement
 		Vector3 pos = transform.position;
 
-		pos.y += Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
-		//pos.y += Input.GetAxis("Mouse Y") * moveSpeed * Time.deltaTime;
+		if(Input.GetKeyDown(KeyCode.Keypad1))
+			mouseControl = true;
 
-		pos.x += Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
-		//pos.x += Input.GetAxis("Mouse X") * moveSpeed * Time.deltaTime;
 
+		if(mouseControl)
+		{
+			pos.y += Input.GetAxis("Mouse Y") * moveSpeed * Time.deltaTime;
+			pos.x += Input.GetAxis("Mouse X") * moveSpeed * Time.deltaTime;
+
+		}
+		else{
+
+			pos.y += Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
+			pos.x += Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
+		}
 
 		//Slow mo
 

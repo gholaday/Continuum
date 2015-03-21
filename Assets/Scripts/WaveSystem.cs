@@ -25,6 +25,9 @@ public class WaveSystem : MonoBehaviour {
 
 	[SerializeField] int enemiesYetToSpawn;
 
+	[SerializeField] bool running = false;
+	[SerializeField] bool started = false;
+
 
 	[System.Serializable]
 	public class EnemiesArray
@@ -68,6 +71,12 @@ public class WaveSystem : MonoBehaviour {
 			StartCoroutine("WaveStart");
 		}
 
+		if(playerMovement.timeStop == 1 && running == false && started)
+		{
+			StartCoroutine("WaveSpawn", waveNumber);
+		}
+
+
 	}
 
 	IEnumerator WaveStart()
@@ -78,26 +87,34 @@ public class WaveSystem : MonoBehaviour {
 		waveDisplay.enabled = false;
 		WaveModifier(waveNumber);
 		StartCoroutine("WaveSpawn",waveNumber);
+		started = true;
 
 
 	}
 
 	IEnumerator WaveSpawn(int wave)
 	{
-
-			
+		running = true;
 
 		while(enemiesYetToSpawn > 0)
 		{
+		
 			yield return new WaitForSeconds(spawnTimer);
 			spawnSpot.position = new Vector3(Random.Range(-widthOrtho + 0.5f , widthOrtho - 0.5f),posy,0);
 			GameObject go = enemyWaves[wave-1].enemies[Random.Range(0,9)];
+
 			Instantiate(go,spawnSpot.transform.position,Quaternion.identity);
 			enemiesYetToSpawn--;
-			//Debug.Log ("not rock");
+
+			if(playerMovement.timeStop != 1)
+			{
+				running = false;
+				break;
+			}
 
 
 		}
+
 
 	}
 

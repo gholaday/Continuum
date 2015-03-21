@@ -256,6 +256,7 @@ public class GameManager : MonoBehaviour {
 		StartCoroutine("PitchSlow");
 
 		GetComponent<EndGameStats>().enabled = true;
+
 	
 	}
 
@@ -269,11 +270,11 @@ public class GameManager : MonoBehaviour {
 
 	IEnumerator PitchSlow()
 	{
-		if(GetComponent<AudioSource>().pitch > 0.01f)
-			GetComponent<AudioSource>().pitch -= .01f;
+		if(GetComponent<AudioSource>().pitch > .5f)
+		GetComponent<AudioSource>().pitch -= .01f;
 
-		yield return new WaitForSeconds(.75f);
-		if(GetComponent<AudioSource>().pitch > .4f)
+		yield return new WaitForSeconds(1);
+		if(GetComponent<AudioSource>().pitch > .5f)
 			StartCoroutine("PitchSlow");
 	}
 

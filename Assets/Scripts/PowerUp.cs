@@ -17,7 +17,7 @@ public class PowerUp : MonoBehaviour {
 	
 		Vector3 pos = transform.position;
 
-		pos.y -= fallSpeed * Time.deltaTime;
+		pos.y -= fallSpeed * Time.deltaTime * playerMovement.timeStop;
 
 		transform.position = pos;
 

@@ -5,13 +5,14 @@ public class shoot: MonoBehaviour {
 	
 	public GameObject bullet;
 	public Transform bulletSpawn;
-	[SerializeField]
-	public static float cooldown = 0.25f;
+	[SerializeField] public static float cooldown = 0.25f;
 	public float maxCooldown = 0.25f;
 	public bool isShooting = false;
 	public AudioSource shootSound;
 	private float countdown;
 	private bool canShoot = true;
+
+	float currentCd;
 
 
 
@@ -20,6 +21,7 @@ public class shoot: MonoBehaviour {
 
 		countdown = cooldown;
 		cooldown += .1f;
+		currentCd = cooldown;
 	
 	}
 	
@@ -31,6 +33,15 @@ public class shoot: MonoBehaviour {
 			cooldown = maxCooldown;
 		}
 	
+
+		if(playerMovement.timeStop == 0)
+		{
+			currentCd = .05f;
+		}
+		else{
+			currentCd = cooldown;
+		}
+
 
 		countdown -= Time.deltaTime;
 
@@ -46,7 +57,7 @@ public class shoot: MonoBehaviour {
 			Instantiate(bullet, bulletSpawn.position, bullet.transform.rotation);
 			canShoot = false;
 			isShooting = true;
-			countdown = cooldown; 
+			countdown = currentCd; 
 			shootSound.Play();
 		}
 			else{

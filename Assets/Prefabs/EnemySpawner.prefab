@@ -159,6 +159,8 @@ MonoBehaviour:
     - {fileID: 100000, guid: df099cc4453b262469484c024103f93c, type: 2}
   otherSpawnTimer: 0
   enemiesYetToSpawn: 0
+  running: 0
+  started: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

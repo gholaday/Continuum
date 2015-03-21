@@ -33,12 +33,12 @@ public class enemyMovement : MonoBehaviour {
 		}
 		else
 		{
-			transform.position += new Vector3(0,1,0)* speed * Time.deltaTime;
+			transform.position += new Vector3(0,1,0)* speed * Time.deltaTime * playerMovement.timeStop;
 		}
 	}
 		else
 			{
-				transform.position += new Vector3(0,1,0)* speed * Time.deltaTime;
+			transform.position += new Vector3(0,1,0)* speed * Time.deltaTime * playerMovement.timeStop;
 			}
 
 

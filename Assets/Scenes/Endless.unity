@@ -241,7 +241,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0b47e8aa18994344eaa0dc954b3946ad, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 0b47e8aa18994344eaa0dc954b3946ad, type: 2}
       propertyPath: waveDisplay
@@ -1020,6 +1020,14 @@ Prefab:
       propertyPath: pauseUI
       value: 
       objectReference: {fileID: 1314082317}
+    - target: {fileID: 8200000, guid: 3d39f571a87100941bdf296ac8f471b1, type: 2}
+      propertyPath: DopplerLevel
+      value: 4.96999979
+      objectReference: {fileID: 0}
+    - target: {fileID: 8200000, guid: 3d39f571a87100941bdf296ac8f471b1, type: 2}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d39f571a87100941bdf296ac8f471b1, type: 2}
   m_IsPrefabParent: 0

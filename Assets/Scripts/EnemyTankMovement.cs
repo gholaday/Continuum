@@ -31,13 +31,13 @@ public class EnemyTankMovement : MonoBehaviour {
 		//only move down untill the objects y pos is == to the random y pos generated at start
 		if(posy >= ranHeight)
 		{
-			transform.position += new Vector3(0,-1,0)* speed * Time.deltaTime;
+			transform.position += new Vector3(0,-1,0)* speed * Time.deltaTime * playerMovement.timeStop;
 		}
 		else
 		{
 			speed = 1.5f; 
 
-			transform.position += new Vector3(direction,0,0)* speed * Time.deltaTime;
+			transform.position += new Vector3(direction,0,0)* speed * Time.deltaTime * playerMovement.timeStop;
 
 			if(start)
 			{
