@@ -59,10 +59,11 @@
      <Compile Include="Assets\Scripts\MeteorMovement.cs" />
      <Compile Include="Assets\Scripts\MusicBounce.cs" />
      <Compile Include="Assets\Scripts\ParticleSystemAutoDestroy.cs" />
-     <Compile Include="Assets\Scripts\PauseEffect.cs" />
      <Compile Include="Assets\Scripts\PlayerLaser.cs" />
      <Compile Include="Assets\Scripts\PlayerScore.cs" />
      <Compile Include="Assets\Scripts\PowerUp.cs" />
+     <Compile Include="Assets\Scripts\Rocket.cs" />
+     <Compile Include="Assets\Scripts\RocketLaunch.cs" />
      <Compile Include="Assets\Scripts\SceneChange.cs" />
      <Compile Include="Assets\Scripts\TextBounce.cs" />
      <Compile Include="Assets\Scripts\TextFlash.cs" />

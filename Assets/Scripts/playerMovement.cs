@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class playerMovement : MonoBehaviour {
 
+	public bool canStop = false;
 	public float moveSpeed = 5.0f;
 	public float slowmoTime = 0;
 	public float slowmoMoveSpeed = 12.0f;
@@ -32,7 +33,7 @@ public class playerMovement : MonoBehaviour {
 
 		GameManager.slowMo = slowmoTime;
 
-		if(Input.GetKey(KeyCode.LeftShift))
+		if(Input.GetKey(KeyCode.LeftShift) && canStop)
 			timeStop = 0;
 		else
 			timeStop = 1;

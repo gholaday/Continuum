@@ -3,6 +3,7 @@ using System.Collections;
 
 public class playerDeath : MonoBehaviour {
 
+
 	public GameObject death;
 	public int hitpoints = 2;
 	public Transform shield;
@@ -82,7 +83,7 @@ public class playerDeath : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 
-		if(other.tag == "Enemy" || other.tag == "Meteor")
+		if(other.tag == "Enemy" || other.tag == "Meteor" || other.tag == "EnemyBullet")
 
 		{
 			OnHitShake();

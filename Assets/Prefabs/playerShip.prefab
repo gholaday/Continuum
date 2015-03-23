@@ -16,6 +16,7 @@ GameObject:
   - 65: {fileID: 6500000}
   - 82: {fileID: 8200000}
   - 82: {fileID: 8200002}
+  - 114: {fileID: 11453022}
   m_Layer: 11
   m_Name: playerShip
   m_TagString: Player
@@ -284,6 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fba5dfae1bde0b24295da7ac788d9596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canStop: 0
   moveSpeed: 8
   slowmoTime: 100
   slowmoMoveSpeed: 12
@@ -304,6 +306,20 @@ MonoBehaviour:
   shieldSound: 0
   shieldDown: {fileID: 8200002}
   shakeAmount: .150000006
+--- !u!114 &11453022
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe921c3119809244982578bd052fcdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rockets: 10
+  delay: .0500000007
+  rocketPrefab: {fileID: 100944, guid: a5c32077cbf52d84b941de27a0779f95, type: 2}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

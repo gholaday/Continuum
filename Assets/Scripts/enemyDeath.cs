@@ -35,14 +35,23 @@ public class enemyDeath : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 
-		if(other.tag == "playerBullet" || other.tag == "Player")
+		if(other.tag == "playerBullet" || other.tag == "Player" || other.tag == "Rocket")
 		{
-			health--;
+			if(other.tag == "Rocket")
+			{
+				health -= 2;
+			}
+			else
+			{
+				health--;
+			}
+				
+
 			if(other.tag == "playerbullet")
 				Destroy (other.gameObject);
 
 			if(gameObject.tag != "Meteor")
-			StartCoroutine("Flash");
+				StartCoroutine("Flash");
 
 			if(health <= 0 && oneTime)
 			{

@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour {
 
 		if(isPaused)
 		{
-			Time.timeScale = 0;
+			Time.timeScale = Mathf.Epsilon;
 			GetComponent<AudioSource>().pitch = 0;
 			pauseUI.SetActive(true);
 		}else{

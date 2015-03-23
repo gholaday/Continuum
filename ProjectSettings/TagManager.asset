@@ -11,6 +11,8 @@ TagManager:
   - OOB
   - SideOOB
   - ExtraLife
+  - Rocket
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
