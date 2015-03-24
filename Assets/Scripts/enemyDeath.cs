@@ -55,6 +55,7 @@ public class enemyDeath : MonoBehaviour {
 
 			if(health <= 0 && oneTime)
 			{
+				RocketLaunch.rocketBar += 5;
 				oneTime = false;
 				//AudioSource.PlayClipAtPoint(clip,transform.position);
 				GameManager.currentMultiplier++;

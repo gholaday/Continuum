@@ -20,6 +20,7 @@ public class Rocket : MonoBehaviour {
 
 
 	void Awake(){
+
 		rocketRigidbody = GetComponent<Rigidbody>();
 		tr = GetComponent<TrailRenderer>();
 

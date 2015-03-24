@@ -120,18 +120,20 @@ MonoBehaviour:
   newHighScoreDisplay: {fileID: 0}
   extraLifeScore: {fileID: 0}
   slowTimeBar: {fileID: 0}
+  rocketSlider: {fileID: 0}
   deadFlavorText:
   - Get rekt
   - Not even close
   - You are an embarrasement
   - ez game ez life
   - Its like you arent even trying
+  - Thanks Obama
   gameOverUI: {fileID: 0}
   pauseUI: {fileID: 0}
   player: {fileID: 100000, guid: 50ac5c356a1d58a428714c5e0ad1c24d, type: 2}
   highScore: 0
   scoreToExtraLife: 999999
-  playerLives: 1
+  playerLives: 3
   slowMoMulitiplier: 0
 --- !u!114 &11413282
 MonoBehaviour:

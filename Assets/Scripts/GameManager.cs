@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour {
 	public Text extraLifeScore;
 
 	public Slider slowTimeBar;
+	public Slider rocketSlider;
 
 	public string[] deadFlavorText;
 	
@@ -54,10 +55,13 @@ public class GameManager : MonoBehaviour {
 
 	int multiplierFontSize;
 	bool isSpawning = false;
+
+	//float rocketTimer = 0;
 		
 	// Use this for initialization
 	void Start () {
 
+		RocketLaunch.rocketBar = 0;
 		score = GetComponent<PlayerScore>();
 		score.SetScore(0);
 		extraLifeScoreCounter = 0;
@@ -175,7 +179,9 @@ public class GameManager : MonoBehaviour {
 			multiplierDisplay.text = "x" + totalMultiplier.ToString();
 		}
 
+		rocketSlider.value = RocketLaunch.rocketBar;
 
+			
 		if(score.GetScore() > highScore)
 		{
 			newHighScoreDisplay.enabled = true;

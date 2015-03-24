@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class RocketLaunch : MonoBehaviour {
 
@@ -9,6 +10,10 @@ public class RocketLaunch : MonoBehaviour {
 	public GameObject rocketPrefab;
 
 	Vector3 startPosition;
+
+	public static float rocketBar = 0;
+
+
 
 
 	// Use this for initialization
@@ -21,9 +26,19 @@ public class RocketLaunch : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if(Input.GetKeyDown(KeyCode.LeftShift))
+		rocketBar += Time.deltaTime * 2;
+
+		if(rocketBar >= 100)
 		{
+			rocketBar = 100;
+		}
+			
+
+		if(Input.GetKeyDown(KeyCode.Tab) && rocketBar >= 100)
+		{
+			rocketBar = 0;
 			StartCoroutine("LaunchRockets");
+
 		}
 	
 	}
@@ -42,4 +57,6 @@ public class RocketLaunch : MonoBehaviour {
 			yield return new WaitForSeconds(delay);
 		}
 	}
+
+
 }
