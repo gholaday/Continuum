@@ -13,7 +13,7 @@ public class RocketLaunch : MonoBehaviour {
 
 	public static float rocketBar = 0;
 
-
+	public float barFillUpSpeed = 5f;
 
 
 	// Use this for initialization
@@ -26,7 +26,7 @@ public class RocketLaunch : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		rocketBar += Time.deltaTime * 2;
+		rocketBar += Time.deltaTime * barFillUpSpeed;
 
 		if(rocketBar >= 100)
 		{

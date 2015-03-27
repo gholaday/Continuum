@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Rocket : MonoBehaviour {
+public class Rocket : MonoBehaviour, AudioProcessor.AudioCallbacks {
 
 	private Transform target = null;
 	public GameObject[] enemies;
+	public float lifetime = 5f;
 	
 	public float MissileSpeed;
 	private float turn = 2.5f;
@@ -17,6 +18,8 @@ public class Rocket : MonoBehaviour {
 
 	public Color color1;
 	public Color color2;
+	public Material mat;
+	float spectrumColor;
 
 
 	void Awake(){
@@ -27,27 +30,31 @@ public class Rocket : MonoBehaviour {
 	}
 	
 	void Start(){
-		Invoke ("Explode", 5f);
+		Invoke ("Explode", lifetime);
+		tr.material.shader = Shader.Find("Standard");
+		AudioProcessor processor = FindObjectOfType<AudioProcessor>();
+		processor.addAudioCallback(this);
 	}
 	
+
 	void FixedUpdate(){
 
-		tr.material.color = Color.Lerp(color1,color2,timer);
 
-
+		tr.material.SetColor("_EmissionColor", Color.Lerp(color1,color2,spectrumColor));
+		                     //Mathf.Sin(Time.time * 10))
 
 		if(timer < 1)
-			timer += .01f;
+			timer += Time.deltaTime;
 
 		if(timer > 1)
 			timer = 0;
 
 		enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
-		if(enemies.Length > 0 && target == null && timer > .1)
+		if(enemies.Length > 0 && target == null && timer > .3f)
 			target = enemies[Random.Range(0,enemies.Length-1)].transform;
 
-		rocketRigidbody.velocity = transform.up * MissileSpeed;
+		rocketRigidbody.velocity = transform.up * MissileSpeed * Time.deltaTime * Time.timeScale;
 
 		if(target != null)
 		{
@@ -58,7 +65,7 @@ public class Rocket : MonoBehaviour {
 			if(turn<40f){
 				lastTurn+=Time.deltaTime*Time.deltaTime*5f;
 				turn+=lastTurn;
-		}
+			}
 
 		
 
@@ -76,6 +83,23 @@ public class Rocket : MonoBehaviour {
 		if(other.CompareTag("Enemy")){
 			Explode ();
 		}
+	}
+
+	public void onOnbeatDetected()
+	{
+		//Debug.Log("Beat!!!");
+	}
+
+	public void onSpectrum(float[] spectrum)
+	{
+		//The spectrum is logarithmically averaged
+		//to 12 bands
+		
+		//Vector3 start = new Vector3(1, 0, 0);
+		//Vector3 end = new Vector3(1, spectrum[5] * 20, 0);
+		//Debug.DrawLine(start, end);
+		spectrumColor = (spectrum[5] * 100)/10;
+		//Debug.Log(spectrumColor);
 	}
 
 	

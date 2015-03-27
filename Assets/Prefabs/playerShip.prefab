@@ -305,7 +305,7 @@ MonoBehaviour:
   shield: {fileID: 400004}
   shieldSound: 0
   shieldDown: {fileID: 8200002}
-  shakeAmount: .150000006
+  shakeAmount: .25
 --- !u!114 &11453022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -320,6 +320,7 @@ MonoBehaviour:
   rockets: 10
   delay: .0500000007
   rocketPrefab: {fileID: 100944, guid: a5c32077cbf52d84b941de27a0779f95, type: 2}
+  barFillUpSpeed: 5
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

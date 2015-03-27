@@ -74,6 +74,7 @@ public class playerDeath : MonoBehaviour {
 			}
 
 			//gm.playerFireRate = shoot.cooldown;
+			OnHitShake(shakeAmount);
 			Destroy(gameObject);
 			
 			
@@ -86,7 +87,7 @@ public class playerDeath : MonoBehaviour {
 		if(other.tag == "Enemy" || other.tag == "Meteor" || other.tag == "EnemyBullet")
 
 		{
-			OnHitShake();
+			OnHitShake(shakeAmount);
 			gameObject.layer = 15;
 			hitpoints -= 1;
 
@@ -124,9 +125,9 @@ public class playerDeath : MonoBehaviour {
 
 
 
-	void OnHitShake()
+	void OnHitShake(float amount)
 	{
-		camShake.shake = shakeAmount;
+		camShake.shake = amount;
 	}
 
 
