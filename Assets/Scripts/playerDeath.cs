@@ -64,9 +64,10 @@ public class playerDeath : MonoBehaviour {
 			invulTimer = 1.0f;
 		}
 
-		//
+		
 		
 		if(hitpoints <= 0 || slowMoTime <= 0){
+
 			if(death != null)
 			{
 				Instantiate(death,transform.position,death.transform.rotation);	
@@ -88,6 +89,7 @@ public class playerDeath : MonoBehaviour {
 
 		{
 			OnHitShake(shakeAmount);
+			StartCoroutine("TimeFreeze");
 			gameObject.layer = 15;
 			hitpoints -= 1;
 
@@ -131,7 +133,12 @@ public class playerDeath : MonoBehaviour {
 	}
 
 
-
+	IEnumerator TimeFreeze()
+	{
+		Time.timeScale = Mathf.Epsilon;
+		yield return new WaitForSeconds(.01f);
+		Time.timeScale = 1;
+	}
 
 }
 

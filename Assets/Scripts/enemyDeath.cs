@@ -21,6 +21,7 @@ public class enemyDeath : MonoBehaviour {
 	bool oneTime = true;
 
 	Color color;
+    Enemy enemy;
 
 	void Start()
 	{
@@ -29,6 +30,8 @@ public class enemyDeath : MonoBehaviour {
 		sr = GetComponentInChildren<SpriteRenderer>();
 		ps = GameObject.Find("GameManager").GetComponent<PlayerScore>();
 		color = new Color(255,255,255,255);
+        enemy = GetComponent<Enemy>();
+        enemy.health += health;
 
 	}
 	
@@ -39,11 +42,11 @@ public class enemyDeath : MonoBehaviour {
 		{
 			if(other.tag == "Rocket")
 			{
-				health -= 2;
+				enemy.health -= 2;
 			}
 			else
 			{
-				health--;
+				enemy.health--;
 			}
 				
 
@@ -53,7 +56,7 @@ public class enemyDeath : MonoBehaviour {
 			if(gameObject.tag != "Meteor")
 				StartCoroutine("Flash");
 
-			if(health <= 0 && oneTime)
+			if(enemy.health <= 0 && oneTime)
 			{
 				RocketLaunch.rocketBar += 5;
 				oneTime = false;
@@ -79,13 +82,13 @@ public class enemyDeath : MonoBehaviour {
 
 				}
 
-				if(powerUpSpawn >= 75)
+				if(powerUpSpawn >= 89)
 				{
 					if(powerups.Length > 0)
 					Instantiate(powerups[0], transform.position, Quaternion.Euler(0,0,0));
 					
 				}
-				else if(powerUpSpawn >= 0 && powerUpSpawn <= 5 && powerups.Length > 1)
+				else if(powerUpSpawn >= 0 && powerUpSpawn <= 2 && powerups.Length > 1)
 				{
 					Instantiate(powerups[1], transform.position, Quaternion.Euler(0,0,0));
 				}

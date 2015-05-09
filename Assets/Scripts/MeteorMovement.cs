@@ -21,7 +21,7 @@ public class MeteorMovement : MonoBehaviour {
 
 		//transform.position = pos;
 
-		transform.Rotate(new Vector3(0,0,1) * playerMovement.timeStop, rotSpeed);
+		transform.Rotate(new Vector3(0,0,1) * Time.deltaTime, rotSpeed);
 
 	}
 }

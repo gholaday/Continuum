@@ -20,7 +20,7 @@ public class shoot: MonoBehaviour {
 	void Start(){
 
 		countdown = cooldown;
-		cooldown += .1f;
+		cooldown += (cooldown * .25f);
 		currentCd = cooldown;
 	
 	}

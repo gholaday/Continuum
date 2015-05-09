@@ -13,7 +13,7 @@ GameObject:
   - 23: {fileID: 2393758}
   - 114: {fileID: 11458184}
   - 54: {fileID: 5451688}
-  - 96: {fileID: 9672550}
+  - 96: {fileID: 9641598}
   m_Layer: 8
   m_Name: Rocket
   m_TagString: Rocket
@@ -28,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100944}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.78999996, y: -4.86999989, z: -5.78000021}
+  m_LocalPosition: {x: 13.8725548, y: 110.205627, z: -5.78000021}
   m_LocalScale: {x: .25, y: .5, z: .100000001}
   m_Children: []
   m_Father: {fileID: 0}
@@ -91,7 +91,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!96 &9672550
+--- !u!96 &9641598
 TrailRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -104,7 +104,7 @@ TrailRenderer:
   - {fileID: 2100000, guid: d609eda2e1556db498ecb69ba864a6ee, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
+  m_UseLightProbes: 0
   m_ReflectionProbeUsage: 1
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1

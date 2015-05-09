@@ -5,10 +5,12 @@ using UnityEngine.UI;
 public class WaveSystem : MonoBehaviour {
 
 	[SerializeField] int waveNumber = 1;
+    int waveDisplayNumber;
 
 	public int enemiesLeft = 0;
 
 	public Text waveDisplay;
+    public Text waveModifierDisplay;
 
 	public float spawnTimer = 1.0f;
 	public Transform spawnSpot;
@@ -23,10 +25,15 @@ public class WaveSystem : MonoBehaviour {
 
 	public float otherSpawnTimer;
 
-	[SerializeField] int enemiesYetToSpawn;
+    public int healthBonus = 0;
+    public int moveSpeedBonus = 0;
+    public float attackSpeedBonus = 0;
+    public float spawnRateBonus = 0;
 
-	[SerializeField] bool running = false;
-	[SerializeField] bool started = false;
+    GameObject gm;
+
+
+	[SerializeField] int enemiesYetToSpawn;
 
 
 	[System.Serializable]
@@ -43,9 +50,12 @@ public class WaveSystem : MonoBehaviour {
 		enemiesToSpawn = 10;
 		enemiesYetToSpawn = enemiesToSpawn;
 		enemiesLeft = enemiesToSpawn;
-		waveDisplay.text = "Wave " + 1;
+        waveDisplayNumber = waveNumber - 1;
+		waveDisplay.text = "Wave " + waveDisplayNumber;
 		StartCoroutine("WaveStart");
 		otherSpawnTimer = spawnTimer;
+        gm = GameObject.Find("GameManager");
+    
 	}
 	
 	// Update is called once per frame
@@ -55,8 +65,7 @@ public class WaveSystem : MonoBehaviour {
 			spawnTimer = .3f;
 
 
-		if(waveNumber > 9)
-			waveNumber = 1;
+		
 
 		screenRatio = (float)Screen.width / (float)Screen.height;
 		widthOrtho = Camera.main.orthographicSize * screenRatio;
@@ -64,16 +73,19 @@ public class WaveSystem : MonoBehaviour {
 
 		if(enemiesLeft <= 0)
 		{
-			waveNumber++;
-			enemiesToSpawn += Random.Range(8,15);
+            waveNumber++;
+
+            if (waveNumber > 10)
+                waveNumber = 1;
+
+            if(waveNumber % 10 != 0)
+            {
+                enemiesToSpawn += Random.Range(8, 15);
+            }
+
 			enemiesLeft = enemiesToSpawn;
 			enemiesYetToSpawn = enemiesToSpawn;
 			StartCoroutine("WaveStart");
-		}
-
-		if(playerMovement.timeStop == 1 && running == false && started)
-		{
-			StartCoroutine("WaveSpawn", waveNumber);
 		}
 
 
@@ -81,20 +93,49 @@ public class WaveSystem : MonoBehaviour {
 
 	IEnumerator WaveStart()
 	{
-		waveDisplay.text = "Wave " + waveNumber;
+        waveDisplayNumber++;
+		waveDisplay.text = "Wave " + waveDisplayNumber;
 		waveDisplay.enabled = true;
-		yield return new WaitForSeconds(3.5f);
-		waveDisplay.enabled = false;
 		WaveModifier(waveNumber);
-		StartCoroutine("WaveSpawn",waveNumber);
-		started = true;
 
+        if((waveNumber) % 5 == 0)
+        {
+            //Debug.Log("Wave 5 or 10 -- add modifier");
 
+            int randNum = Random.Range(0, 2);
+            //Debug.Log("rand num = " + randNum);
+
+            if(randNum == 0)
+            {
+                EnemyModifier.bonusHealth += 1;
+                StartCoroutine(DisplayWaveModifier("Enemy Health Increased!"));
+                Debug.Log("Enemy health increased");
+            }
+            else if(randNum == 1)
+            {
+                Debug.Log("Enemy Attack Speed increased by .10");
+                EnemyModifier.bonusAttackSpeed += .10f;
+                StartCoroutine(DisplayWaveModifier("Enemy Attack Speed Increased!"));
+            }
+
+        }
+
+        if (waveNumber % 10 == 0)
+        {
+            enemiesLeft = 1;
+            enemiesYetToSpawn = 1;
+           // Debug.Log("10th wave");
+        }
+
+        yield return new WaitForSeconds(3.5f);
+
+        waveDisplay.enabled = false;
+        StartCoroutine(WaveSpawn(waveNumber));
 	}
 
 	IEnumerator WaveSpawn(int wave)
 	{
-		running = true;
+       // Debug.Log("enemies yet to spawn = " + enemiesYetToSpawn);
 
 		while(enemiesYetToSpawn > 0)
 		{
@@ -105,14 +146,6 @@ public class WaveSystem : MonoBehaviour {
 
 			Instantiate(go,spawnSpot.transform.position,Quaternion.identity);
 			enemiesYetToSpawn--;
-
-			if(playerMovement.timeStop != 1)
-			{
-				running = false;
-				break;
-			}
-
-
 		}
 
 
@@ -124,7 +157,7 @@ public class WaveSystem : MonoBehaviour {
 		switch(wave)
 		{
 		case 1:
-
+            StartCoroutine(TimeDelay(1.0f, "PitchSpeedDown"));
 			break;
 		case 2:
 
@@ -136,12 +169,9 @@ public class WaveSystem : MonoBehaviour {
 
 			break;
 		case 5:
-			spawnTimer = 0f;
+			
 			break;
 		case 6:
-			spawnTimer = otherSpawnTimer;
-			spawnTimer -= 0.05f;
-			otherSpawnTimer = spawnTimer;
 			break;
 		case 7:
 
@@ -156,15 +186,54 @@ public class WaveSystem : MonoBehaviour {
 
 		case 10:
 			//Spawn Boss
+
+            StartCoroutine(TimeDelay(1.0f, "PitchSpeedUp"));
+            
+            waveDisplay.text = "BOSS TIME";
+           
 			break;
 
 		}
 	}
 
-	void StartRockWave()
-	{
-		//Need to put in logic here. Will spawn a gameobject prefab that
-		//contains the rock pattern
-	}
+
+    IEnumerator DisplayWaveModifier(string s)
+    {
+        waveModifierDisplay.CrossFadeAlpha(255, 1f, false);
+        waveModifierDisplay.text = s;
+
+        yield return new WaitForSeconds(2f);
+        waveModifierDisplay.CrossFadeAlpha(0, 1f, false);
+
+    }
+
+    IEnumerator PitchSpeedUp()
+    {
+        if(gm.GetComponent<AudioSource>().pitch < 1.05f)
+        {
+            gm.GetComponent<AudioSource>().pitch += .0005f;
+            yield return new WaitForSeconds(.005f);
+            StartCoroutine("PitchSpeedUp");
+        }
+
+    }
+
+    IEnumerator PitchSpeedDown()
+    {
+        if (gm.GetComponent<AudioSource>().pitch > 1f)
+        {
+            gm.GetComponent<AudioSource>().pitch -= .0005f;
+            yield return new WaitForSeconds(.005f);
+            StartCoroutine("PitchSpeedDown");
+        }
+
+    }
+
+    IEnumerator TimeDelay(float delay, string coroutine)
+    {
+        yield return new WaitForSeconds(delay);
+        StartCoroutine(coroutine);
+
+    }
 
 }

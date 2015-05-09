@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11469262}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -42,6 +43,7 @@ MonoBehaviour:
   waveNumber: 1
   enemiesLeft: 0
   waveDisplay: {fileID: 0}
+  waveModifierDisplay: {fileID: 0}
   spawnTimer: 1
   spawnSpot: {fileID: 400000}
   posy: 10
@@ -158,9 +160,22 @@ MonoBehaviour:
     - {fileID: 100000, guid: df099cc4453b262469484c024103f93c, type: 2}
     - {fileID: 100000, guid: df099cc4453b262469484c024103f93c, type: 2}
   otherSpawnTimer: 0
+  healthBonus: 0
+  moveSpeedBonus: 0
+  attackSpeedBonus: 0
+  spawnRateBonus: 0
   enemiesYetToSpawn: 0
-  running: 0
-  started: 0
+--- !u!114 &11469262
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9caf1467e4ed84147abe5b94fa09a76e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

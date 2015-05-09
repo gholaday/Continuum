@@ -9,7 +9,7 @@ public class Rocket : MonoBehaviour, AudioProcessor.AudioCallbacks {
 	
 	public float MissileSpeed;
 	private float turn = 2.5f;
-	private float lastTurn=0f;
+	private float lastTurn = 0f;
 	
 	private Rigidbody rocketRigidbody;
 	private float timer = 0;
@@ -31,7 +31,7 @@ public class Rocket : MonoBehaviour, AudioProcessor.AudioCallbacks {
 	
 	void Start(){
 		Invoke ("Explode", lifetime);
-		tr.material.shader = Shader.Find("Standard");
+		tr.material.shader = Shader.Find("Unlit/Color");
 		AudioProcessor processor = FindObjectOfType<AudioProcessor>();
 		processor.addAudioCallback(this);
 	}
@@ -40,8 +40,8 @@ public class Rocket : MonoBehaviour, AudioProcessor.AudioCallbacks {
 	void FixedUpdate(){
 
 
-		tr.material.SetColor("_EmissionColor", Color.Lerp(color1,color2,spectrumColor));
-		                     //Mathf.Sin(Time.time * 10))
+		tr.material.SetColor("_Color", Color.Lerp(color1,color2,spectrumColor));
+		                    
 
 		if(timer < 1)
 			timer += Time.deltaTime;
@@ -76,7 +76,9 @@ public class Rocket : MonoBehaviour, AudioProcessor.AudioCallbacks {
 	
 	private void Explode(){
 		CancelInvoke("Explode");
-		Destroy(gameObject);
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<Rigidbody>().isKinematic = true;
+		Destroy(gameObject, 3f);
 	}
 	
 	void OnTriggerEnter(Collider other){

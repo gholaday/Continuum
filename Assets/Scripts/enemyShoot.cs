@@ -12,6 +12,8 @@ public class enemyShoot: MonoBehaviour {
 	private bool canShoot = false;
 	
 	void Start(){
+
+        cooldown -= EnemyModifier.bonusAttackSpeed;
 		countdown = cooldown;
 	}
 	

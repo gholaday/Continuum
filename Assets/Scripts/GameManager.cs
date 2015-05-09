@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
 	public Text highScoreDisplay;
 	public Text ready;
 	public Text multiplierDisplay;
+    public Animator multiplierAnim;
 	public Text newHighScoreDisplay;
 	public Text extraLifeScore;
 
@@ -52,6 +53,7 @@ public class GameManager : MonoBehaviour {
 	public static float currentMultiplier;
 	public float slowMoMulitiplier = 1.0f;
 	public static float totalMultiplier;
+    float multDisplay;
 
 	int multiplierFontSize;
 	bool isSpawning = false;
@@ -65,10 +67,11 @@ public class GameManager : MonoBehaviour {
 		score = GetComponent<PlayerScore>();
 		score.SetScore(0);
 		extraLifeScoreCounter = 0;
-		slowMo = 0;
+		slowMo = 100;
 		slowTimeBar.value = 1;
 		totalMultiplier = 1.0f;
 		currentMultiplier = 1.0f;
+        multDisplay = 1.0f;
 		multiplierFontSize = multiplierDisplay.fontSize;
 	
 		spawnPos = new Vector2(0,-4);
@@ -76,6 +79,7 @@ public class GameManager : MonoBehaviour {
 		ready.enabled = true;
 
 		originalColor = new Color(255,255,255,.5f);
+
 
 	}
 	
@@ -93,19 +97,25 @@ public class GameManager : MonoBehaviour {
 		}
 		else
 		{
-			GetComponent<AudioSource>().pitch += Time.deltaTime * 2;
+            if (GetComponent<AudioSource>().pitch < 1 && playerLives > 0)
+            {
+                GetComponent<AudioSource>().pitch = 1;
+            }
+			
 		}
 
 		if(GetComponent<AudioSource>().pitch <= .5f && playerLives > 0)
 			GetComponent<AudioSource>().pitch = .5f;
 
-		if(GetComponent<AudioSource>().pitch >= 1.0f)
-			GetComponent<AudioSource>().pitch = 1.0f;
+		//if(GetComponent<AudioSource>().pitch >= 1.0f)
+			//GetComponent<AudioSource>().pitch = 1.0f;
 
-		totalMultiplier = currentMultiplier * slowMoMulitiplier;
+		
 
 		if(!firstSpawn)
 		{
+            
+
 			if(slowMo > 60.0f)
 			{
 				multiplierDisplay.fontSize = multiplierFontSize;
@@ -144,15 +154,16 @@ public class GameManager : MonoBehaviour {
 
 		if(firstSpawn)
 		{
-			initialSpawn -= Time.deltaTime;
-			slowTimeBar.value += 80.0f * Time.deltaTime;
-
+			
 			if(initialSpawn <= 0)
 			{
 				Instantiate(player, spawnPos, transform.rotation);
 				firstSpawn = false;
 				ready.enabled = false;
 			}
+
+            initialSpawn -= Time.deltaTime;
+            slowTimeBar.value += 85.0f * Time.deltaTime;
 
 		}
 		else
@@ -166,7 +177,6 @@ public class GameManager : MonoBehaviour {
 		}
 
 
-
 		//Find our player ship, WARNING a bit slow may need to optimize later
 		ship = GameObject.Find("playerShip(Clone)");
 
@@ -176,7 +186,14 @@ public class GameManager : MonoBehaviour {
 			lives.text = (playerLives - 1).ToString();
 			CountTo(score.GetScore());
 			scoreDisplay.text = "Score:" + (displayScore).ToString();
-			multiplierDisplay.text = "x" + totalMultiplier.ToString();
+
+            if(multDisplay != totalMultiplier && totalMultiplier > 0)
+            {
+                multDisplay = totalMultiplier;
+                multiplierDisplay.text = "x" + multDisplay.ToString();
+                multiplierAnim.Play("Bounce");
+            }
+			
 		}
 
 		rocketSlider.value = RocketLaunch.rocketBar;
@@ -217,6 +234,12 @@ public class GameManager : MonoBehaviour {
 
 	}
 
+    public void LateUpdate()
+    {
+        if (!firstSpawn) totalMultiplier = currentMultiplier * slowMoMulitiplier;
+
+    }
+
 	public void QuitGame()
 	{
 		Application.Quit();
@@ -242,9 +265,10 @@ public class GameManager : MonoBehaviour {
 	void Respawn()
 	{
 		playerLives -= 1;
+        
 		if(playerLives > 0)
 		{
-			currentMultiplier = 1.0f;
+			
 			StartCoroutine("SpawnPlayer");
 			deadText.CrossFadeAlpha(255,1,false);
 			deadText.text = deadFlavorText[Random.Range(0,deadFlavorText.Length)];
@@ -256,6 +280,8 @@ public class GameManager : MonoBehaviour {
 	{
 		lives.text = "0";
 		gameOverUI.SetActive(true);
+
+        StartCoroutine(CountDownTo(currentMultiplier));
 
 		PlayerPrefs.SetFloat("High Score", highScore);
 		
@@ -269,7 +295,9 @@ public class GameManager : MonoBehaviour {
 	IEnumerator SpawnPlayer()
 	{
 		isSpawning = true;
+        StartCoroutine(CountDownTo(currentMultiplier));
 		yield return new WaitForSeconds(1.0f);
+        //currentMultiplier = 1.0f;
 		Instantiate(player,spawnPos,transform.rotation);
 		isSpawning = false;
 	}
@@ -310,5 +338,19 @@ public class GameManager : MonoBehaviour {
 		}
 
 	}
+
+    IEnumerator CountDownTo(float mult)
+    {
+        float seconds = 1 / mult;
+        
+
+        while(currentMultiplier != 1)
+        {
+            currentMultiplier--;
+            yield return new WaitForSeconds(seconds);
+        }
+        
+       
+    }
 
 }

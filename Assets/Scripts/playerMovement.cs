@@ -11,6 +11,8 @@ public class playerMovement : MonoBehaviour {
 
 	public static int timeStop = 1;
 
+    public GameObject particles;
+
 
 	float shipBoundaryRadius = 0.5f;
 	bool spawn = false;
@@ -30,13 +32,6 @@ public class playerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-		GameManager.slowMo = slowmoTime;
-
-		if(Input.GetKey(KeyCode.LeftShift) && canStop)
-			timeStop = 0;
-		else
-			timeStop = 1;
 
 		//Our basic up/down/left/right movement
 		Vector3 pos = transform.position;
@@ -67,6 +62,10 @@ public class playerMovement : MonoBehaviour {
 
 		if(Input.GetButton("Jump") && spawn == true && slowmoTime > 0)
 		{
+            if(Input.GetButtonDown("Jump") && particles != null)
+            {
+                Instantiate(particles, transform.position, Quaternion.identity);
+            }
 
 			Time.timeScale = 0.25f;
 			slowmoTime -= 80.0f * Time.deltaTime;
@@ -75,7 +74,7 @@ public class playerMovement : MonoBehaviour {
 		}
 		else 
 		{
-			slowmoTime += 15.0f * Time.deltaTime;
+			slowmoTime += 7.5f * Time.deltaTime;
 		}
 
 		if(Input.GetButtonUp("Jump") && spawn == true || slowmoTime <= 0)

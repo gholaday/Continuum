@@ -13,6 +13,7 @@ GameObject:
   - 135: {fileID: 13500000}
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400002}
+  - 114: {fileID: 11477542}
   m_Layer: 9
   m_Name: MeteorBig
   m_TagString: Meteor
@@ -58,8 +59,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15544a7e6d905f34a9d6831da1b9ebb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallSpeed: 9
-  rotSpeed: 1
+  fallSpeed: 12
+  rotSpeed: 3
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -76,6 +77,21 @@ MonoBehaviour:
   powerups: []
   pointsValue: 100
   pointsText: {fileID: 0}
+--- !u!114 &11477542
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b721fd7ef531b2469c2b42683bffdc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  moveSpeed: 0
+  attackSpeed: 0
+  es: {fileID: 0}
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
