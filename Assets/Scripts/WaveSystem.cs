@@ -188,8 +188,8 @@ public class WaveSystem : MonoBehaviour {
 			//Spawn Boss
 
             StartCoroutine(TimeDelay(1.0f, "PitchSpeedUp"));
-            
             waveDisplay.text = "BOSS TIME";
+            spawnTimer -= .005f;
            
 			break;
 

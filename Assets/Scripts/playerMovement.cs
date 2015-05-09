@@ -83,7 +83,7 @@ public class playerMovement : MonoBehaviour {
 			moveSpeed = 8.0f;
 		}
 
-
+        GameManager.slowMo = slowmoTime;
 
 
 
