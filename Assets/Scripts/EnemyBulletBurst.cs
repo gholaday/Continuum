@@ -26,7 +26,7 @@ public class EnemyBulletBurst : MonoBehaviour {
 		if(destination == false)
 		{
 			transform.position += new Vector3(0,-speed * Time.deltaTime,0);
-			transform.Rotate(new Vector3(0,0,1), rotSpeed);
+			transform.Rotate(new Vector3(0,0,1), rotSpeed * Time.deltaTime);
 		}
 		else
 		{

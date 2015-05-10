@@ -211,7 +211,7 @@ public class WaveSystem : MonoBehaviour {
     {
         if(gm.GetComponent<AudioSource>().pitch < 1.05f)
         {
-            gm.GetComponent<AudioSource>().pitch += .0005f;
+            gm.GetComponent<AudioSource>().pitch += .0001f;
             yield return new WaitForSeconds(.005f);
             StartCoroutine("PitchSpeedUp");
         }
@@ -222,7 +222,7 @@ public class WaveSystem : MonoBehaviour {
     {
         if (gm.GetComponent<AudioSource>().pitch > 1f)
         {
-            gm.GetComponent<AudioSource>().pitch -= .0005f;
+            gm.GetComponent<AudioSource>().pitch -= .0001f;
             yield return new WaitForSeconds(.005f);
             StartCoroutine("PitchSpeedDown");
         }

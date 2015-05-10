@@ -278,6 +278,7 @@ public class GameManager : MonoBehaviour {
 
 	void GameOver()
 	{
+        GetComponent<AudioProcessor>().enabled = false;
 		lives.text = "0";
 		gameOverUI.SetActive(true);
 

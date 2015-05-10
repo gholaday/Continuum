@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpeed: 12
-  rotSpeed: 3
+  rotSpeed: 180
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

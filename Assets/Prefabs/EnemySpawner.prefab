@@ -44,7 +44,7 @@ MonoBehaviour:
   enemiesLeft: 0
   waveDisplay: {fileID: 0}
   waveModifierDisplay: {fileID: 0}
-  spawnTimer: 1
+  spawnTimer: .899999976
   spawnSpot: {fileID: 400000}
   posy: 10
   enemiesToSpawn: 0
