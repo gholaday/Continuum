@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\EnemyBulletBurst.cs" />
      <Compile Include="Assets\Scripts\EnemyModifier.cs" />
      <Compile Include="Assets\Scripts\EnemySeekerAI.cs" />
+     <Compile Include="Assets\Scripts\EnemyStalkerAI.cs" />
      <Compile Include="Assets\Scripts\EnemyTankMovement.cs" />
      <Compile Include="Assets\Scripts\Example.cs" />
      <Compile Include="Assets\Scripts\FadeUpAway.cs" />

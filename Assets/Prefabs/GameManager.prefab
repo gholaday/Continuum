@@ -12,6 +12,8 @@ GameObject:
   - 82: {fileID: 8200000}
   - 114: {fileID: 11413282}
   - 114: {fileID: 11449906}
+  - 114: {fileID: 11456628}
+  - 114: {fileID: 11438988}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -40,11 +42,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: fe4a5ca807872414dba404b2d1534f70, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: .100000001
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Priority: 1
   DopplerLevel: 4.96999979
@@ -117,6 +119,7 @@ MonoBehaviour:
   highScoreDisplay: {fileID: 0}
   ready: {fileID: 0}
   multiplierDisplay: {fileID: 0}
+  multiplierAnim: {fileID: 0}
   newHighScoreDisplay: {fileID: 0}
   extraLifeScore: {fileID: 0}
   slowTimeBar: {fileID: 0}
@@ -127,7 +130,7 @@ MonoBehaviour:
   - You are an embarrasement
   - ez game ez life
   - Its like you arent even trying
-  - Thanks Obama
+  - Thanks Obama.
   gameOverUI: {fileID: 0}
   pauseUI: {fileID: 0}
   player: {fileID: 100000, guid: 50ac5c356a1d58a428714c5e0ad1c24d, type: 2}
@@ -147,6 +150,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: .5
+--- !u!114 &11438988
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f5b0122a7b6d76479f78f57b30fd19a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 983c1621facee3f44896e1c68cdd8330, type: 3}
+  - {fileID: 8300000, guid: 26ab7f9f2013e1244a688b68a28af465, type: 3}
+  - {fileID: 8300000, guid: fe4a5ca807872414dba404b2d1534f70, type: 3}
+  shuffle: 1
+  nowPlaying: {fileID: 0}
 --- !u!114 &11449906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -162,6 +182,19 @@ MonoBehaviour:
   cameraAnim: {fileID: 0}
   displayText: {fileID: 0}
   hud: {fileID: 0}
+--- !u!114 &11456628
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0008855ffe931649b193e9221ffc869, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bufferSize: 1024
+  gThresh: .100000001
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

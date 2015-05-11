@@ -135,40 +135,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0441f1575f3d1b7428c08e1167c9e6f1, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &77364801 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 100000, guid: 3d39f571a87100941bdf296ac8f471b1, type: 2}
-  m_PrefabInternal: {fileID: 1465290293}
---- !u!114 &77364806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 77364801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0008855ffe931649b193e9221ffc869, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bufferSize: 1024
-  gThresh: .100000001
---- !u!114 &77364807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 77364801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f5b0122a7b6d76479f78f57b30fd19a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clips:
-  - {fileID: 8300000, guid: fe4a5ca807872414dba404b2d1534f70, type: 3}
-  - {fileID: 8300000, guid: 26ab7f9f2013e1244a688b68a28af465, type: 3}
-  - {fileID: 8300000, guid: 983c1621facee3f44896e1c68cdd8330, type: 3}
-  shuffle: 1
-  nowPlaying: {fileID: 357543467}
 --- !u!1 &79657264
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,6 +259,10 @@ Prefab:
       propertyPath: waveModifierDisplay
       value: 
       objectReference: {fileID: 757922752}
+    - target: {fileID: 11400000, guid: 0b47e8aa18994344eaa0dc954b3946ad, type: 2}
+      propertyPath: waveNumber
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b47e8aa18994344eaa0dc954b3946ad, type: 2}
   m_IsPrefabParent: 0
@@ -401,22 +371,6 @@ Prefab:
     - target: {fileID: 22400000, guid: 285defab739f81940b75960c7f6860cb, type: 2}
       propertyPath: m_AnchorMax.y
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11418792, guid: 285defab739f81940b75960c7f6860cb, type: 2}
-      propertyPath: m_Text
-      value: Now Playing
-      objectReference: {fileID: 0}
-    - target: {fileID: 11418792, guid: 285defab739f81940b75960c7f6860cb, type: 2}
-      propertyPath: m_Color.a
-      value: .00392156886
-      objectReference: {fileID: 0}
-    - target: {fileID: 11418792, guid: 285defab739f81940b75960c7f6860cb, type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 22400622, guid: 285defab739f81940b75960c7f6860cb, type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: -5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 285defab739f81940b75960c7f6860cb, type: 2}
@@ -629,6 +583,10 @@ Prefab:
       propertyPath: InitialModule.startSize.scalar
       value: .25
       objectReference: {fileID: 0}
+    - target: {fileID: 19900000, guid: 70525600f5eefcb4c8c35e4b4f7b7aeb, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 315402511f9506c4d8aeed8375bbc883, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 70525600f5eefcb4c8c35e4b4f7b7aeb, type: 2}
   m_IsPrefabParent: 0
@@ -1136,7 +1094,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3d39f571a87100941bdf296ac8f471b1, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 11449906, guid: 3d39f571a87100941bdf296ac8f471b1, type: 2}
       propertyPath: GOAnim
@@ -1154,6 +1112,10 @@ Prefab:
       propertyPath: hud
       value: 
       objectReference: {fileID: 119248501}
+    - target: {fileID: 11438988, guid: 3d39f571a87100941bdf296ac8f471b1, type: 2}
+      propertyPath: nowPlaying
+      value: 
+      objectReference: {fileID: 357543467}
     - target: {fileID: 11400000, guid: 3d39f571a87100941bdf296ac8f471b1, type: 2}
       propertyPath: lives
       value: 
@@ -1179,6 +1141,10 @@ Prefab:
       value: 
       objectReference: {fileID: 895472131}
     - target: {fileID: 11400000, guid: 3d39f571a87100941bdf296ac8f471b1, type: 2}
+      propertyPath: multiplierAnim
+      value: 
+      objectReference: {fileID: 370495046}
+    - target: {fileID: 11400000, guid: 3d39f571a87100941bdf296ac8f471b1, type: 2}
       propertyPath: newHighScoreDisplay
       value: 
       objectReference: {fileID: 425754735}
@@ -1202,26 +1168,6 @@ Prefab:
       propertyPath: pauseUI
       value: 
       objectReference: {fileID: 1314082317}
-    - target: {fileID: 11400000, guid: 3d39f571a87100941bdf296ac8f471b1, type: 2}
-      propertyPath: mulitplierBounce
-      value: 
-      objectReference: {fileID: 370495046}
-    - target: {fileID: 11400000, guid: 3d39f571a87100941bdf296ac8f471b1, type: 2}
-      propertyPath: multiplierAnim
-      value: 
-      objectReference: {fileID: 370495046}
-    - target: {fileID: 8200000, guid: 3d39f571a87100941bdf296ac8f471b1, type: 2}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8200000, guid: 3d39f571a87100941bdf296ac8f471b1, type: 2}
-      propertyPath: Loop
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8200000, guid: 3d39f571a87100941bdf296ac8f471b1, type: 2}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d39f571a87100941bdf296ac8f471b1, type: 2}
   m_IsPrefabParent: 0

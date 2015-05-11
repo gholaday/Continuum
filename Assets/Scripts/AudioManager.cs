@@ -26,17 +26,19 @@ public class AudioManager : MonoBehaviour {
         source.clip = clips[count];
         source.Play();
         Invoke("NextTrack", source.clip.length);
+        count++;
         StartCoroutine(NowPlayingFade());
 	
 	}
     
-    void NextTrack(float length)
+    void NextTrack()
     {
-        source.Stop();
+        //source.Stop();
         source.clip = clips[count];
         source.Play();
         StartCoroutine(NowPlayingFade());
         count++;
+        if (count >= clips.Length) count = 0;
         Invoke("NextTrack", source.clip.length);
     }
 

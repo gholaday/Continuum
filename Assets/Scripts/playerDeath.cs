@@ -111,10 +111,10 @@ public class playerDeath : MonoBehaviour {
 
 		}
 
-		else if(other.tag == "FireRateUp" && shoot.cooldown > .05f)
+		else if(other.tag == "FireRateUp" && shoot.cooldown > .1f)
 		{
 
-			shoot.cooldown -= .025f;
+			shoot.cooldown -= .02f;
 		}
 
 		else if(other.tag == "ExtraLife")

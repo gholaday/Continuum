@@ -80,7 +80,7 @@ public class WaveSystem : MonoBehaviour {
 
             if(waveNumber % 10 != 0)
             {
-                enemiesToSpawn += Random.Range(8, 15);
+                enemiesToSpawn += Random.Range(4, 8);
             }
 
 			enemiesLeft = enemiesToSpawn;
@@ -142,7 +142,7 @@ public class WaveSystem : MonoBehaviour {
 		
 			yield return new WaitForSeconds(spawnTimer);
 			spawnSpot.position = new Vector3(Random.Range(-widthOrtho + 0.5f , widthOrtho - 0.5f),posy,0);
-			GameObject go = enemyWaves[wave-1].enemies[Random.Range(0,9)];
+			GameObject go = enemyWaves[wave-1].enemies[Random.Range(0, enemyWaves.Length)];
 
 			Instantiate(go,spawnSpot.transform.position,Quaternion.identity);
 			enemiesYetToSpawn--;
@@ -189,7 +189,11 @@ public class WaveSystem : MonoBehaviour {
 
             StartCoroutine(TimeDelay(1.0f, "PitchSpeedUp"));
             waveDisplay.text = "BOSS TIME";
-            spawnTimer -= .005f;
+            if(spawnTimer > .2f)
+            {
+                spawnTimer -= .05f;
+            }
+            
            
 			break;
 
