@@ -77,6 +77,7 @@ public class Rocket : MonoBehaviour, AudioProcessor.AudioCallbacks {
 	private void Explode(){
 		CancelInvoke("Explode");
         GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<BoxCollider>().enabled = false;
         GetComponent<Rigidbody>().isKinematic = true;
 		Destroy(gameObject, 3f);
 	}

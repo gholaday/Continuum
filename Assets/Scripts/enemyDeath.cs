@@ -1,16 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Linq;
 
 public class enemyDeath : MonoBehaviour {
 
 	public GameObject death = null;
-	public int health = 1;
-	public Transform[] powerups;
+    public int health = 1;
 	public float pointsValue = 100;
 	public GameObject pointsText = null;
-	
-	int powerUpSpawn;
 
 	float multiplier;
 
@@ -23,9 +21,19 @@ public class enemyDeath : MonoBehaviour {
 	Color color;
     Enemy enemy;
 
+    [SerializeField]
+    Object[] powerups;
+    GameObject powerupToSpawn;
+
+    
+
+    void Awake()
+    {
+        powerups = Resources.LoadAll("PowerUps") as Object[];
+    }
+
 	void Start()
 	{
-		powerUpSpawn = Random.Range(0,100);
 		ws = GameObject.Find("EnemySpawner").GetComponent<WaveSystem>();
 		sr = GetComponentInChildren<SpriteRenderer>();
 		ps = GameObject.Find("GameManager").GetComponent<PlayerScore>();
@@ -33,7 +41,13 @@ public class enemyDeath : MonoBehaviour {
         enemy = GetComponent<Enemy>();
         enemy.health += health;
 
+       
+        
+        powerupToSpawn = powerups[Random.Range(0, powerups.Length)] as GameObject;
+        
 	}
+
+  
 	
 
 	void OnTriggerEnter(Collider other) {
@@ -82,16 +96,12 @@ public class enemyDeath : MonoBehaviour {
 
 				}
 
-				if(powerUpSpawn >= 89)
-				{
-					if(powerups.Length > 0)
-					Instantiate(powerups[0], transform.position, Quaternion.Euler(0,0,0));
-					
-				}
-				else if(powerUpSpawn >= 0 && powerUpSpawn <= 2 && powerups.Length > 1)
-				{
-					Instantiate(powerups[1], transform.position, Quaternion.Euler(0,0,0));
-				}
+                if(Random.value <= powerupToSpawn.GetComponent<PowerUp>().spawnChance)
+                {
+                    Instantiate(powerupToSpawn, transform.position, Quaternion.identity);
+                }
+
+				
 			}
 
 

@@ -14,8 +14,10 @@ public class EnemyStalkerAI : MonoBehaviour {
 
     bool flyDown = true;
     float randHeight;
+    public float shootCooldown;
 
     Quaternion bulletRot;
+    
 
 	// Use this for initialization
 	void Start () {
@@ -23,12 +25,17 @@ public class EnemyStalkerAI : MonoBehaviour {
         lookTarget = GameObject.FindGameObjectWithTag("Player").transform;
         randHeight = Random.Range(0, 3.1f);
         StartCoroutine("Shoot");
+
+        shootCooldown -= EnemyModifier.bonusAttackSpeed;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        
+        if (lookTarget == null) 
+        {
+            lookTarget = GameObject.FindWithTag("Player").transform;
+        }
 
         if(transform.position.y < randHeight) flyDown = false;
 
@@ -39,14 +46,14 @@ public class EnemyStalkerAI : MonoBehaviour {
         }
         else
         {
-            if(transform.position.x > 4.5f && transform.position.x < -4.5f)
+            if(transform.position.y > 4.5f && transform.position.y < -3.5f)
             {
                 flySpot = transform.position;
             }
 
             transform.position = Vector3.Lerp(transform.position, flySpot, Time.deltaTime);
 
-            LookToPlayer();
+            if(lookTarget != null) LookToPlayer();
          
         }
 
@@ -67,18 +74,17 @@ public class EnemyStalkerAI : MonoBehaviour {
         {
             for (int i = 0; i < 3; i++)
             {
-                yield return new WaitForSeconds(.25f);
+                yield return new WaitForSeconds(shootCooldown);
                 Instantiate(bullet, bulletSpawn.position, transform.rotation);
-                yield return new WaitForSeconds(.25f);
+                yield return new WaitForSeconds(shootCooldown);
                 Instantiate(bullet, bulletSpawn.position, transform.rotation);
-                yield return new WaitForSeconds(.25f);
+                yield return new WaitForSeconds(shootCooldown);
                 Instantiate(bullet, bulletSpawn.position, transform.rotation);
             }
                
             yield return new WaitForSeconds(waitTime);
             
-            flySpot = new Vector3(Random.Range(-4, 4.1f), Random.Range(-4, 4.1f), 0);
-            Debug.Log(flySpot);
+            flySpot = new Vector3(Random.Range(-5, 5.1f), Random.Range(-5, 5.1f), 0);
             StartCoroutine("Shoot");
         }
         else

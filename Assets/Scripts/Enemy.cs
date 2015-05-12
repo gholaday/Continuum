@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     public float moveSpeed = 0;
     public float attackSpeed = 0;
 
-    public enemyShoot es;
+    enemyShoot es;
 
     void Start()
     {

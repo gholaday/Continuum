@@ -132,6 +132,7 @@ MonoBehaviour:
   rotateSpeed: 10
   moveSpeed: 5
   waitTime: 2
+  shootCooldown: .25
 --- !u!114 &11414836
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityStandardAssets.ImageEffects;
 
 public class playerMovement : MonoBehaviour {
 
@@ -12,6 +13,9 @@ public class playerMovement : MonoBehaviour {
 	public static int timeStop = 1;
 
     public GameObject particles;
+    public bool slowMoEffects = true;
+
+    VignetteAndChromaticAberration vig;
 
 
 	float shipBoundaryRadius = 0.5f;
@@ -26,10 +30,16 @@ public class playerMovement : MonoBehaviour {
 		timeStop = 1;
 		spawn = true;
 		Cursor.visible = false;
+        vig = GameObject.Find("Main Camera").GetComponent<VignetteAndChromaticAberration>();
 
 
 	}
-	
+
+    void OnDestroy()
+    {
+        vig.chromaticAberration = 0;
+    }
+
 	// Update is called once per frame
 	void Update () {
 
@@ -67,6 +77,11 @@ public class playerMovement : MonoBehaviour {
                 Instantiate(particles, transform.position, Quaternion.identity);
             }
 
+            if(slowMoEffects && vig.chromaticAberration < 48.0f)
+            {
+                vig.chromaticAberration += Time.deltaTime * 10;
+            }
+
 			Time.timeScale = 0.25f;
 			slowmoTime -= 80.0f * Time.deltaTime;
 			moveSpeed = slowmoMoveSpeed;
@@ -79,8 +94,14 @@ public class playerMovement : MonoBehaviour {
 
 		if(Input.GetButtonUp("Jump") && spawn == true || slowmoTime <= 0)
 		{
+            vig.chromaticAberration = 0;
 			Time.timeScale = 1.0f;
 			moveSpeed = 8.0f;
+
+            if (slowMoEffects)
+            {
+                vig.chromaticAberration = 0;
+            }
 		}
 
         GameManager.slowMo = slowmoTime;

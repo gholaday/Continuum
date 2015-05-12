@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class PowerUp : MonoBehaviour {
 
 	public float fallSpeed = 5.0f;
+    public float spawnChance;
 	public GameObject powerUpText;
 
 	// Use this for initialization
