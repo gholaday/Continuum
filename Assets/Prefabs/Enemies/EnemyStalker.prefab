@@ -131,7 +131,7 @@ MonoBehaviour:
   bulletSpawn: {fileID: 428414}
   rotateSpeed: 10
   moveSpeed: 5
-  waitTime: 2
+  waitTime: 3
   shootCooldown: .25
 --- !u!114 &11414836
 MonoBehaviour:
@@ -145,10 +145,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   death: {fileID: 100000, guid: 6e00116a2dcd25541a009c4cf0d386fc, type: 2}
-  health: 10
-  powerups: []
+  health: 5
   pointsValue: 800
   pointsText: {fileID: 155960, guid: d11b002f72958dd478b56739818f6eed, type: 2}
+  powerups: []
 --- !u!114 &11416888
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -163,7 +163,6 @@ MonoBehaviour:
   health: 0
   moveSpeed: 0
   attackSpeed: 0
-  es: {fileID: 0}
 --- !u!212 &21257532
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -17,11 +17,14 @@ public class playerDeath : MonoBehaviour {
 
 	float slowMoTime;
 
-	float invulTimer = 1.0f;
+	public float invulTimer = 1.0f;
+    float timer;
 
 	
 
 	void Start () {
+
+        timer = invulTimer;
 
 		gameObject.layer = 15;
 
@@ -42,8 +45,8 @@ public class playerDeath : MonoBehaviour {
 
 		if(gameObject.layer == 15)     //layer 15 = invin layer 11 = player
 		{
-			invulTimer -= Time.deltaTime;
-			if(invulTimer % .1 >= .05)
+			timer -= Time.deltaTime;
+			if(timer % .1 >= .05)
 			{
 		
 				GetComponent<Renderer>().enabled = false;
@@ -57,11 +60,11 @@ public class playerDeath : MonoBehaviour {
 		}
 
 
-		if(invulTimer <= 0)
+		if(timer <= 0)
 		{
 			gameObject.layer = 11;
 			GetComponent<Renderer>().enabled = true;
-			invulTimer = 1.0f;
+            timer = invulTimer;
 		}
 
 		
@@ -114,7 +117,7 @@ public class playerDeath : MonoBehaviour {
 		else if(other.tag == "FireRateUp" && shoot.cooldown > .1f)
 		{
 
-			shoot.cooldown -= .02f;
+			shoot.cooldown -= .03f;
 		}
 
 		else if(other.tag == "ExtraLife")
@@ -136,7 +139,7 @@ public class playerDeath : MonoBehaviour {
 	IEnumerator TimeFreeze()
 	{
 		Time.timeScale = Mathf.Epsilon;
-		yield return new WaitForSeconds(.01f);
+		yield return new WaitForSeconds(.1f);
 		Time.timeScale = 1;
 	}
 

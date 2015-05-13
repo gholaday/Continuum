@@ -89,7 +89,7 @@ public class playerMovement : MonoBehaviour {
 		}
 		else 
 		{
-			slowmoTime += 7.5f * Time.deltaTime;
+			slowmoTime += 10.0f * Time.deltaTime;
 		}
 
 		if(Input.GetButtonUp("Jump") && spawn == true || slowmoTime <= 0)

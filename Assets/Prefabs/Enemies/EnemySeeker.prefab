@@ -141,12 +141,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   death: {fileID: 100000, guid: 6e00116a2dcd25541a009c4cf0d386fc, type: 2}
-  health: 6
+  health: 5
+  pointsValue: 500
+  pointsText: {fileID: 155960, guid: d11b002f72958dd478b56739818f6eed, type: 2}
   powerups:
   - {fileID: 400000, guid: df378b1557abd364da84b9ece8c2e81e, type: 2}
   - {fileID: 400000, guid: 76ce9a934883cbf4aac0477756121539, type: 2}
-  pointsValue: 500
-  pointsText: {fileID: 155960, guid: d11b002f72958dd478b56739818f6eed, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1

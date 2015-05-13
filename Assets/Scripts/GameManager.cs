@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour {
 	public static float slowMo = 0;
 
 	bool firstSpawn = true;
+    bool newHighScore = false;
 
 	private Vector2 spawnPos;
 
@@ -201,7 +202,12 @@ public class GameManager : MonoBehaviour {
 			
 		if(score.GetScore() > highScore)
 		{
-			newHighScoreDisplay.enabled = true;
+			if(!newHighScore)
+            {
+                StartCoroutine(NewHighScoreFlash());
+                newHighScore = true;
+            }
+
 			highScore = score.GetScore();
 		}
 
@@ -352,6 +358,52 @@ public class GameManager : MonoBehaviour {
         }
         
        
+    }
+
+    IEnumerator NewHighScoreFlash()
+    {
+        AudioSource aSource = newHighScoreDisplay.GetComponent<AudioSource>();
+
+        for (int i = 0; i < 2; i++)
+        {
+            newHighScoreDisplay.enabled = !newHighScoreDisplay.enabled;
+            newHighScoreDisplay.text = "NEW";
+
+            if(i == 0)
+            {
+                aSource.Play();
+            }
+
+            yield return new WaitForSeconds(.25f);
+        }
+
+        for (int i = 0; i < 2; i++)
+        {
+            newHighScoreDisplay.enabled = !newHighScoreDisplay.enabled;
+            newHighScoreDisplay.text = "HIGH";
+
+            if (i == 0)
+            {
+                aSource.Play();
+            }
+
+            yield return new WaitForSeconds(.25f);
+        }
+
+        for (int i = 0; i < 2; i++)
+        {
+            newHighScoreDisplay.enabled = !newHighScoreDisplay.enabled;
+            newHighScoreDisplay.text = "SCORE";
+
+            if (i == 0)
+            {
+                aSource.Play();
+            }
+
+            yield return new WaitForSeconds(.25f);
+        }
+
+
     }
 
 }

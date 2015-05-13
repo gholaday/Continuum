@@ -39,15 +39,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &100004
+--- !u!1 &118394
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 400004}
-  - 212: {fileID: 21200002}
+  - 4: {fileID: 476244}
+  - 212: {fileID: 21289334}
+  - 95: {fileID: 9549940}
   m_Layer: 0
   m_Name: playerShield
   m_TagString: Untagged
@@ -98,7 +99,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
-  - {fileID: 400004}
+  - {fileID: 476244}
   - {fileID: 430072}
   - {fileID: 483780}
   m_Father: {fileID: 0}
@@ -115,18 +116,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 400000}
   m_RootOrder: 0
---- !u!4 &400004
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100004}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 400000}
-  m_RootOrder: 1
 --- !u!4 &430072
 Transform:
   m_ObjectHideFlags: 1
@@ -139,6 +128,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 400000}
   m_RootOrder: 2
+--- !u!4 &476244
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 118394}
+  m_LocalRotation: {x: 0, y: 0, z: -3.2584137e-07, w: -1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.10000002, y: 1.10000002, z: 1.10000002}
+  m_Children: []
+  m_Father: {fileID: 400000}
+  m_RootOrder: 1
 --- !u!4 &483780
 Transform:
   m_ObjectHideFlags: 1
@@ -176,8 +177,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .400000006, y: .400000006, z: .200000003}
-  m_Center: {x: 0, y: -.0599999987, z: 0}
+  m_Size: {x: .305547237, y: .255172551, z: .200000003}
+  m_Center: {x: -.00944527984, y: -.0442581177, z: 0}
 --- !u!82 &8200000
 AudioSource:
   m_ObjectHideFlags: 1
@@ -189,7 +190,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 943985991ca109649ad261ce6e972ef6, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .00999999978
+  m_Volume: .0500000007
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -316,6 +317,23 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!95 &9549940
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 118394}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c841771bcd4a43a4cbfff27d707ce44f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!108 &10822950
 Light:
   m_ObjectHideFlags: 1
@@ -412,6 +430,7 @@ MonoBehaviour:
   slowmoTime: 100
   slowmoMoveSpeed: 12
   particles: {fileID: 0}
+  slowMoEffects: 1
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -425,10 +444,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   death: {fileID: 100000, guid: 3b63101b735422e4aa55e911868f855f, type: 2}
   hitpoints: 2
-  shield: {fileID: 400004}
+  shield: {fileID: 476244}
   shieldSound: 0
   shieldDown: {fileID: 8200002}
   shakeAmount: .25
+  invulTimer: 2
 --- !u!114 &11453022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -441,9 +461,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rockets: 10
-  delay: .0500000007
+  delay: .100000001
   rocketPrefab: {fileID: 100944, guid: a5c32077cbf52d84b941de27a0779f95, type: 2}
-  barFillUpSpeed: 5
+  barFillUpSpeed: 3
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -470,12 +490,12 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4a2e0a7d33da4b545a37dc3dd8e5e9f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!212 &21200002
+--- !u!212 &21289334
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100004}
+  m_GameObject: {fileID: 118394}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0

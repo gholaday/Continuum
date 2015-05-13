@@ -32,7 +32,7 @@ public class EnemyStalkerAI : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (lookTarget == null) 
+        if (lookTarget == null && GameObject.FindWithTag("Player") != null) 
         {
             lookTarget = GameObject.FindWithTag("Player").transform;
         }

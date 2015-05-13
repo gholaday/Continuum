@@ -80,7 +80,7 @@ public class WaveSystem : MonoBehaviour {
 
             if(waveNumber % 10 != 0)
             {
-                enemiesToSpawn += Random.Range(4, 8);
+                enemiesToSpawn += Random.Range(2, 5);
             }
 
 			enemiesLeft = enemiesToSpawn;
@@ -113,8 +113,8 @@ public class WaveSystem : MonoBehaviour {
             }
             else if(randNum == 1)
             {
-                //Debug.Log("Enemy Attack Speed increased by .10");
-                EnemyModifier.bonusAttackSpeed += .10f;
+                //Debug.Log("Enemy Attack Speed increased by .05");
+                EnemyModifier.bonusAttackSpeed += .05f;
                 StartCoroutine(DisplayWaveModifier("Enemy Attack Speed Increased!"));
             }
 

@@ -29,11 +29,28 @@ public class PowerUp : MonoBehaviour {
 	void OnTriggerEnter(Collider other)
 	{
 		if(powerUpText != null && other.tag == "Player")
-			Instantiate(powerUpText, transform.position + new Vector3(0,1,0), Quaternion.identity);
+        {
+            Instantiate(powerUpText, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+            GetComponent<AudioSource>().Play();
+            StartCoroutine(DeleteObject());
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
-		Destroy(gameObject);
+        
+		
 
 	}
+
+    IEnumerator DeleteObject()
+    {
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<BoxCollider>().enabled = false;
+        yield return new WaitForSeconds(2f);
+        Destroy(gameObject);
+    }
 
 
 

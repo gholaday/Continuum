@@ -21,15 +21,19 @@ public class Rocket : MonoBehaviour, AudioProcessor.AudioCallbacks {
 	public Material mat;
 	float spectrumColor;
 
+    AudioSource aSource;
+
 
 	void Awake(){
 
 		rocketRigidbody = GetComponent<Rigidbody>();
 		tr = GetComponent<TrailRenderer>();
+        aSource = GetComponent<AudioSource>();
 
 	}
 	
 	void Start(){
+        aSource.pitch += Random.Range(-.1f, .11f);
 		Invoke ("Explode", lifetime);
 		tr.material.shader = Shader.Find("Unlit/Color");
 		AudioProcessor processor = FindObjectOfType<AudioProcessor>();
