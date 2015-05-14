@@ -31,7 +31,7 @@ public class EndGameStats : MonoBehaviour {
 
 	IEnumerator DisplayStats()
 	{
-		yield return new WaitForSeconds(2.0f);
+		//yield return new WaitForSeconds(2.0f);
 		GOAnim.SetTrigger("Click");
 		hud.SetActive(false);
 		yield return new WaitForSeconds(1.0f);

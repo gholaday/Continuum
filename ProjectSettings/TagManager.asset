@@ -31,7 +31,7 @@ TagManager:
   - PowerUp
   - Invincible
   - Invisible
-  - 
+  - Background
   - 
   - 
   - 
@@ -49,4 +49,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 2130900187
+    locked: 0
+  - name: Player
+    uniqueID: 2948533933
     locked: 0

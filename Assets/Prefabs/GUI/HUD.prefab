@@ -10,7 +10,7 @@ GameObject:
   - 224: {fileID: 22400000}
   - 222: {fileID: 22200000}
   - 114: {fileID: 11400002}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 22400002}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - 222: {fileID: 22200002}
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400000}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SlowMo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ GameObject:
   - 224: {fileID: 22400006}
   - 222: {fileID: 22200004}
   - 114: {fileID: 11400006}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Ready...
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ GameObject:
   - 224: {fileID: 22400008}
   - 222: {fileID: 22200006}
   - 114: {fileID: 11400008}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HighScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - 224: {fileID: 22400010}
   - 222: {fileID: 22200008}
   - 114: {fileID: 11400010}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: FlavorText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   - 224: {fileID: 22400012}
   - 222: {fileID: 22200010}
   - 114: {fileID: 11400012}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LivesImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   - 224: {fileID: 22400014}
   - 222: {fileID: 22200012}
   - 114: {fileID: 11400014}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Lives
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   - 224: {fileID: 22400016}
   - 222: {fileID: 22200014}
   - 114: {fileID: 11400016}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   - 224: {fileID: 22400018}
   - 223: {fileID: 22300000}
   - 114: {fileID: 11400018}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   - 224: {fileID: 22400020}
   - 222: {fileID: 22200016}
   - 114: {fileID: 11400020}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: VersionNo.
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   - 222: {fileID: 22200018}
   - 114: {fileID: 11400022}
   - 95: {fileID: 9583740}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Multiplier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ GameObject:
   - 114: {fileID: 11400024}
   - 114: {fileID: 11400026}
   - 114: {fileID: 11400032}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: WaveNumber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ GameObject:
   - 222: {fileID: 22200022}
   - 114: {fileID: 11400028}
   - 82: {fileID: 8226300}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: NEW High Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,7 +251,7 @@ GameObject:
   - 224: {fileID: 22400622}
   - 222: {fileID: 22243632}
   - 114: {fileID: 11418792}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Now Playing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,7 +268,7 @@ GameObject:
   - 224: {fileID: 22409396}
   - 222: {fileID: 22255898}
   - 114: {fileID: 11472224}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: WaveModifier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +283,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 22450344}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,7 +300,7 @@ GameObject:
   - 224: {fileID: 22494538}
   - 222: {fileID: 22226336}
   - 114: {fileID: 11425642}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ExtraLifeGet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -317,7 +317,7 @@ GameObject:
   - 224: {fileID: 22468598}
   - 222: {fileID: 22206862}
   - 114: {fileID: 11478148}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,7 +334,7 @@ GameObject:
   - 224: {fileID: 22465838}
   - 114: {fileID: 11451660}
   - 222: {fileID: 22293150}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RocketSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -352,7 +352,7 @@ GameObject:
   - 222: {fileID: 22289416}
   - 114: {fileID: 11485436}
   - 114: {fileID: 11440416}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RocketsReady
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -368,8 +368,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: f622523bc5b624049a736a19a54ea31b, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -727,7 +727,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Version 0.013
+  m_Text: 'Version 0.014
 
 '
 --- !u!114 &11400022
@@ -809,7 +809,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: 8503f58c379b920448b86c6b6d269970, type: 3}
-    m_FontSize: 150
+    m_FontSize: 130
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -1140,14 +1140,14 @@ Canvas:
   m_GameObject: {fileID: 100018}
   m_Enabled: 1
   serializedVersion: 2
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 2130900187
   m_SortingOrder: 0
 --- !u!224 &22400000
 RectTransform:
@@ -1196,7 +1196,7 @@ RectTransform:
   m_Children:
   - {fileID: 22400002}
   m_Father: {fileID: 22400018}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -6, y: 35}
@@ -1213,7 +1213,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22400018}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -1230,7 +1230,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22400018}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: -15.8000002}
@@ -1247,7 +1247,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22400018}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 2.8499999, y: -12.1899996}
@@ -1264,7 +1264,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22400018}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -6.05000019, y: 12}
@@ -1281,7 +1281,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22400018}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -30.8299999, y: -4}
@@ -1298,7 +1298,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22400018}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: -.74000001}
@@ -1314,6 +1314,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 22400020}
   - {fileID: 22400016}
   - {fileID: 22400014}
   - {fileID: 22400012}
@@ -1321,7 +1322,6 @@ RectTransform:
   - {fileID: 22400008}
   - {fileID: 22400006}
   - {fileID: 22400004}
-  - {fileID: 22400020}
   - {fileID: 22400022}
   - {fileID: 22400024}
   - {fileID: 22494538}
@@ -1348,7 +1348,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22400018}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_AnchorMin: {x: .5, y: 0}
   m_AnchorMax: {x: .5, y: 0}
   m_AnchoredPosition: {x: 0, y: -9.36999989}

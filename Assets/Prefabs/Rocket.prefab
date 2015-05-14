@@ -102,8 +102,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 97074b3804246824c853a63fb9c3b821, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: .25
+  m_PlayOnAwake: 0
+  m_Volume: .100000001
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -218,8 +218,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies: []
-  lifetime: 3.5
-  MissileSpeed: 450
+  lifetime: 4
+  MissileSpeed: 500
   color1: {r: .444093615, g: .0175173171, b: .595588207, a: 1}
   color2: {r: 1, g: .216125757, b: .0367646813, a: 1}
   mat: {fileID: 2100000, guid: d609eda2e1556db498ecb69ba864a6ee, type: 2}
