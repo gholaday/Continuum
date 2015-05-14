@@ -56,7 +56,7 @@ public class enemyDeath : MonoBehaviour {
 		{
 			if(other.tag == "Rocket")
 			{
-				enemy.health -= 2;
+				enemy.health -= 4;
 			}
 			else
 			{

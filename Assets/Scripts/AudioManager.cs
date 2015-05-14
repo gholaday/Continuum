@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour {
 
     AudioSource source;
 
+
 	// Use this for initialization
 	void Awake () {
 
@@ -25,21 +26,28 @@ public class AudioManager : MonoBehaviour {
 
         source.clip = clips[count];
         source.Play();
-        Invoke("NextTrack", source.clip.length);
         count++;
         StartCoroutine(NowPlayingFade());
 	
 	}
+
+    void Update()
+    {
+        if(!source.isPlaying)
+        {
+            NextTrack();
+        }
+    }
     
     void NextTrack()
     {
-        //source.Stop();
+     
         source.clip = clips[count];
         source.Play();
         StartCoroutine(NowPlayingFade());
         count++;
         if (count >= clips.Length) count = 0;
-        Invoke("NextTrack", source.clip.length);
+        
     }
 
     void RandomizeArray(AudioClip[] arr)
@@ -59,11 +67,16 @@ public class AudioManager : MonoBehaviour {
         nowPlaying.text = "Now Playing";
 
         yield return new WaitForSeconds(1f);
+
         nowPlaying.CrossFadeAlpha(0, 1f, false);
+
         yield return new WaitForSeconds(1.5f);
+
         nowPlaying.CrossFadeAlpha(255, 1f, false);
         nowPlaying.text = source.clip.name;
+
         yield return new WaitForSeconds(3f);
+
         nowPlaying.CrossFadeAlpha(0, 1f, false);
 
     }

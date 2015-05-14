@@ -8,8 +8,12 @@ public class PowerUp : MonoBehaviour {
     public float spawnChance;
 	public GameObject powerUpText;
 
+    AudioSource aSource;
+
 	// Use this for initialization
 	void Start () {
+        aSource = GetComponent<AudioSource>();
+        aSource.pitch += Random.Range(-.4f, .41f);
 	
 	}
 	
@@ -31,7 +35,7 @@ public class PowerUp : MonoBehaviour {
 		if(powerUpText != null && other.tag == "Player")
         {
             Instantiate(powerUpText, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
-            GetComponent<AudioSource>().Play();
+            aSource.Play();
             StartCoroutine(DeleteObject());
         }
         else
