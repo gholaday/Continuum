@@ -141,6 +141,7 @@ public class playerDeath : MonoBehaviour {
 		Time.timeScale = Mathf.Epsilon;
 		yield return new WaitForSeconds(.1f);
 		Time.timeScale = 1;
+        
 	}
 
 }

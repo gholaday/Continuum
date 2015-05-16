@@ -46,9 +46,9 @@ public class playerMovement : MonoBehaviour {
 		//Our basic up/down/left/right movement
 		Vector3 pos = transform.position;
 
-		if(Input.GetKeyDown(KeyCode.Keypad1))
+		/*if(Input.GetKeyDown(KeyCode.Keypad1))
 			mouseControl = true;
-
+        */
 
 		if(mouseControl)
 		{
@@ -58,8 +58,8 @@ public class playerMovement : MonoBehaviour {
 		}
 		else{
 
-			pos.y += Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
-			pos.x += Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
+            pos.y += Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
+            pos.x += Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
 		}
 
 		//Slow mo
@@ -69,8 +69,9 @@ public class playerMovement : MonoBehaviour {
 			slowmoTime = 100f;
 		}
 
+        
 
-		if(Input.GetButton("Jump") && spawn == true && slowmoTime > 0)
+		if((Input.GetButton("Jump") || Input.GetAxis("Jump") > 0) && spawn == true && slowmoTime > 0)
 		{
             if(Input.GetButtonDown("Jump") && particles != null)
             {
@@ -92,7 +93,7 @@ public class playerMovement : MonoBehaviour {
 			slowmoTime += 10.0f * Time.deltaTime;
 		}
 
-		if(Input.GetButtonUp("Jump") && spawn == true || slowmoTime <= 0)
+        if ((Input.GetButtonUp("Jump") || Input.GetAxis("Jump") == 0) && spawn == true || slowmoTime <= 0)
 		{
             vig.chromaticAberration = 0;
 			Time.timeScale = 1.0f;
@@ -106,8 +107,7 @@ public class playerMovement : MonoBehaviour {
 
         GameManager.slowMo = slowmoTime;
 
-
-
+        
 		//RESTRICT player movement to the camera bounds
 
 		//The y axis is simple enough...

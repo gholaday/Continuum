@@ -58,7 +58,7 @@ public class Rocket : MonoBehaviour, AudioProcessor.AudioCallbacks {
 		if(enemies.Length > 0 && target == null && timer > .3f)
 			target = enemies[Random.Range(0,enemies.Length-1)].transform;
 
-		rocketRigidbody.velocity = transform.up * MissileSpeed * Time.deltaTime * Time.timeScale;
+        rocketRigidbody.velocity = transform.up * MissileSpeed * Time.deltaTime * Time.timeScale;
 
 		if(target != null)
 		{

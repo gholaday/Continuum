@@ -34,7 +34,7 @@ public class RocketLaunch : MonoBehaviour {
 		}
 			
 
-		if(Input.GetKeyDown(KeyCode.Tab) && rocketBar >= 100)
+		if(Input.GetButtonDown("Fire1") && rocketBar >= 100)
 		{
 			rocketBar = 0;
 			StartCoroutine("LaunchRockets");

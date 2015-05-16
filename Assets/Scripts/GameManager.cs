@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using Parse;
 
 public class GameManager : MonoBehaviour {
 
@@ -59,10 +60,14 @@ public class GameManager : MonoBehaviour {
 	int multiplierFontSize;
 	bool isSpawning = false;
 
-	//float rocketTimer = 0;
+    bool gameOver = false;
+
+	
 		
 	// Use this for initialization
 	void Start () {
+
+        InitializePriorScene.priorScene = "Endless";
 
 		RocketLaunch.rocketBar = 0;
 		score = GetComponent<PlayerScore>();
@@ -135,21 +140,24 @@ public class GameManager : MonoBehaviour {
 		}
 
 		ChangeSlowMoColor();
-
-
+        
 		if(Input.GetButtonDown("Cancel"))
 		{
 			isPaused = !isPaused;
+            
 		}
 
 		if(isPaused)
 		{
-			Time.timeScale = Mathf.Epsilon;
-			GetComponent<AudioSource>().pitch = 0;
-			pauseUI.SetActive(true);
+			Time.timeScale = 0;
+            
+            GetComponent<AudioSource>().pitch = 0;
+            pauseUI.SetActive(true);
 		}else{
+            //GetComponent<AudioSource>().pitch = 1;
 			pauseUI.SetActive(false);
-			Time.timeScale = 1;
+			
+            
 		}
 
 
@@ -206,6 +214,7 @@ public class GameManager : MonoBehaviour {
             {
                 StartCoroutine(NewHighScoreFlash());
                 newHighScore = true;
+                gameOver = true;
             }
 
 			highScore = score.GetScore();
@@ -216,13 +225,22 @@ public class GameManager : MonoBehaviour {
 		//Displays game over text when lives are zero, prompt for reset
 		if(playerLives <= 0)
 		{
-	
-			GameOver();
+            if(gameOver)
+            {
+                SetLeaderboardScore();
+            }
+
+            GameOver();
 
 			if(Input.GetKey(KeyCode.Return))
 			{
 				Application.LoadLevel(Application.loadedLevel);
 			}
+
+            if (Input.GetButton("Cancel"))
+            {
+                Application.LoadLevel("LeaderBoardTest");
+            }
 		}
 		//If we cant find the ship(i.e we are dead) and lives are greater than 0, spawn a new ship and deduct a live
 		//Then we can also call our code to display the flavor text
@@ -284,6 +302,7 @@ public class GameManager : MonoBehaviour {
 
 	void GameOver()
 	{
+        gameOver = false;
         GetComponent<AudioProcessor>().enabled = false;
 		lives.text = "0";
 		gameOverUI.SetActive(true);
@@ -295,6 +314,8 @@ public class GameManager : MonoBehaviour {
 		StartCoroutine("PitchSlow");
 
 		GetComponent<EndGameStats>().enabled = true;
+
+        
 
 	
 	}
@@ -404,6 +425,20 @@ public class GameManager : MonoBehaviour {
         }
 
 
+    }
+
+    void SetLeaderboardScore()
+    {
+        ParseObject gameScore = new ParseObject("GameScore");
+        gameScore["score"] = highScore;
+        gameScore["playerName"] = PlayerPrefs.GetString("UserName");
+        
+        gameScore.SaveAsync();
+    }
+
+    public void ClearHighScore()
+    {
+        PlayerPrefs.SetInt("High Score", 0);
     }
 
 }
