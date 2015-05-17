@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour {
 
 	private Vector2 spawnPos;
 
-	bool isPaused;
+	public static bool isPaused;
 
 	private Color originalColor;
 
@@ -85,12 +85,16 @@ public class GameManager : MonoBehaviour {
 		ready.enabled = true;
 
 		originalColor = new Color(255,255,255,.5f);
-
+        isPaused = false;
+        Time.timeScale = 1.0f;
+        shoot.weaponName = "LaserWeapon";
+        shoot.cooldown = .25f;
 
 	}
 	
 	void Update () {
 
+        AudioSource[] audioSources;
 
 		if(Time.timeSinceLevelLoad > 3.0f)
 		{
@@ -99,19 +103,37 @@ public class GameManager : MonoBehaviour {
 
 		if(Time.timeScale <= .5f)
 		{
-			GetComponent<AudioSource>().pitch -= Time.deltaTime * 2;
+            audioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+            foreach(AudioSource source in audioSources)
+            {
+                source.pitch -= Time.deltaTime * 2;
+            }
+			//GetComponent<AudioSource>().pitch -= Time.deltaTime * 2;
 		}
 		else
 		{
             if (GetComponent<AudioSource>().pitch < 1 && playerLives > 0)
             {
-                GetComponent<AudioSource>().pitch = 1;
+                audioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+                foreach (AudioSource source in audioSources)
+                {
+                    source.pitch = 1;
+                }
+               // GetComponent<AudioSource>().pitch = 1;
             }
 			
 		}
 
 		if(GetComponent<AudioSource>().pitch <= .5f && playerLives > 0)
-			GetComponent<AudioSource>().pitch = .5f;
+        {
+            audioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+            foreach (AudioSource source in audioSources)
+            {
+                source.pitch = .5f;
+            }
+           // GetComponent<AudioSource>().pitch = .5f;
+        }
+			
 
 		//if(GetComponent<AudioSource>().pitch >= 1.0f)
 			//GetComponent<AudioSource>().pitch = 1.0f;
@@ -143,6 +165,8 @@ public class GameManager : MonoBehaviour {
         
 		if(Input.GetButtonDown("Cancel"))
 		{
+            if (isPaused) Time.timeScale = 1;
+
 			isPaused = !isPaused;
             
 		}
@@ -288,6 +312,7 @@ public class GameManager : MonoBehaviour {
 
 	void Respawn()
 	{
+        Time.timeScale = 1;
 		playerLives -= 1;
         
 		if(playerLives > 0)

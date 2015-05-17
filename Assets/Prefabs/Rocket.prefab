@@ -29,7 +29,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100944}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 410.275085, y: 77.6278763, z: -5.78000021}
+  m_LocalPosition: {x: -21.9283905, y: -.406520009, z: -5.78000021}
   m_LocalScale: {x: .25, y: .5, z: .100000001}
   m_Children: []
   m_Father: {fileID: 0}
@@ -223,6 +223,7 @@ MonoBehaviour:
   color1: {r: .444093615, g: .0175173171, b: .595588207, a: 1}
   color2: {r: 1, g: .216125757, b: .0367646813, a: 1}
   mat: {fileID: 2100000, guid: d609eda2e1556db498ecb69ba864a6ee, type: 2}
+  particles: {fileID: 115864, guid: 1cfda74914cff574fa7f66c94668b059, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

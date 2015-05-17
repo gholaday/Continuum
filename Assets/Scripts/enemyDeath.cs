@@ -6,7 +6,7 @@ using System.Linq;
 public class enemyDeath : MonoBehaviour {
 
 	public GameObject death = null;
-    public int health = 1;
+    public float health = 1;
 	public float pointsValue = 100;
 	public GameObject pointsText = null;
 
@@ -52,20 +52,27 @@ public class enemyDeath : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 
-		if(other.tag == "playerBullet" || other.tag == "Player" || other.tag == "Rocket")
+        if (other.tag == "playerBullet" || other.tag == "Player" || other.tag == "Rocket")
 		{
+            
 			if(other.tag == "Rocket")
 			{
 				enemy.health -= 4;
 			}
-			else
-			{
-				enemy.health--;
-			}
-				
+            else if (other.tag == "playerBullet")
+            {
 
-			if(other.tag == "playerbullet")
-				Destroy (other.gameObject);
+                enemy.health -= other.GetComponent<PlayerBulletProperties>().damage;
+                Destroy(other.gameObject);
+            }
+            else
+            {
+                enemy.health--;
+            }
+
+			
+			
+				
 
 			if(gameObject.tag != "Meteor")
 				StartCoroutine("Flash");

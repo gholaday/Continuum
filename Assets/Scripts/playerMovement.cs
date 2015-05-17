@@ -71,11 +71,12 @@ public class playerMovement : MonoBehaviour {
 
         
 
-		if((Input.GetButton("Jump") || Input.GetAxis("Jump") > 0) && spawn == true && slowmoTime > 0)
+		if((Input.GetButton("Jump") || Input.GetAxis("Jump") > 0) && spawn == true && slowmoTime > 0 && !GameManager.isPaused)
 		{
             if(Input.GetButtonDown("Jump") && particles != null)
             {
-                Instantiate(particles, transform.position, Quaternion.identity);
+                GameObject go = Instantiate(particles, transform.position, Quaternion.identity) as GameObject;
+                go.transform.SetParent(gameObject.transform);
             }
 
             if(slowMoEffects && vig.chromaticAberration < 48.0f)
@@ -96,12 +97,17 @@ public class playerMovement : MonoBehaviour {
         if ((Input.GetButtonUp("Jump") || Input.GetAxis("Jump") == 0) && spawn == true || slowmoTime <= 0)
 		{
             vig.chromaticAberration = 0;
-			Time.timeScale = 1.0f;
+			
 			moveSpeed = 8.0f;
 
             if (slowMoEffects)
             {
                 vig.chromaticAberration = 0;
+            }
+
+            if(!GameManager.isPaused)
+            {
+                Time.timeScale = 1.0f;
             }
 		}
 

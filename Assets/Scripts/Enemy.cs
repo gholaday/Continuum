@@ -4,7 +4,7 @@ using System.Collections;
 public class Enemy : MonoBehaviour
 {
 
-    public int health = 0;
+    public float health = 0;
     public float moveSpeed = 0;
     public float attackSpeed = 0;
 

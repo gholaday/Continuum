@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class playerDeath : MonoBehaviour {
 
@@ -18,6 +19,10 @@ public class playerDeath : MonoBehaviour {
 	float slowMoTime;
 
 	public float invulTimer = 1.0f;
+
+    public GameObject powerupdisplaycanvas;
+
+    public GameObject particles;
     float timer;
 
 	
@@ -117,14 +122,48 @@ public class playerDeath : MonoBehaviour {
 		else if(other.tag == "FireRateUp" && shoot.cooldown > .1f)
 		{
 
-			shoot.cooldown -= .03f;
+			shoot.cooldown -= .04f;
+
+            if (particles != null)
+            {
+                GameObject go = Instantiate(particles, transform.position, Quaternion.identity) as GameObject;
+                go.transform.SetParent(gameObject.transform);
+            }
 		}
 
 		else if(other.tag == "ExtraLife")
 		{
 			gm.playerLives++;
-			//insert sound later
+
+            if (particles != null)
+            {
+                GameObject go = Instantiate(particles, transform.position, Quaternion.identity) as GameObject;
+                go.transform.SetParent(gameObject.transform);
+            }
 		}
+        else if(other.tag == "LaserPowerUp")
+        {
+            if (particles != null)
+            {
+                GameObject go = Instantiate(particles, transform.position, Quaternion.identity) as GameObject;
+                go.transform.SetParent(gameObject.transform);
+            }
+
+            if(shoot.weaponName == "LaserWeapon")
+            {
+                if (GetComponentInChildren<WeaponDoubleLaser>().level < 3)
+                {
+                    GetComponentInChildren<WeaponDoubleLaser>().level++;
+                }
+                
+                GameObject text = Instantiate(powerupdisplaycanvas, transform.position, Quaternion.identity) as GameObject;
+                text.GetComponent<Text>().text = "Laser Level " + GetComponentInChildren<WeaponDoubleLaser>().level;
+            }
+            else
+            {
+                //find other 2 weapons and disable component then enable correct one
+            }
+        }
 
 	}
 

@@ -139,13 +139,49 @@ public class WaveSystem : MonoBehaviour {
 
 		while(enemiesYetToSpawn > 0)
 		{
-		
-			yield return new WaitForSeconds(spawnTimer);
-			spawnSpot.position = new Vector3(Random.Range(-widthOrtho + 0.5f , widthOrtho - 0.5f),posy,0);
-			GameObject go = enemyWaves[wave-1].enemies[Random.Range(0, enemyWaves.Length)];
+            float randomf = Random.value;
 
-			Instantiate(go,spawnSpot.transform.position,Quaternion.identity);
-			enemiesYetToSpawn--;
+            if(randomf > .25f)
+            {
+                
+                yield return new WaitForSeconds(spawnTimer);
+                spawnSpot.position = new Vector3(Random.Range(-widthOrtho + 0.5f, widthOrtho - 0.5f), posy, 0);
+                GameObject go = enemyWaves[wave - 1].enemies[Random.Range(0, enemyWaves.Length)];
+                Instantiate(go, spawnSpot.transform.position, Quaternion.identity);
+                enemiesYetToSpawn--;
+            }
+            else
+            {
+                
+                Vector3 vec1;
+                yield return new WaitForSeconds(spawnTimer);
+                
+                spawnSpot.position = new Vector3(Random.Range(-widthOrtho + 0.5f, widthOrtho - 0.5f), posy, 0);
+                vec1 = spawnSpot.position;
+                GameObject go = enemyWaves[wave - 1].enemies[Random.Range(0, enemyWaves.Length)];
+                Instantiate(go, spawnSpot.transform.position, Quaternion.identity);
+                enemiesYetToSpawn--;
+
+                spawnSpot.position = new Vector3(Random.Range(-widthOrtho + 0.5f, widthOrtho - 0.5f), posy, 0);
+                if(Mathf.Abs(spawnSpot.position.x - vec1.x) < 1)
+                {
+                    
+                    if(spawnSpot.position.x < 0)
+                    {
+                        spawnSpot.position = new Vector3(Random.Range(spawnSpot.position.x + Random.Range(1.5f, 4f), widthOrtho - 0.5f), spawnSpot.position.y, 0);
+                    }
+                    else
+                    {
+                        spawnSpot.position = new Vector3(Random.Range(spawnSpot.position.x + Random.Range(-1.5f, -4f), widthOrtho - 0.5f), spawnSpot.position.y, 0);
+                    }
+                    
+                }
+                go = enemyWaves[wave - 1].enemies[Random.Range(0, enemyWaves.Length)];
+                Instantiate(go, spawnSpot.transform.position, Quaternion.identity);
+                enemiesYetToSpawn--;
+                
+            }
+			
 		}
 
 

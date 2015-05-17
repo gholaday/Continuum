@@ -8,7 +8,7 @@ public class Rocket : MonoBehaviour, AudioProcessor.AudioCallbacks {
 	public float lifetime = 5f;
 	
 	public float MissileSpeed;
-	private float turn = 2.5f;
+	private float turn = 5f;
 	private float lastTurn = 0f;
 	
 	private Rigidbody rocketRigidbody;
@@ -19,6 +19,9 @@ public class Rocket : MonoBehaviour, AudioProcessor.AudioCallbacks {
 	public Color color1;
 	public Color color2;
 	public Material mat;
+
+    public GameObject particles;
+
 	float spectrumColor;
 
     AudioSource aSource;
@@ -84,6 +87,11 @@ public class Rocket : MonoBehaviour, AudioProcessor.AudioCallbacks {
         GetComponent<BoxCollider>().enabled = false;
         GetComponent<Rigidbody>().isKinematic = true;
 		Destroy(gameObject, 3f);
+
+        if(particles != null)
+        {
+            Instantiate(particles, transform.position, Quaternion.identity);
+        }
 	}
 	
 	void OnTriggerEnter(Collider other){
