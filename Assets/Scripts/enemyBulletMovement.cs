@@ -4,10 +4,12 @@ using System.Collections;
 public class enemyBulletMovement : MonoBehaviour {
 	
 	public float speed = 1.0f;
+    public float destroyTime = 8f;
 	
 	// Use this for initialization
 	void Start () {
 
+        Destroy(gameObject, destroyTime);
 	
 	}
 	
@@ -19,6 +21,14 @@ public class enemyBulletMovement : MonoBehaviour {
 		
 		
 	}
+
+    void OnTriggerEnter(Collider col)
+    {
+        if(col.tag == "Player" || col.tag == "Shield")
+        {
+            Destroy(gameObject);
+        }
+    }
 	
 	
 	void OnBecameInvisible () {

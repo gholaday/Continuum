@@ -17,6 +17,8 @@ TagManager:
   - LaserBeam
   - PlayerLaserBeam
   - BeamPowerUp
+  - Shield
+  - ProtectorPowerUp
   layers:
   - Default
   - TransparentFX

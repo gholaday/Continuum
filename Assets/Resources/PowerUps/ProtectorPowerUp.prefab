@@ -14,8 +14,8 @@ GameObject:
   - 54: {fileID: 5409932}
   - 82: {fileID: 8247714}
   m_Layer: 14
-  m_Name: BeamPowerUp
-  m_TagString: BeamPowerUp
+  m_Name: ProtectorPowerUp
+  m_TagString: ProtectorPowerUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 199100}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 15, z: 0}
+  m_LocalPosition: {x: -.940495312, y: -11.0108585, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -57,7 +57,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .189999998, y: .300000012, z: .200000003}
+  m_Size: {x: .400000006, y: .400000006, z: .200000003}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &8247714
 AudioSource:
@@ -166,7 +166,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e36192e7825e765489e15c0429ae0852, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9d2999bef92c89242ad98fd0a56a9d14, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

@@ -17,6 +17,7 @@ GameObject:
   - 82: {fileID: 8200000}
   - 82: {fileID: 8200002}
   - 114: {fileID: 11453022}
+  - 114: {fileID: 11465898}
   m_Layer: 11
   m_Name: playerShip
   m_TagString: Player
@@ -263,6 +264,38 @@ GameObject:
   - 4: {fileID: 481078}
   - 120: {fileID: 12000214}
   m_Layer: 18
+  m_Name: PlayerBeam 4
+  m_TagString: PlayerLaserBeam
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &163460
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 422464}
+  - 120: {fileID: 12031314}
+  m_Layer: 18
+  m_Name: PlayerBeam 3
+  m_TagString: PlayerLaserBeam
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &181232
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 496636}
+  - 120: {fileID: 12083364}
+  m_Layer: 18
   m_Name: PlayerBeam 2
   m_TagString: PlayerLaserBeam
   m_Icon: {fileID: 0}
@@ -434,6 +467,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 400002}
   m_RootOrder: 8
+--- !u!4 &422464
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163460}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .795999944, y: 3.41599989, z: 0}
+  m_LocalScale: {x: 1, y: 8, z: 1}
+  m_Children: []
+  m_Father: {fileID: 468968}
+  m_RootOrder: 3
 --- !u!4 &447424
 Transform:
   m_ObjectHideFlags: 1
@@ -542,6 +587,8 @@ Transform:
   m_Children:
   - {fileID: 451530}
   - {fileID: 447424}
+  - {fileID: 496636}
+  - {fileID: 422464}
   - {fileID: 481078}
   m_Father: {fileID: 483374}
   m_RootOrder: 1
@@ -580,7 +627,7 @@ Transform:
   m_LocalScale: {x: 1, y: 8, z: 1}
   m_Children: []
   m_Father: {fileID: 468968}
-  m_RootOrder: 2
+  m_RootOrder: 4
 --- !u!4 &483374
 Transform:
   m_ObjectHideFlags: 1
@@ -608,6 +655,18 @@ Transform:
   - {fileID: 400002}
   m_Father: {fileID: 400000}
   m_RootOrder: 1
+--- !u!4 &496636
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181232}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .795999944, y: 3.41599989, z: 0}
+  m_LocalScale: {x: 1, y: 8, z: 1}
+  m_Children: []
+  m_Father: {fileID: 468968}
+  m_RootOrder: 2
 --- !u!4 &497118
 Transform:
   m_ObjectHideFlags: 1
@@ -868,7 +927,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 133650}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: befebac830f07224fa5eeb65e008c94d, type: 3}
   m_Name: 
@@ -893,12 +952,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190094}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39d17f2e418cc864993fa6754e8a410e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
+  damagePerTick: 0
+  damageBase: .0125000002
   mask:
     serializedVersion: 2
     m_Bits: 4294949631
@@ -906,9 +967,13 @@ MonoBehaviour:
   - {x: 0, y: .00999999978, z: 0}
   - {x: -.300000012, y: .5, z: 0}
   - {x: .300000012, y: .5, z: 0}
+  - {x: .300000012, y: 0, z: 0}
+  - {x: -.300000012, y: 0, z: 0}
   lines:
   - {fileID: 12018794}
   - {fileID: 12078478}
+  - {fileID: 12083364}
+  - {fileID: 12031314}
   - {fileID: 12000214}
 --- !u!114 &11453022
 MonoBehaviour:
@@ -916,7 +981,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fe921c3119809244982578bd052fcdd, type: 3}
   m_Name: 
@@ -925,6 +990,20 @@ MonoBehaviour:
   delay: .0500000007
   rocketPrefab: {fileID: 100944, guid: a5c32077cbf52d84b941de27a0779f95, type: 2}
   barFillUpSpeed: 3
+--- !u!114 &11465898
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5d734da944860948b5f5374e15ea55f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj: {fileID: 183662, guid: 1ed5b5c83a122434eaee33ddc128d926, type: 2}
+  spawn: 0
+  numAlive: 0
 --- !u!120 &12000214
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -932,8 +1011,8 @@ LineRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 158450}
   m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_Materials:
   - {fileID: 2100000, guid: 01032ce4765e0b94fb11bea08d1c2c01, type: 2}
   m_SubsetIndices: 
@@ -953,8 +1032,8 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
   m_Parameters:
-    startWidth: .150000006
-    endWidth: .150000006
+    startWidth: .200000003
+    endWidth: .200000003
     m_StartColor:
       serializedVersion: 2
       rgba: 4294967295
@@ -969,8 +1048,8 @@ LineRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141738}
   m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_Materials:
   - {fileID: 2100000, guid: 01032ce4765e0b94fb11bea08d1c2c01, type: 2}
   m_SubsetIndices: 
@@ -990,8 +1069,45 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
   m_Parameters:
-    startWidth: .150000006
-    endWidth: .150000006
+    startWidth: .200000003
+    endWidth: .200000003
+    m_StartColor:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_EndColor:
+      serializedVersion: 2
+      rgba: 4294967295
+  m_UseWorldSpace: 1
+--- !u!120 &12031314
+LineRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163460}
+  m_Enabled: 0
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 01032ce4765e0b94fb11bea08d1c2c01, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
+  m_Parameters:
+    startWidth: .200000003
+    endWidth: .200000003
     m_StartColor:
       serializedVersion: 2
       rgba: 4294967295
@@ -1006,8 +1122,8 @@ LineRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 185468}
   m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_Materials:
   - {fileID: 2100000, guid: 01032ce4765e0b94fb11bea08d1c2c01, type: 2}
   m_SubsetIndices: 
@@ -1027,8 +1143,8 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
   m_Parameters:
-    startWidth: .150000006
-    endWidth: .150000006
+    startWidth: .200000003
+    endWidth: .200000003
     m_StartColor:
       serializedVersion: 2
       rgba: 4294967295
@@ -1066,6 +1182,43 @@ LineRenderer:
   m_Parameters:
     startWidth: .150000006
     endWidth: .150000006
+    m_StartColor:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_EndColor:
+      serializedVersion: 2
+      rgba: 4294967295
+  m_UseWorldSpace: 1
+--- !u!120 &12083364
+LineRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181232}
+  m_Enabled: 0
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 01032ce4765e0b94fb11bea08d1c2c01, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
+  m_Parameters:
+    startWidth: .200000003
+    endWidth: .200000003
     m_StartColor:
       serializedVersion: 2
       rgba: 4294967295

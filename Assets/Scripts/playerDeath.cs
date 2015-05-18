@@ -120,10 +120,10 @@ public class playerDeath : MonoBehaviour {
 
         }
 
-        else if (other.tag == "FireRateUp" && shoot.cooldown > .1f)
+        else if (other.tag == "FireRateUp")
         {
 
-            shoot.cooldown -= .04f;
+            shoot.cooldown -= .025f;
 
             if (particles != null)
             {
@@ -141,6 +141,20 @@ public class playerDeath : MonoBehaviour {
                 GameObject go = Instantiate(particles, transform.position, Quaternion.identity) as GameObject;
                 go.transform.SetParent(gameObject.transform);
             }
+        }
+        else if(other.tag == "ProtectorPowerUp")
+        {
+            if (particles != null)
+            {
+                GameObject go = Instantiate(particles, transform.position, Quaternion.identity) as GameObject;
+                go.transform.SetParent(gameObject.transform);
+            }
+
+            GetComponent<PlayerProtectorHandler>().spawn = true;
+            GameObject text = Instantiate(powerupdisplaycanvas, transform.position, Quaternion.identity) as GameObject;
+            text.GetComponent<Text>().text = "Protector Spawned!";
+            
+
         }
         else if (other.tag == "LaserPowerUp")
         {

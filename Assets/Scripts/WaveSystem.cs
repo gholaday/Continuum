@@ -141,7 +141,7 @@ public class WaveSystem : MonoBehaviour {
 		{
             float randomf = Random.value;
 
-            if(randomf > .25f)
+            if(randomf > .25f || enemiesYetToSpawn == 1)
             {
                 
                 yield return new WaitForSeconds(spawnTimer);

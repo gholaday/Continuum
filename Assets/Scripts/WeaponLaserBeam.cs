@@ -10,13 +10,16 @@ public class WeaponLaserBeam : MonoBehaviour {
     LineRenderer line;
     public int level = 1;
     int levelTracker;
+    public float damagePerTick;
+    public float damageBase = .0125f;
 
     public LayerMask mask;
     
     public Vector3[] spawns;
 
     public LineRenderer[] lines;
-    
+
+    float widthSize = .03f;
 
 	// Use this for initialization
 	void Start () {
@@ -32,6 +35,9 @@ public class WeaponLaserBeam : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+
+        damagePerTick = damageBase / shoot.cooldown;
+
 
         Mathf.Clamp(level, 1, 3);
 
@@ -71,10 +77,14 @@ public class WeaponLaserBeam : MonoBehaviour {
 
     IEnumerator Level1Beam()
     {
+     
+     widthSize *= -1;
 
      line = lines[0];
      line.enabled = true;
-     
+
+     line.SetWidth(widthSize, widthSize);
+    
      Ray ray = new Ray(transform.position, transform.up);
      RaycastHit hit; 
  
@@ -90,7 +100,7 @@ public class WeaponLaserBeam : MonoBehaviour {
              if(hit.collider.tag == "Enemy")
              {
                  
-                 hit.transform.GetComponent<Enemy>().health -= .05f;
+                 hit.transform.GetComponent<Enemy>().health -= damagePerTick;
                  hit.transform.GetComponent<enemyDeath>().StartCoroutine("Flash");
              }
          }
@@ -108,8 +118,12 @@ public class WeaponLaserBeam : MonoBehaviour {
     IEnumerator Level2Beam()
     {
 
+        widthSize *= -1;
+
         for (int i = 0; i < 3; i++)
         {
+
+            line.SetWidth(widthSize, widthSize);
             line = lines[i];
             line.enabled = true;
             Ray ray = new Ray(transform.position, spawns[i]);
@@ -127,7 +141,7 @@ public class WeaponLaserBeam : MonoBehaviour {
                     if (hit.collider.tag == "Enemy")
                     {
 
-                        hit.transform.GetComponent<Enemy>().health -= .05f;
+                        hit.transform.GetComponent<Enemy>().health -= damagePerTick;
                         hit.transform.GetComponent<enemyDeath>().StartCoroutine("Flash");
                     }
                 }
@@ -145,34 +159,41 @@ public class WeaponLaserBeam : MonoBehaviour {
 
     IEnumerator Level3Beam()
     {
-        line.enabled = true;
+        widthSize *= -1;
 
-        Ray ray = new Ray(transform.position, transform.up);
-        RaycastHit hit;
-
-        line.SetPosition(0, ray.origin);
-
-        if (Physics.Raycast(ray, out hit, 100, mask))
+        for (int i = 0; i < 5; i++)
         {
 
-            if (hit.collider.tag != "EnemyBullet" || hit.collider.tag != "Rocket")
+            line.SetWidth(widthSize, widthSize);
+            line = lines[i];
+            line.enabled = true;
+            Ray ray = new Ray(transform.position, spawns[i]);
+            RaycastHit hit;
+
+            line.SetPosition(0, ray.origin);
+
+            if (Physics.Raycast(ray, out hit, 100, mask))
             {
-                line.SetPosition(1, hit.point);
 
-                if (hit.collider.tag == "Enemy")
+                if (hit.collider.tag != "EnemyBullet" || hit.collider.tag != "Rocket")
                 {
+                    line.SetPosition(1, hit.point);
 
-                    hit.transform.GetComponent<Enemy>().health -= .05f;
-                    hit.transform.GetComponent<enemyDeath>().StartCoroutine("Flash");
+                    if (hit.collider.tag == "Enemy")
+                    {
+
+                        hit.transform.GetComponent<Enemy>().health -= damagePerTick;
+                        hit.transform.GetComponent<enemyDeath>().StartCoroutine("Flash");
+                    }
                 }
+
             }
 
+            else
+                line.SetPosition(1, ray.GetPoint(100));
         }
 
-        else
-            line.SetPosition(1, ray.GetPoint(100));
-
-        yield return new WaitForSeconds(.01f);
+        yield return new WaitForSeconds(.001f);
         StartCoroutine(Level3Beam());
 
     }

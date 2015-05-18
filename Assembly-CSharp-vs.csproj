@@ -73,8 +73,10 @@
      <Compile Include="Assets\Scripts\ParseTest.cs" />
      <Compile Include="Assets\Scripts\ParticleSystemAutoDestroy.cs" />
      <Compile Include="Assets\Scripts\PlayerBulletProperties.cs" />
+     <Compile Include="Assets\Scripts\PlayerProtectorHandler.cs" />
      <Compile Include="Assets\Scripts\PlayerScore.cs" />
      <Compile Include="Assets\Scripts\PowerUp.cs" />
+     <Compile Include="Assets\Scripts\Protector.cs" />
      <Compile Include="Assets\Scripts\Rocket.cs" />
      <Compile Include="Assets\Scripts\RocketLaunch.cs" />
      <Compile Include="Assets\Scripts\SceneChange.cs" />

@@ -104,6 +104,7 @@ public class enemyDeath : MonoBehaviour {
 
     void Death()
     {
+     
         RocketLaunch.rocketBar += 5;
         oneTime = false;
         //AudioSource.PlayClipAtPoint(clip,transform.position);

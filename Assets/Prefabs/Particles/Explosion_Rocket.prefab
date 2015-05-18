@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 435624}
   - 198: {fileID: 19888630}
   - 199: {fileID: 19957268}
+  - 114: {fileID: 11467232}
   m_Layer: 0
   m_Name: Explosion_Rocket
   m_TagString: Untagged
@@ -24,11 +25,22 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 115864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.6270008, y: -.293260008, z: 0}
+  m_LocalPosition: {x: -12.1957874, y: 3.10700059, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11467232
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 115864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a57be3d4c05e4046b9f3d1e90ac0720, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &19888630
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -190,11 +202,11 @@ ParticleSystem:
         m_NumAlphaKeys: 2
       minColor:
         serializedVersion: 2
-        rgba: 4294967295
+        rgba: 4290969855
       maxColor:
         serializedVersion: 2
-        rgba: 4294967295
-      minMaxState: 0
+        rgba: 4293947903
+      minMaxState: 2
     startSize:
       scalar: .5
       maxCurve:
