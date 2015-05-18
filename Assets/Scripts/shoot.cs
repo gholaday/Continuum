@@ -5,7 +5,7 @@ public class shoot : MonoBehaviour
 {
 
     public static float cooldown = 0.25f;
-    public static string weaponName = "LaserWeapon";
+    public static string weaponName = "Laser";
 
     void Start()
     {

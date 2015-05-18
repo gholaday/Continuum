@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour {
 		originalColor = new Color(255,255,255,.5f);
         isPaused = false;
         Time.timeScale = 1.0f;
-        shoot.weaponName = "LaserWeapon";
+        shoot.weaponName = "Laser";
         shoot.cooldown = .25f;
 
 	}

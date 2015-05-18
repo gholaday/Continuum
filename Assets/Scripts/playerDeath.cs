@@ -91,57 +91,58 @@ public class playerDeath : MonoBehaviour {
 	
 	}
 
-	void OnTriggerEnter(Collider other) {
+    void OnTriggerEnter(Collider other)
+    {
 
-		if(other.tag == "Enemy" || other.tag == "Meteor" || other.tag == "EnemyBullet")
+        if (other.tag == "Enemy" || other.tag == "Meteor" || other.tag == "EnemyBullet")
+        {
+            OnHitShake(shakeAmount);
+            StartCoroutine("TimeFreeze");
+            gameObject.layer = 15;
+            hitpoints -= 1;
 
-		{
-			OnHitShake(shakeAmount);
-			StartCoroutine("TimeFreeze");
-			gameObject.layer = 15;
-			hitpoints -= 1;
+            if (other.tag == "Meteor")
+            {
+                hitpoints -= 2;
+            }
 
-			if(other.tag == "Meteor"){
-				hitpoints -= 2;
-			}
+            if (hitpoints < 2 && shieldSound == false)
+            {
+                shield.gameObject.SetActive(false);
+                //shieldDown.Play();
+                shieldSound = true;
 
-			if(hitpoints < 2 && shieldSound == false)
-			{
-				shield.gameObject.SetActive(false);
-				//shieldDown.Play();
-				shieldSound = true;
-				
-			}
-			else
-			{
-				shield.gameObject.SetActive(true);
-			}
+            }
+            else
+            {
+                shield.gameObject.SetActive(true);
+            }
 
-		}
+        }
 
-		else if(other.tag == "FireRateUp" && shoot.cooldown > .1f)
-		{
+        else if (other.tag == "FireRateUp" && shoot.cooldown > .1f)
+        {
 
-			shoot.cooldown -= .04f;
+            shoot.cooldown -= .04f;
 
             if (particles != null)
             {
                 GameObject go = Instantiate(particles, transform.position, Quaternion.identity) as GameObject;
                 go.transform.SetParent(gameObject.transform);
             }
-		}
+        }
 
-		else if(other.tag == "ExtraLife")
-		{
-			gm.playerLives++;
+        else if (other.tag == "ExtraLife")
+        {
+            gm.playerLives++;
 
             if (particles != null)
             {
                 GameObject go = Instantiate(particles, transform.position, Quaternion.identity) as GameObject;
                 go.transform.SetParent(gameObject.transform);
             }
-		}
-        else if(other.tag == "LaserPowerUp")
+        }
+        else if (other.tag == "LaserPowerUp")
         {
             if (particles != null)
             {
@@ -149,23 +150,59 @@ public class playerDeath : MonoBehaviour {
                 go.transform.SetParent(gameObject.transform);
             }
 
-            if(shoot.weaponName == "LaserWeapon")
+            if (shoot.weaponName == "Laser")
             {
                 if (GetComponentInChildren<WeaponDoubleLaser>().level < 3)
                 {
                     GetComponentInChildren<WeaponDoubleLaser>().level++;
                 }
+
                 
-                GameObject text = Instantiate(powerupdisplaycanvas, transform.position, Quaternion.identity) as GameObject;
-                text.GetComponent<Text>().text = "Laser Level " + GetComponentInChildren<WeaponDoubleLaser>().level;
             }
             else
             {
-                //find other 2 weapons and disable component then enable correct one
-            }
-        }
+                shoot.weaponName = "Laser";
+                GetComponentInChildren<WeaponDoubleLaser>().enabled = true;
+                GetComponentInChildren<WeaponLaserBeam>().enabled = false;
+                GetComponentInChildren<WeaponDoubleLaser>().level = 1;
+                
 
-	}
+            }
+
+            GameObject text = Instantiate(powerupdisplaycanvas, transform.position, Quaternion.identity) as GameObject;
+            text.GetComponent<Text>().text = "Laser Level " + GetComponentInChildren<WeaponDoubleLaser>().level;
+
+        }
+        else if (other.tag == "BeamPowerUp")
+        {
+            if (particles != null)
+            {
+                GameObject go = Instantiate(particles, transform.position, Quaternion.identity) as GameObject;
+                go.transform.SetParent(gameObject.transform);
+            }
+
+            if (shoot.weaponName == "Beam")
+            {
+                if (GetComponentInChildren<WeaponLaserBeam>().level < 3)
+                {
+                    GetComponentInChildren<WeaponLaserBeam>().level++;
+                }
+
+                
+            }
+            else
+            {
+                shoot.weaponName = "Beam";
+                GetComponentInChildren<WeaponDoubleLaser>().enabled = false;
+                GetComponentInChildren<WeaponLaserBeam>().enabled = true;
+                GetComponentInChildren<WeaponLaserBeam>().level = 1;
+            }
+
+            GameObject text = Instantiate(powerupdisplaycanvas, transform.position, Quaternion.identity) as GameObject;
+            text.GetComponent<Text>().text = "Beam Level " + GetComponentInChildren<WeaponLaserBeam>().level;
+
+        }
+    }
 
 
 

@@ -160,7 +160,7 @@ public class WaveSystem : MonoBehaviour {
                 vec1 = spawnSpot.position;
                 GameObject go = enemyWaves[wave - 1].enemies[Random.Range(0, enemyWaves.Length)];
                 Instantiate(go, spawnSpot.transform.position, Quaternion.identity);
-                enemiesYetToSpawn--;
+                
 
                 spawnSpot.position = new Vector3(Random.Range(-widthOrtho + 0.5f, widthOrtho - 0.5f), posy, 0);
                 if(Mathf.Abs(spawnSpot.position.x - vec1.x) < 1)
@@ -178,7 +178,7 @@ public class WaveSystem : MonoBehaviour {
                 }
                 go = enemyWaves[wave - 1].enemies[Random.Range(0, enemyWaves.Length)];
                 Instantiate(go, spawnSpot.transform.position, Quaternion.identity);
-                enemiesYetToSpawn--;
+                enemiesYetToSpawn -= 2;
                 
             }
 			

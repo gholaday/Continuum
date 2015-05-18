@@ -14,6 +14,9 @@ TagManager:
   - Rocket
   - EnemyBullet
   - LaserPowerUp
+  - LaserBeam
+  - PlayerLaserBeam
+  - BeamPowerUp
   layers:
   - Default
   - TransparentFX
@@ -33,7 +36,7 @@ TagManager:
   - Invincible
   - Invisible
   - Background
-  - 
+  - LaserBeam
   - 
   - 
   - 

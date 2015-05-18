@@ -48,7 +48,13 @@ public class enemyDeath : MonoBehaviour {
 	}
 
   
-	
+	void Update()
+    {
+        if (enemy.health <= 0 && oneTime)
+        {
+            Death();
+        }
+    }
 
 	void OnTriggerEnter(Collider other) {
 
@@ -77,39 +83,7 @@ public class enemyDeath : MonoBehaviour {
 			if(gameObject.tag != "Meteor")
 				StartCoroutine("Flash");
 
-			if(enemy.health <= 0 && oneTime)
-			{
-				RocketLaunch.rocketBar += 5;
-				oneTime = false;
-				//AudioSource.PlayClipAtPoint(clip,transform.position);
-				GameManager.currentMultiplier++;
-				//GameManager.score += pointsValue * GameManager.totalMultiplier;
-				ps.IncreaseScore(pointsValue,GameManager.totalMultiplier);
-				GameManager.extraLifeScoreCounter += pointsValue * GameManager.totalMultiplier;
-				ws.enemiesLeft--;
-
-				Destroy(gameObject);
-				if(death != null)
-				{
-					Instantiate(death,transform.position,death.transform.rotation);		
-				}
-
-				if(pointsText != null)
-				{
-					GameObject text = Instantiate(pointsText, transform.position, Quaternion.identity) as GameObject;
-					text.GetComponent<Text>().text = (pointsValue * GameManager.totalMultiplier).ToString();
-					text.GetComponent<Text>().color = color;
-
-
-				}
-
-                if(Random.value <= powerupToSpawn.GetComponent<PowerUp>().spawnChance)
-                {
-                    Instantiate(powerupToSpawn, transform.position, Quaternion.identity);
-                }
-
-				
-			}
+			
 
 
 		}
@@ -121,12 +95,44 @@ public class enemyDeath : MonoBehaviour {
 		}
 	}
 
-	IEnumerator Flash()
+	public IEnumerator Flash()
 	{
 		sr.color = Color.red;
 		yield return new WaitForSeconds(.1f);
 		sr.color = Color.white;
 	}
+
+    void Death()
+    {
+        RocketLaunch.rocketBar += 5;
+        oneTime = false;
+        //AudioSource.PlayClipAtPoint(clip,transform.position);
+        GameManager.currentMultiplier++;
+        //GameManager.score += pointsValue * GameManager.totalMultiplier;
+        ps.IncreaseScore(pointsValue, GameManager.totalMultiplier);
+        GameManager.extraLifeScoreCounter += pointsValue * GameManager.totalMultiplier;
+        ws.enemiesLeft--;
+
+        Destroy(gameObject);
+        if (death != null)
+        {
+            Instantiate(death, transform.position, death.transform.rotation);
+        }
+
+        if (pointsText != null)
+        {
+            GameObject text = Instantiate(pointsText, transform.position, Quaternion.identity) as GameObject;
+            text.GetComponent<Text>().text = (pointsValue * GameManager.totalMultiplier).ToString();
+            text.GetComponent<Text>().color = color;
+
+
+        }
+
+        if (Random.value <= powerupToSpawn.GetComponent<PowerUp>().spawnChance)
+        {
+            Instantiate(powerupToSpawn, transform.position, Quaternion.identity);
+        }
+    }
 }
 
 

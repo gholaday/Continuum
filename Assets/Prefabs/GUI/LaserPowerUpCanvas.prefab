@@ -96,7 +96,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Laser Weapon Level 2
+  m_Text: 
 --- !u!222 &22255960
 CanvasRenderer:
   m_ObjectHideFlags: 1
