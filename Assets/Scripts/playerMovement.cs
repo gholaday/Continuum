@@ -29,8 +29,11 @@ public class playerMovement : MonoBehaviour {
 
 		timeStop = 1;
 		spawn = true;
-		Cursor.visible = false;
-        vig = GameObject.Find("Main Camera").GetComponent<VignetteAndChromaticAberration>();
+        if(slowMoEffects)
+        {
+            vig = GameObject.Find("Main Camera").GetComponent<VignetteAndChromaticAberration>();
+        }
+        
 
 
 	}

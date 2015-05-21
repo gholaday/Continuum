@@ -11,7 +11,7 @@ public class WeaponLaserBeam : MonoBehaviour {
     public int level = 1;
     int levelTracker;
     public float damagePerTick;
-    public float damageBase = .0125f;
+    public float damageBase = .02f;
 
     public LayerMask mask;
     
@@ -141,7 +141,7 @@ public class WeaponLaserBeam : MonoBehaviour {
                     if (hit.collider.tag == "Enemy")
                     {
 
-                        hit.transform.GetComponent<Enemy>().health -= damagePerTick;
+                        hit.transform.GetComponent<Enemy>().health -= damagePerTick / 3;
                         hit.transform.GetComponent<enemyDeath>().StartCoroutine("Flash");
                     }
                 }
@@ -182,7 +182,7 @@ public class WeaponLaserBeam : MonoBehaviour {
                     if (hit.collider.tag == "Enemy")
                     {
 
-                        hit.transform.GetComponent<Enemy>().health -= damagePerTick;
+                        hit.transform.GetComponent<Enemy>().health -= damagePerTick / 5;
                         hit.transform.GetComponent<enemyDeath>().StartCoroutine("Flash");
                     }
                 }

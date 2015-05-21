@@ -12,7 +12,7 @@ GameObject:
   - 65: {fileID: 6552300}
   - 23: {fileID: 2314870}
   - 114: {fileID: 11482420}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Protector
   m_TagString: Shield
   m_Icon: {fileID: 0}

@@ -30,8 +30,8 @@ public class GameManager : MonoBehaviour {
 
 
 	//public static float score;
-	public float highScore;
-	public float scoreToExtraLife;
+	public int highScore;
+	public int scoreToExtraLife;
 	public static float extraLifeScoreCounter;
 	public int playerLives = 3;
 
@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour {
 		multiplierFontSize = multiplierDisplay.fontSize;
 	
 		spawnPos = new Vector2(0,-4);
-		highScore = PlayerPrefs.GetFloat("High Score");
+		highScore = PlayerPrefs.GetInt("High Score");
 		ready.enabled = true;
 
 		originalColor = new Color(255,255,255,.5f);
@@ -89,6 +89,8 @@ public class GameManager : MonoBehaviour {
         Time.timeScale = 1.0f;
         shoot.weaponName = "Laser";
         shoot.cooldown = .25f;
+
+        ResetEnemyModifier();
 
 	}
 	
@@ -334,7 +336,7 @@ public class GameManager : MonoBehaviour {
 
         StartCoroutine(CountDownTo(currentMultiplier));
 
-		PlayerPrefs.SetFloat("High Score", highScore);
+		PlayerPrefs.SetInt("High Score", highScore);
 		
 		StartCoroutine("PitchSlow");
 
@@ -464,6 +466,14 @@ public class GameManager : MonoBehaviour {
     public void ClearHighScore()
     {
         PlayerPrefs.SetInt("High Score", 0);
+    }
+
+    void ResetEnemyModifier()
+    {
+        EnemyModifier.bonusHealth = 0;
+        EnemyModifier.bonusAttackSpeed = 0f;
+        EnemyModifier.bonusSpeed = 0;
+        EnemyModifier.bonusSpawnRate = 0f;
     }
 
 }
