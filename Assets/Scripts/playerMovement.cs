@@ -23,7 +23,7 @@ public class playerMovement : MonoBehaviour {
 
 	bool mouseControl = false;
 
-	//public 
+	
 
 	void Start () {
 

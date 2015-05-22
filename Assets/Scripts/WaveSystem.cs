@@ -147,7 +147,15 @@ public class WaveSystem : MonoBehaviour {
                 yield return new WaitForSeconds(spawnTimer);
                 spawnSpot.position = new Vector3(Random.Range(-widthOrtho + 0.5f, widthOrtho - 0.5f), posy, 0);
                 GameObject go = enemyWaves[wave - 1].enemies[Random.Range(0, enemyWaves.Length)];
-                Instantiate(go, spawnSpot.transform.position, Quaternion.identity);
+                if(wave != 10)
+                {
+                    Instantiate(go, spawnSpot.transform.position, Quaternion.identity);
+                }
+                else
+                {
+                    Instantiate(go, new Vector3(0,10f,0), Quaternion.identity);
+                }
+                
                 enemiesYetToSpawn--;
             }
             else

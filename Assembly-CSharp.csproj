@@ -50,6 +50,8 @@
      <Compile Include="Assets\Scripts\AdjustToScreenRatio.cs" />
      <Compile Include="Assets\Scripts\AudioManager.cs" />
      <Compile Include="Assets\Scripts\AudioProcessor.cs" />
+     <Compile Include="Assets\Scripts\Boss1.cs" />
+     <Compile Include="Assets\Scripts\BossDeath.cs" />
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
      <Compile Include="Assets\Scripts\CameraShake.cs" />
      <Compile Include="Assets\Scripts\ColorChange.cs" />
