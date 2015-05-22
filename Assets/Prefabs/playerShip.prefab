@@ -973,7 +973,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 1
   damagePerTick: 0
-  damageBase: .0199999996
+  damageBase: .0250000004
   mask:
     serializedVersion: 2
     m_Bits: 4294818559

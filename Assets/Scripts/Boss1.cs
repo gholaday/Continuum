@@ -54,6 +54,7 @@ public class Boss1 : MonoBehaviour {
     void StartFight()
     {
         Debug.Log("Lets go");
+        GetComponent<BossDeath>().OnFightStart();
         anim.SetBool("Spinning", true);
         Invoke("StartShooting", 1f);
         Invoke("StartTriangle", 5f);
@@ -89,7 +90,7 @@ public class Boss1 : MonoBehaviour {
     IEnumerator Charge()
     {
         shooting = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
         anim.SetTrigger("Charge");
     }
 
