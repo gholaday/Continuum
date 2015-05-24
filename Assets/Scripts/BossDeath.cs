@@ -13,6 +13,8 @@ public class BossDeath : MonoBehaviour {
 
     bool onetime = true;
 
+    Enemy enemy;
+
     WaveSystem ws;
 
     SpriteRenderer sr;
@@ -26,25 +28,27 @@ public class BossDeath : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        health += EnemyModifier.bonusHealth * 25;   //set health according to any modifiers
+        enemy = GetComponent<Enemy>();
+        health += EnemyModifier.bonusHealth * 50;   //set health according to any modifiers
         ws = GameObject.Find("EnemySpawner").GetComponent<WaveSystem>();
         sr = GetComponentInChildren<SpriteRenderer>();
         ps = GameObject.Find("GameManager").GetComponent<PlayerScore>();
         hpBar.maxValue = health;
         hpBar.value = health;
+        enemy.health = health;
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        if (health <= 0 && onetime)
+        if (enemy.health <= 0 && onetime)
         {
             onetime = false;
             StartCoroutine(Death());
         }
 
-        hpBar.value = health;
+        hpBar.value = enemy.health;
 	
 	}
 
@@ -80,6 +84,11 @@ public class BossDeath : MonoBehaviour {
 
         }
 
+        if (powerUp != null)
+        {
+            Instantiate(powerUp, transform.position, Quaternion.identity);
+        }
+
 
     }
 
@@ -101,11 +110,7 @@ public class BossDeath : MonoBehaviour {
     {
         StopAllCoroutines();
         ws.enemiesLeft--;
-
-        if(powerUp != null)
-        {
-            Instantiate(powerUp, transform.position, Quaternion.identity);
-        }
+    
     }
 
     public IEnumerator Flash()
@@ -123,17 +128,17 @@ public class BossDeath : MonoBehaviour {
 
             if (other.tag == "Rocket")
             {
-                health -= 4;
+                enemy.health -= 4;
             }
             else if (other.tag == "playerBullet")
             {
 
-                health -= other.GetComponent<PlayerBulletProperties>().damage;
+                enemy.health -= other.GetComponent<PlayerBulletProperties>().damage;
                 Destroy(other.gameObject);
             }
             else
             {
-                health--;
+                enemy.health--;
                
             }
 
@@ -147,6 +152,7 @@ public class BossDeath : MonoBehaviour {
         GetComponent<Boss1>().enabled = false;
         GetComponent<SphereCollider>().enabled = false;
         GetComponent<Animator>().enabled = false;
+        GetComponent<Enemy>().enabled = false;
     }
 
 }

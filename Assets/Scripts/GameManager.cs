@@ -280,6 +280,7 @@ public class GameManager : MonoBehaviour {
 			StartCoroutine("ExtraLifeOnScoreDisplay");
 			playerLives++;
 			extraLifeScoreCounter = 0;
+            scoreToExtraLife *= 2;
 		}
 
 	}

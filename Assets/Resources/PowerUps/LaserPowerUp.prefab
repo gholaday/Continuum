@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpeed: 2
-  spawnChance: .25
+  spawnChance: .150000006
   powerUpText: {fileID: 0}
 --- !u!212 &21230770
 SpriteRenderer:

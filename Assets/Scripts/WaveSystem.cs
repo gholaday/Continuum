@@ -107,14 +107,14 @@ public class WaveSystem : MonoBehaviour {
 
             if(randNum == 0)
             {
-                EnemyModifier.bonusHealth += 1;
+                EnemyModifier.bonusHealth += 2;
                 StartCoroutine(DisplayWaveModifier("Enemy Health Increased!"));
-                //Debug.Log("Enemy health increased");
+         
             }
             else if(randNum == 1)
             {
-                //Debug.Log("Enemy Attack Speed increased by .05");
-                EnemyModifier.bonusAttackSpeed += .05f;
+                
+                EnemyModifier.bonusAttackSpeed += .075f;
                 StartCoroutine(DisplayWaveModifier("Enemy Attack Speed Increased!"));
             }
 

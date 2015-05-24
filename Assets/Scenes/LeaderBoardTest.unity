@@ -250,6 +250,7 @@ MonoBehaviour:
   clickToChange: 1
   button: Cancel
   usePriorScene: 1
+  anyKey: 0
 --- !u!4 &305347685
 Transform:
   m_ObjectHideFlags: 0

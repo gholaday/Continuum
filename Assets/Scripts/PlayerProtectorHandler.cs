@@ -27,7 +27,7 @@ public class PlayerProtectorHandler : MonoBehaviour {
             Instantiate(obj, transform.position, Quaternion.identity);
             
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.25f);
         
         StartCoroutine(Spawn());
     }

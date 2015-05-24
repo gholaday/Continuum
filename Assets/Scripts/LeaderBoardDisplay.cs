@@ -54,17 +54,25 @@ public class LeaderBoardDisplay : MonoBehaviour {
 
         toDisplay = false;
         
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(3f);
+
         loading = false;
 
         foreach (ParseObject obj in results)
         {
-            user.text += count + ". " + obj.Get<string>("playerName") + "\n";
+            if(count < 10)
+            {
+                user.text += " " + count + ". " + obj.Get<string>("playerName") + "\n";
+            }
+            else
+            {
+                user.text += count + ". " + obj.Get<string>("playerName") + "\n"; 
+            }
+
             score.text += obj.Get<int>("score") + "\n";
             count++;
-
-           // Debug.Log(obj.Get<int>("score"));
         }
+
     }
 
     void GenerateData()

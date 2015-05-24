@@ -69,7 +69,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 409014}
   - 95: {fileID: 9597406}
-  m_Layer: 9
+  m_Layer: 17
   m_Name: Boss1Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,6 +186,7 @@ GameObject:
   - 95: {fileID: 9590474}
   - 135: {fileID: 13501042}
   - 114: {fileID: 11458510}
+  - 114: {fileID: 11425162}
   m_Layer: 9
   m_Name: Boss1
   m_TagString: Enemy
@@ -331,6 +332,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11425162
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b721fd7ef531b2469c2b42683bffdc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  moveSpeed: 0
+  attackSpeed: 0
 --- !u!114 &11442626
 MonoBehaviour:
   m_ObjectHideFlags: 1

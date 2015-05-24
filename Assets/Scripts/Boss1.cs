@@ -3,41 +3,28 @@ using System.Collections;
 
 public class Boss1 : MonoBehaviour {
 
-    Animator anim;
-   
-    
     public Transform[] bulletSpawns;
     public float fireRate = .1f;
     public GameObject bulletPrefab;
     public float timeTillStart = 3f;
 
-  
-    
     bool shooting = false;
-
+    Animator anim;
 
 	// Use this for initialization
 	void Start () {
 
         anim = GetComponent<Animator>();
         
-        StartCoroutine(Shoot());
-        Invoke("StartFight", timeTillStart);
-        
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        StartCoroutine(Shoot());        //Begin the shooting function
 
-        
+        Invoke("StartFight", timeTillStart);        //Invokes the start fight function when boss is in place
         
 	}
     
     IEnumerator Shoot()
     {
-
-        
+        //as long as shoot is true, fire bullets from each turret and call this coroutine again after a short delay
         if(shooting)
         {
             for (int i = 0; i < bulletSpawns.Length; i++)
@@ -47,23 +34,22 @@ public class Boss1 : MonoBehaviour {
         }
 
         yield return new WaitForSeconds(fireRate);
+
         StartCoroutine(Shoot());
     
     }
 
     void StartFight()
     {
-        Debug.Log("Lets go");
-        GetComponent<BossDeath>().OnFightStart();
-        anim.SetBool("Spinning", true);
-        Invoke("StartShooting", 1f);
-        Invoke("StartTriangle", 5f);
-
+        GetComponent<BossDeath>().OnFightStart();   //calls function in boss death script which helps sync things up
+        anim.SetBool("Spinning", true);     //start spinning
+        Invoke("StartShooting", .5f);       //begin shooting
+        Invoke("StartTriangle", 5f);        //start triangle movement anim
     }
 
     void StartShooting()
     {
-        GetComponent<BossDeath>().canBeDamaged = true;
+        GetComponent<BossDeath>().canBeDamaged = true;      //allow boss to be damaged in boss death script
         shooting = true;
     }
 
@@ -81,8 +67,6 @@ public class Boss1 : MonoBehaviour {
 
     void StartFastTriangle()
     {
-        //anim.SetBool("Spinning", false);
-        //anim.SetBool("FastSpinning", false);
         shooting = true;
         anim.SetTrigger("StartFastTriangleMove");
     }
@@ -94,45 +78,62 @@ public class Boss1 : MonoBehaviour {
         anim.SetTrigger("Charge");
     }
 
-    void ChangeState()
+    public void ChangeSpinDirection()
+    {
+      
+        if(anim.GetBool("Spinning") == true)
+        {
+            if(Random.value < .5f)
+            {
+                anim.SetBool("Spinning", false);
+                anim.SetBool("ReverseSpin", true);
+            }
+        }
+        else if (anim.GetBool("ReverseSpin") == true)
+        {
+            if (Random.value < .5f)
+            {
+                anim.SetBool("ReverseSpin", false);
+                anim.SetBool("Spinning", true);
+            }
+        }
+    }
+
+    void ChangeState()  //is called at the end of each animation, used to randomly pick a state for boss to enter
     {
         int rand = Random.Range(1, 5);
-        Debug.Log(rand);
-
-        if (Random.value < .5f)
+       
+        if (Random.value < .5f)     //50% chance to change from normal to fast spin mode
         {
-            //Debug.Log("Spinning faster");
             anim.SetBool("Spinning", false);
+            anim.SetBool("ReverseSpin", false);
             anim.SetBool("FastSpinning", true);
         }
         else
         {
-            //Debug.Log("Spinning normal");
-            anim.SetBool("Spinning", true);
+            anim.SetBool("ReverseSpin", false);
             anim.SetBool("FastSpinning", false);
+            anim.SetBool("Spinning", true);   
         }
 
-        switch (rand)
+        switch (rand)       //calls the corresponding function depending on random number 
         {
-            case 1: StartTriangle();
+            case 1: Invoke("StartTriangle", 1f);
                 break;
 
             case 2: Idle();
                 break;
 
-            case 3: StartFastTriangle();
+            case 3: Invoke("StartFastTriangle", 1f);
                 break;
 
             case 4: StartCoroutine(Charge());
                 break;
 
-
             default:
                 break;
         }
 
-        
     }
-
-    
+  
 }

@@ -101,7 +101,16 @@ public class WeaponLaserBeam : MonoBehaviour {
              {
                  
                  hit.transform.GetComponent<Enemy>().health -= damagePerTick;
-                 hit.transform.GetComponent<enemyDeath>().StartCoroutine("Flash");
+
+                 if (hit.transform.GetComponent<enemyDeath>() != null)
+                 {
+                     hit.transform.GetComponent<enemyDeath>().StartCoroutine("Flash");
+                 }
+                 else if(hit.transform.GetComponent<BossDeath>() != null)
+                 {
+                     hit.transform.GetComponent<BossDeath>().StartCoroutine("Flash");
+                 }
+                 
              }
          }
          
