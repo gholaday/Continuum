@@ -27,6 +27,8 @@ public class EnemyStalkerAI : MonoBehaviour {
         StartCoroutine("Shoot");
 
         shootCooldown -= EnemyModifier.bonusAttackSpeed;
+
+        flySpot = new Vector3(Random.Range(-5, 5.1f), Random.Range(-5, 5.1f), 0);
 	}
 	
 	// Update is called once per frame

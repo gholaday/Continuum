@@ -25,6 +25,8 @@ public class BossDeath : MonoBehaviour {
 
     float fadeColor = 1;
 
+    float healthThreshold;
+
 	// Use this for initialization
 	void Start () {
 
@@ -36,6 +38,7 @@ public class BossDeath : MonoBehaviour {
         hpBar.maxValue = health;
         hpBar.value = health;
         enemy.health = health;
+        healthThreshold = enemy.health / 4;
 
 	}
 	
@@ -49,6 +52,11 @@ public class BossDeath : MonoBehaviour {
         }
 
         hpBar.value = enemy.health;
+
+        if (enemy.health < healthThreshold)
+        {
+            GetComponent<Boss1>().EnableExtraTurrets();
+        }
 	
 	}
 
@@ -143,6 +151,8 @@ public class BossDeath : MonoBehaviour {
             }
 
             StartCoroutine(Flash());
+
+
         }
     }
 

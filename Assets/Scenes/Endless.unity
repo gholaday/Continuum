@@ -312,6 +312,10 @@ Prefab:
       propertyPath: waveModifierDisplay
       value: 
       objectReference: {fileID: 757922752}
+    - target: {fileID: 11400000, guid: 0b47e8aa18994344eaa0dc954b3946ad, type: 2}
+      propertyPath: waveNumber
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b47e8aa18994344eaa0dc954b3946ad, type: 2}
   m_IsPrefabParent: 0
@@ -868,7 +872,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22400018, guid: 285defab739f81940b75960c7f6860cb, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 22400018, guid: 285defab739f81940b75960c7f6860cb, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -914,14 +918,6 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1041242993}
-    - target: {fileID: 22468598, guid: 285defab739f81940b75960c7f6860cb, type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22468598, guid: 285defab739f81940b75960c7f6860cb, type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 22400000, guid: 285defab739f81940b75960c7f6860cb, type: 2}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -930,9 +926,13 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11400020, guid: 285defab739f81940b75960c7f6860cb, type: 2}
-      propertyPath: m_Text
-      value: Version 0.018
+    - target: {fileID: 22468598, guid: 285defab739f81940b75960c7f6860cb, type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22468598, guid: 285defab739f81940b75960c7f6860cb, type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 285defab739f81940b75960c7f6860cb, type: 2}
@@ -1557,7 +1557,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!1001 &1764149761
+--- !u!1001 &1750310232
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1598,14 +1598,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 146538, guid: e2828df7e75752e4ca8987c42164b425, type: 2}
       propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22403634, guid: e2828df7e75752e4ca8987c42164b425, type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22403634, guid: e2828df7e75752e4ca8987c42164b425, type: 2}
-      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

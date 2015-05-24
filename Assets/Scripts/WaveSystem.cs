@@ -107,7 +107,7 @@ public class WaveSystem : MonoBehaviour {
 
             if(randNum == 0)
             {
-                EnemyModifier.bonusHealth += 2;
+                EnemyModifier.bonusHealth += 1;
                 StartCoroutine(DisplayWaveModifier("Enemy Health Increased!"));
          
             }

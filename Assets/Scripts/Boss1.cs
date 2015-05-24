@@ -11,6 +11,10 @@ public class Boss1 : MonoBehaviour {
     bool shooting = false;
     Animator anim;
 
+    int numTurrets = 4;
+
+    bool almostDead = false;
+
 	// Use this for initialization
 	void Start () {
 
@@ -27,8 +31,8 @@ public class Boss1 : MonoBehaviour {
         //as long as shoot is true, fire bullets from each turret and call this coroutine again after a short delay
         if(shooting)
         {
-            for (int i = 0; i < bulletSpawns.Length; i++)
-            {
+            for (int i = 0; i < numTurrets; i++)
+            {    
                 Instantiate(bulletPrefab, bulletSpawns[i].transform.position, bulletSpawns[i].rotation);
             }
         }
@@ -37,6 +41,15 @@ public class Boss1 : MonoBehaviour {
 
         StartCoroutine(Shoot());
     
+    }
+
+    public void EnableExtraTurrets()
+    {
+        if(!almostDead)
+        {
+            numTurrets += 4;
+            almostDead = true;
+        }
     }
 
     void StartFight()
@@ -124,7 +137,14 @@ public class Boss1 : MonoBehaviour {
             case 2: Idle();
                 break;
 
-            case 3: Invoke("StartFastTriangle", 1f);
+            case 3: if(!almostDead)
+                {
+                    Invoke("StartFastTriangle", 1f);
+                }
+                else
+                {
+                    ChangeState();
+                }
                 break;
 
             case 4: StartCoroutine(Charge());
