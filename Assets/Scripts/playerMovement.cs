@@ -15,6 +15,8 @@ public class playerMovement : MonoBehaviour {
     public GameObject particles;
     public bool slowMoEffects = true;
 
+    public Transform model;
+
     VignetteAndChromaticAberration vig;
 
 
@@ -22,6 +24,8 @@ public class playerMovement : MonoBehaviour {
 	bool spawn = false;
 
 	bool mouseControl = false;
+
+    float roty;
 
 	
 
@@ -33,6 +37,8 @@ public class playerMovement : MonoBehaviour {
         {
             vig = GameObject.Find("Main Camera").GetComponent<VignetteAndChromaticAberration>();
         }
+
+        roty = transform.rotation.y;
         
 
 
@@ -65,6 +71,42 @@ public class playerMovement : MonoBehaviour {
             pos.x += Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
 		}
 
+        
+        
+
+        if(Input.GetAxis("Horizontal") != 0)
+        {
+            if(roty < -20 || roty > 2)
+            {
+                roty -= Input.GetAxis("Horizontal") * Time.deltaTime * 60;
+            }
+            else
+            {
+                roty -= Input.GetAxis("Horizontal") * Time.deltaTime * 50;
+            }
+            
+         
+            /*
+            if(roty > 30f + 90f)
+            {
+                roty = 30f + 90f;
+            }
+            else if(roty < -30f - 90f)
+            {
+                roty = -30f -90f;
+            }*/
+
+            roty = Mathf.Clamp(roty, -30f, 30f);
+  
+        }
+        else
+        {
+            roty = Mathf.MoveTowardsAngle(roty, 0, Time.deltaTime * 80);
+        }
+
+        //model.transform.rotation = new Quaternion(transform.rotation.x, model.transform.rotation.y + roty, transform.rotation.z, transform.rotation.w);
+        model.transform.eulerAngles = new Vector3(0, roty + 90, 270);
+       
 		//Slow mo
 
 		if(slowmoTime >= 100)

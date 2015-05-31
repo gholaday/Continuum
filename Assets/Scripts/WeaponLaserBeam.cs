@@ -3,10 +3,6 @@ using System.Collections;
 
 public class WeaponLaserBeam : MonoBehaviour {
 
-
-    
-
- 
     LineRenderer line;
     public int level = 1;
     int levelTracker;
@@ -39,7 +35,7 @@ public class WeaponLaserBeam : MonoBehaviour {
         damagePerTick = damageBase / shoot.cooldown;
 
 
-        Mathf.Clamp(level, 1, 3);
+        level = Mathf.Clamp(level, 1, 3);
 
         if(level != levelTracker)
         {
@@ -72,6 +68,9 @@ public class WeaponLaserBeam : MonoBehaviour {
                 break;
             case 3: StartCoroutine(Level3Beam());
                 break;
+            case 4: StartCoroutine(Level4Beam());
+                break;
+
         }
     }
 
@@ -132,8 +131,8 @@ public class WeaponLaserBeam : MonoBehaviour {
         for (int i = 0; i < 3; i++)
         {
 
-            line.SetWidth(widthSize, widthSize);
             line = lines[i];
+            line.SetWidth(widthSize, widthSize);
             line.enabled = true;
             Ray ray = new Ray(transform.position, spawns[i]);
             RaycastHit hit;
@@ -150,8 +149,17 @@ public class WeaponLaserBeam : MonoBehaviour {
                     if (hit.collider.tag == "Enemy")
                     {
 
-                        hit.transform.GetComponent<Enemy>().health -= damagePerTick / 3;
-                        hit.transform.GetComponent<enemyDeath>().StartCoroutine("Flash");
+                        hit.transform.GetComponent<Enemy>().health -= damagePerTick;
+
+                        if (hit.transform.GetComponent<enemyDeath>() != null)
+                        {
+                            hit.transform.GetComponent<enemyDeath>().StartCoroutine("Flash");
+                        }
+                        else if (hit.transform.GetComponent<BossDeath>() != null)
+                        {
+                            hit.transform.GetComponent<BossDeath>().StartCoroutine("Flash");
+                        }
+
                     }
                 }
 
@@ -172,9 +180,8 @@ public class WeaponLaserBeam : MonoBehaviour {
 
         for (int i = 0; i < 5; i++)
         {
-
-            line.SetWidth(widthSize, widthSize);
             line = lines[i];
+            line.SetWidth(widthSize, widthSize);
             line.enabled = true;
             Ray ray = new Ray(transform.position, spawns[i]);
             RaycastHit hit;
@@ -191,8 +198,17 @@ public class WeaponLaserBeam : MonoBehaviour {
                     if (hit.collider.tag == "Enemy")
                     {
 
-                        hit.transform.GetComponent<Enemy>().health -= damagePerTick / 5;
-                        hit.transform.GetComponent<enemyDeath>().StartCoroutine("Flash");
+                        hit.transform.GetComponent<Enemy>().health -= damagePerTick;
+
+                        if (hit.transform.GetComponent<enemyDeath>() != null)
+                        {
+                            hit.transform.GetComponent<enemyDeath>().StartCoroutine("Flash");
+                        }
+                        else if (hit.transform.GetComponent<BossDeath>() != null)
+                        {
+                            hit.transform.GetComponent<BossDeath>().StartCoroutine("Flash");
+                        }
+
                     }
                 }
 
@@ -207,6 +223,55 @@ public class WeaponLaserBeam : MonoBehaviour {
 
     }
 
-   
+    IEnumerator Level4Beam()
+    {
+        widthSize *= -1;
+
+        for (int i = 0; i < 7; i++)
+        {
+            line = lines[i];
+            line.SetWidth(widthSize, widthSize);
+            line.enabled = true;
+            Ray ray = new Ray(transform.position, spawns[i]);
+            RaycastHit hit;
+
+            line.SetPosition(0, ray.origin);
+
+            if (Physics.Raycast(ray, out hit, 100, mask))
+            {
+
+                if (hit.collider.tag != "EnemyBullet" || hit.collider.tag != "Rocket")
+                {
+                    line.SetPosition(1, hit.point);
+
+                    if (hit.collider.tag == "Enemy")
+                    {
+
+                        hit.transform.GetComponent<Enemy>().health -= damagePerTick;
+
+                        if (hit.transform.GetComponent<enemyDeath>() != null)
+                        {
+                            hit.transform.GetComponent<enemyDeath>().StartCoroutine("Flash");
+                        }
+                        else if (hit.transform.GetComponent<BossDeath>() != null)
+                        {
+                            hit.transform.GetComponent<BossDeath>().StartCoroutine("Flash");
+                        }
+
+                    }
+                }
+
+            }
+
+            else
+                line.SetPosition(1, ray.GetPoint(100));
+        }
+
+        yield return new WaitForSeconds(.001f);
+        StartCoroutine(Level4Beam());
+
+    }
+
+
 }
 

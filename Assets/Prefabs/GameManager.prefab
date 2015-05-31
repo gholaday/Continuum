@@ -165,6 +165,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 983c1621facee3f44896e1c68cdd8330, type: 3}
   - {fileID: 8300000, guid: 26ab7f9f2013e1244a688b68a28af465, type: 3}
   - {fileID: 8300000, guid: fe4a5ca807872414dba404b2d1534f70, type: 3}
+  - {fileID: 8300000, guid: 480376a05fe3c84488e757a783df4577, type: 3}
   shuffle: 1
   nowPlaying: {fileID: 0}
 --- !u!114 &11449906

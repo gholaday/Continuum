@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11422316}
   - 114: {fileID: 11477212}
   m_Layer: 8
-  m_Name: playerLaser
+  m_Name: playerLaserBullet1
   m_TagString: playerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

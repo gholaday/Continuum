@@ -34,6 +34,7 @@ public class playerDeath : MonoBehaviour {
 		gameObject.layer = 15;
 
 		manager = GameObject.Find("GameManager");
+
 		if(manager != null)
 		{
 			gm = manager.GetComponent<GameManager>();
@@ -54,13 +55,13 @@ public class playerDeath : MonoBehaviour {
 			if(timer % .1 >= .05)
 			{
 		
-				GetComponent<Renderer>().enabled = false;
+				GetComponentInChildren<MeshRenderer>().enabled = false;
 
 
 			}
 			else
 			{
-				GetComponent<Renderer>().enabled = true;
+                GetComponentInChildren<MeshRenderer>().enabled = true;
 			}
 		}
 
@@ -68,7 +69,7 @@ public class playerDeath : MonoBehaviour {
 		if(timer <= 0)
 		{
 			gameObject.layer = 11;
-			GetComponent<Renderer>().enabled = true;
+            GetComponentInChildren<MeshRenderer>().enabled = true;
             timer = invulTimer;
 		}
 
@@ -166,7 +167,7 @@ public class playerDeath : MonoBehaviour {
 
             if (shoot.weaponName == "Laser")
             {
-                if (GetComponentInChildren<WeaponDoubleLaser>().level < 3)
+                if (GetComponentInChildren<WeaponDoubleLaser>().level < 4)
                 {
                     GetComponentInChildren<WeaponDoubleLaser>().level++;
                 }
@@ -197,7 +198,7 @@ public class playerDeath : MonoBehaviour {
 
             if (shoot.weaponName == "Beam")
             {
-                if (GetComponentInChildren<WeaponLaserBeam>().level < 3)
+                if (GetComponentInChildren<WeaponLaserBeam>().level < 4)
                 {
                     GetComponentInChildren<WeaponLaserBeam>().level++;
                 }
@@ -207,9 +208,10 @@ public class playerDeath : MonoBehaviour {
             else
             {
                 shoot.weaponName = "Beam";
-                GetComponentInChildren<WeaponDoubleLaser>().enabled = false;
                 GetComponentInChildren<WeaponLaserBeam>().enabled = true;
+                GetComponentInChildren<WeaponDoubleLaser>().enabled = false;
                 GetComponentInChildren<WeaponLaserBeam>().level = 1;
+
             }
 
             GameObject text = Instantiate(powerupdisplaycanvas, transform.position, Quaternion.identity) as GameObject;
@@ -222,14 +224,15 @@ public class playerDeath : MonoBehaviour {
 
 	void OnHitShake(float amount)
 	{
-		camShake.shake = amount;
+		camShake.shake += amount;
 	}
 
 
 	IEnumerator TimeFreeze()
 	{
-		Time.timeScale = Mathf.Epsilon;
-		yield return new WaitForSeconds(.1f);
+        
+		Time.timeScale = 0;
+		yield return new WaitForSeconds(1f);
 		Time.timeScale = 1;
         
 	}

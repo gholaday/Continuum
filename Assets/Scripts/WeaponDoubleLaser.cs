@@ -8,7 +8,7 @@ public class WeaponDoubleLaser : MonoBehaviour {
     public static float doubleLaserCooldown = .25f;
     public int level = 1;
 
-    public GameObject bullet;
+    public GameObject[] bullets;
     public Transform[] bulletSpawns;
 
     float countdown;
@@ -47,28 +47,39 @@ public class WeaponDoubleLaser : MonoBehaviour {
                 break;
             case 3: Level3Fire();
                 break;
+            case 4: Level4Fire();
+                break;
         }
     }
 
     void Level1Fire()
     {
-        Instantiate(bullet, bulletSpawns[1].position, bulletSpawns[1].rotation);
-        Instantiate(bullet, bulletSpawns[2].position, bulletSpawns[2].rotation);
+        Instantiate(bullets[0], bulletSpawns[1].position, bulletSpawns[1].rotation);
+        Instantiate(bullets[0], bulletSpawns[2].position, bulletSpawns[2].rotation);
     }
 
     void Level2Fire()
     {
-        Instantiate(bullet, bulletSpawns[4].position, bulletSpawns[1].rotation);
-        Instantiate(bullet, bulletSpawns[5].position, bulletSpawns[2].rotation);
-        Instantiate(bullet, bulletSpawns[6].position, bulletSpawns[2].rotation);
+        Instantiate(bullets[0], bulletSpawns[4].position, bulletSpawns[1].rotation);
+        Instantiate(bullets[0], bulletSpawns[5].position, bulletSpawns[2].rotation);
+        Instantiate(bullets[0], bulletSpawns[6].position, bulletSpawns[2].rotation);
     }
 
     void Level3Fire()
     {
-        Instantiate(bullet, bulletSpawns[0].position, bulletSpawns[0].rotation);
-        Instantiate(bullet, bulletSpawns[7].position, bulletSpawns[7].rotation);
-        Instantiate(bullet, bulletSpawns[8].position, bulletSpawns[8].rotation);
-        Instantiate(bullet, bulletSpawns[3].position, bulletSpawns[3].rotation);
-        Instantiate(bullet, bulletSpawns[6].position, bulletSpawns[6].rotation);
+        Instantiate(bullets[0], bulletSpawns[0].position, bulletSpawns[0].rotation);
+        Instantiate(bullets[0], bulletSpawns[7].position, bulletSpawns[7].rotation);
+        Instantiate(bullets[0], bulletSpawns[8].position, bulletSpawns[8].rotation);
+        Instantiate(bullets[0], bulletSpawns[3].position, bulletSpawns[3].rotation);
+        Instantiate(bullets[0], bulletSpawns[6].position, bulletSpawns[6].rotation);
+    }
+
+    void Level4Fire()
+    {
+        Instantiate(bullets[1], bulletSpawns[0].position, bulletSpawns[0].rotation);
+        Instantiate(bullets[1], bulletSpawns[7].position, bulletSpawns[7].rotation);
+        Instantiate(bullets[1], bulletSpawns[8].position, bulletSpawns[8].rotation);
+        Instantiate(bullets[1], bulletSpawns[3].position, bulletSpawns[3].rotation);
+        Instantiate(bullets[1], bulletSpawns[6].position, bulletSpawns[6].rotation);
     }
 }

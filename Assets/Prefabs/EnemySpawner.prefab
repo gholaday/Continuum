@@ -40,7 +40,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25b1b8d458e1a644b27dbf8603cfcfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveNumber: 1
+  waveNumber: 10
   enemiesLeft: 0
   waveDisplay: {fileID: 0}
   waveModifierDisplay: {fileID: 0}
@@ -149,16 +149,16 @@ MonoBehaviour:
     - {fileID: 100000, guid: df099cc4453b262469484c024103f93c, type: 2}
     - {fileID: 100000, guid: df099cc4453b262469484c024103f93c, type: 2}
   - enemies:
-    - {fileID: 146538, guid: e2828df7e75752e4ca8987c42164b425, type: 2}
-    - {fileID: 146538, guid: e2828df7e75752e4ca8987c42164b425, type: 2}
-    - {fileID: 146538, guid: e2828df7e75752e4ca8987c42164b425, type: 2}
-    - {fileID: 146538, guid: e2828df7e75752e4ca8987c42164b425, type: 2}
-    - {fileID: 146538, guid: e2828df7e75752e4ca8987c42164b425, type: 2}
-    - {fileID: 146538, guid: e2828df7e75752e4ca8987c42164b425, type: 2}
-    - {fileID: 146538, guid: e2828df7e75752e4ca8987c42164b425, type: 2}
-    - {fileID: 146538, guid: e2828df7e75752e4ca8987c42164b425, type: 2}
-    - {fileID: 146538, guid: e2828df7e75752e4ca8987c42164b425, type: 2}
-    - {fileID: 146538, guid: e2828df7e75752e4ca8987c42164b425, type: 2}
+    - {fileID: 128540, guid: d1e00e8893c84e8469af15d11f5d3980, type: 2}
+    - {fileID: 128540, guid: d1e00e8893c84e8469af15d11f5d3980, type: 2}
+    - {fileID: 128540, guid: d1e00e8893c84e8469af15d11f5d3980, type: 2}
+    - {fileID: 128540, guid: d1e00e8893c84e8469af15d11f5d3980, type: 2}
+    - {fileID: 128540, guid: d1e00e8893c84e8469af15d11f5d3980, type: 2}
+    - {fileID: 128540, guid: d1e00e8893c84e8469af15d11f5d3980, type: 2}
+    - {fileID: 128540, guid: d1e00e8893c84e8469af15d11f5d3980, type: 2}
+    - {fileID: 128540, guid: d1e00e8893c84e8469af15d11f5d3980, type: 2}
+    - {fileID: 128540, guid: d1e00e8893c84e8469af15d11f5d3980, type: 2}
+    - {fileID: 128540, guid: d1e00e8893c84e8469af15d11f5d3980, type: 2}
   otherSpawnTimer: 0
   healthBonus: 0
   moveSpeedBonus: 0

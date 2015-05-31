@@ -51,6 +51,8 @@
      <Compile Include="Assets\Scripts\AudioManager.cs" />
      <Compile Include="Assets\Scripts\AudioProcessor.cs" />
      <Compile Include="Assets\Scripts\Boss1.cs" />
+     <Compile Include="Assets\Scripts\Boss2AttackHandler.cs" />
+     <Compile Include="Assets\Scripts\Boss2Death.cs" />
      <Compile Include="Assets\Scripts\BossDeath.cs" />
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
      <Compile Include="Assets\Scripts\CameraShake.cs" />

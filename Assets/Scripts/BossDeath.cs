@@ -17,7 +17,7 @@ public class BossDeath : MonoBehaviour {
 
     WaveSystem ws;
 
-    SpriteRenderer sr;
+    MeshRenderer mr;
 
     public bool canBeDamaged = false;
 
@@ -27,18 +27,21 @@ public class BossDeath : MonoBehaviour {
 
     float healthThreshold;
 
+    //CameraShake camShake;
+
 	// Use this for initialization
 	void Start () {
 
         enemy = GetComponent<Enemy>();
         health += EnemyModifier.bonusHealth * 50;   //set health according to any modifiers
         ws = GameObject.Find("EnemySpawner").GetComponent<WaveSystem>();
-        sr = GetComponentInChildren<SpriteRenderer>();
+        mr = GetComponentInChildren<MeshRenderer>();
         ps = GameObject.Find("GameManager").GetComponent<PlayerScore>();
         hpBar.maxValue = health;
         hpBar.value = health;
         enemy.health = health;
         healthThreshold = enemy.health / 4;
+       // camShake = Camera.main.GetComponent<CameraShake>();
 
 	}
 	
@@ -65,6 +68,7 @@ public class BossDeath : MonoBehaviour {
         DisableComponents();
         Destroy(gameObject.transform.parent.gameObject, 3f);
         InvokeRepeating("Fade", 0, .1f);
+        //OnHitShake(2f);
 
         if(deathParticles != null)
         {
@@ -104,8 +108,8 @@ public class BossDeath : MonoBehaviour {
     {
         fadeColor -= .033f;
 
-        sr.color = Color.red;
-        sr.color = new Color(sr.color.a, sr.color.b, sr.color.g, fadeColor);
+        mr.material.color = Color.red;
+        mr.material.color = new Color(mr.material.color.a, mr.material.color.b, mr.material.color.g, fadeColor);
     
     }
 
@@ -123,9 +127,9 @@ public class BossDeath : MonoBehaviour {
 
     public IEnumerator Flash()
     {
-        sr.color = Color.red;
+        mr.material.color = Color.red;
         yield return new WaitForSeconds(.1f);
-        sr.color = Color.white;
+        mr.material.color = Color.white;
     }
 
     void OnTriggerEnter(Collider other)
@@ -164,5 +168,12 @@ public class BossDeath : MonoBehaviour {
         GetComponent<Animator>().enabled = false;
         GetComponent<Enemy>().enabled = false;
     }
+
+    /*
+    void OnHitShake(float amount)
+    {
+        camShake.shake = amount;
+    }
+     */
 
 }
