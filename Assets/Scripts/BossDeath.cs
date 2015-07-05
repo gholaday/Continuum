@@ -106,10 +106,11 @@ public class BossDeath : MonoBehaviour {
 
     void Fade()
     {
+        GetComponentInChildren<ColorShiftBetweenTwoColors>().enabled = false;
         fadeColor -= .033f;
-
+      
         mr.material.color = Color.red;
-        mr.material.color = new Color(mr.material.color.a, mr.material.color.b, mr.material.color.g, fadeColor);
+        mr.material.color = new Color(mr.material.color.r, mr.material.color.b, mr.material.color.g, fadeColor);
     
     }
 
@@ -127,9 +128,12 @@ public class BossDeath : MonoBehaviour {
 
     public IEnumerator Flash()
     {
+        Color originalColor = mr.material.color;
+        GetComponentInChildren<ColorShiftBetweenTwoColors>().enabled = false;
         mr.material.color = Color.red;
         yield return new WaitForSeconds(.1f);
-        mr.material.color = Color.white;
+        GetComponentInChildren<ColorShiftBetweenTwoColors>().enabled = true;
+        mr.material.color = originalColor;
     }
 
     void OnTriggerEnter(Collider other)

@@ -135,6 +135,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &136116
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 471932}
+  - 33: {fileID: 3318506}
+  - 23: {fileID: 2330646}
+  - 114: {fileID: 11418340}
+  m_Layer: 0
+  m_Name: pCylinder16
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &146538
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,23 +252,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!1 &176552
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 492210}
-  - 33: {fileID: 3381162}
-  - 23: {fileID: 2380556}
-  m_Layer: 0
-  m_Name: pCylinder16
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &180982
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,7 +377,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 492210}
+  - {fileID: 471932}
   m_Father: {fileID: 485324}
   m_RootOrder: 1
 --- !u!4 &456464
@@ -447,6 +448,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 463670}
   m_RootOrder: 3
+--- !u!4 &471932
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136116}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 445438}
+  m_RootOrder: 0
 --- !u!4 &473002
 Transform:
   m_ObjectHideFlags: 1
@@ -500,18 +513,6 @@ Transform:
   - {fileID: 456464}
   m_Father: {fileID: 409014}
   m_RootOrder: 0
---- !u!4 &492210
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 176552}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 445438}
-  m_RootOrder: 0
 --- !u!4 &493942
 Transform:
   m_ObjectHideFlags: 1
@@ -524,12 +525,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 456464}
   m_RootOrder: 0
---- !u!23 &2380556
+--- !u!23 &2330646
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 176552}
+  m_GameObject: {fileID: 136116}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -548,12 +549,12 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &3381162
+--- !u!33 &3318506
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 176552}
+  m_GameObject: {fileID: 136116}
   m_Mesh: {fileID: 4300000, guid: 67351d3e821917f478d4c1b24c9f2ad2, type: 3}
 --- !u!95 &9590474
 Animator:
@@ -589,6 +590,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11418340
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ffa1821278742f4f92f6258e5881669, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shaderName: Standard
+  color1: {r: .278431416, g: .880567908, b: 1, a: 1}
+  color2: {r: 1, g: 0, b: .931034565, a: 1}
+  speed: 1
 --- !u!114 &11425162
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -658,7 +674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84d44fb6f97d2e14ba3140e7184b7d7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
+  health: 300
   pointsValue: 10000
   deathParticles: {fileID: 198154, guid: fd67f7e7aae725441842130cb6ad9252, type: 2}
   powerUp: {fileID: 100000, guid: 76ce9a934883cbf4aac0477756121539, type: 2}

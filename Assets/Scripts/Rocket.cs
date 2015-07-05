@@ -37,6 +37,7 @@ public class Rocket : MonoBehaviour, AudioProcessor.AudioCallbacks {
 	
 	void Start(){
         aSource.pitch += Random.Range(-.1f, .11f);
+        aSource.Play();
 		Invoke ("Explode", lifetime);
 		tr.material.shader = Shader.Find("Unlit/Color");
 		AudioProcessor processor = FindObjectOfType<AudioProcessor>();

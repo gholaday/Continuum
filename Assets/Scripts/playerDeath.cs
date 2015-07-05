@@ -55,13 +55,13 @@ public class playerDeath : MonoBehaviour {
 			if(timer % .1 >= .05)
 			{
 		
-				GetComponentInChildren<MeshRenderer>().enabled = false;
+				GetComponent<SpriteRenderer>().enabled = false;
 
 
 			}
 			else
 			{
-                GetComponentInChildren<MeshRenderer>().enabled = true;
+                GetComponent<SpriteRenderer>().enabled = true;
 			}
 		}
 
@@ -69,7 +69,7 @@ public class playerDeath : MonoBehaviour {
 		if(timer <= 0)
 		{
 			gameObject.layer = 11;
-            GetComponentInChildren<MeshRenderer>().enabled = true;
+            GetComponent<SpriteRenderer>().enabled = true;
             timer = invulTimer;
 		}
 
