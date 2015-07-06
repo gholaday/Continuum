@@ -10,6 +10,7 @@ public class LeaderBoardDisplay : MonoBehaviour {
     public Text user;
     public Text score;
     public Text loadText;
+    public Text errorMsg;
 
     ParseQuery<ParseObject> query;
     
@@ -57,9 +58,13 @@ public class LeaderBoardDisplay : MonoBehaviour {
         yield return new WaitForSeconds(3f);
 
         loading = false;
+        
+		errorMsg.enabled = true;
 
         foreach (ParseObject obj in results)
         {
+			errorMsg.enabled = false;
+        	
             if(count < 10)
             {
                 user.text += " " + count + ". " + obj.Get<string>("playerName") + "\n";

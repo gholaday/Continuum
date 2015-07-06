@@ -97,7 +97,7 @@ GameObject:
   - 4: {fileID: 305347685}
   - 114: {fileID: 305347684}
   m_Layer: 0
-  m_Name: Scene Change EnterName
+  m_Name: Scene Change Endless
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 042380a475c134849891fb57ee28bee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: EnterName
+  sceneName: Endless
   clickToChange: 1
   button: Jump
   usePriorScene: 0
@@ -233,7 +233,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1.25
-  m_Text: 'SPACE to ADVANCE!
+  m_Text: 'SPACE to PLAY!
 
     or
 
@@ -329,6 +329,7 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
+  m_StereoMirrorMode: 0
 --- !u!4 &612550509
 Transform:
   m_ObjectHideFlags: 0
@@ -645,6 +646,7 @@ MonoBehaviour:
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
+  m_RepeatDelay: .5
   m_AllowActivationOnMobileDevice: 0
 --- !u!114 &1648680753
 MonoBehaviour:

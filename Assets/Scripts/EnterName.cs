@@ -6,12 +6,16 @@ public class EnterName : MonoBehaviour {
 
     public InputField ifield;
     public Text errorMsg;
-    public Text pressToStart;
+   
     public Text enterYourName;
 
     public string userName;
+    
+    
+    bool readytochange = false;
+    
+    GameObject gameManager;
 
-    public GameObject sceneChange;
 
 
 	// Use this for initialization
@@ -21,20 +25,30 @@ public class EnterName : MonoBehaviour {
         {
             ifield.text = PlayerPrefs.GetString("UserName");
         }
-
-        if (ifield.text.Length > 0)
-        {
-            StartCoroutine(ReadyToPlay());
-            enterYourName.gameObject.SetActive(false);
-            sceneChange.SetActive(true);
-        }
+        
+        ifield.Select();
+        ifield.ActivateInputField();
+        
+        gameManager = GameObject.Find("GameManager");
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-     
+     	if(Input.GetKey(KeyCode.Return))
+     	{
+     		
+			SaveName();
+			
+     		if(readytochange)
+     		{
+     			gameManager.GetComponent<GameManager>().SetLeaderboardScore();
+     			Application.LoadLevel(Application.loadedLevel);
+     		}
+     		
+			
+     	}
 	
 	}
 
@@ -45,17 +59,17 @@ public class EnterName : MonoBehaviour {
         {
             userName = ifield.text;
             PlayerPrefs.SetString("UserName", userName);
-            enterYourName.gameObject.SetActive(false);
-            StartCoroutine(ReadyToPlay());
-            sceneChange.SetActive(true);
+            
+            readytochange = true;
+            
         }
         else
         {
-            sceneChange.SetActive(false);
+            readytochange = false;
             StopAllCoroutines();
-            pressToStart.enabled = false;
-            StartCoroutine(ShowErrorMessage());
-            enterYourName.gameObject.SetActive(true);      
+            
+            //StartCoroutine(ShowErrorMessage());
+               
         }
         
     }
@@ -68,21 +82,7 @@ public class EnterName : MonoBehaviour {
 
     }
 
-    IEnumerator ReadyToPlay()
-    {
-        pressToStart.enabled = true;
-        yield return new WaitForSeconds(1f);
-        pressToStart.enabled = false;
-        yield return new WaitForSeconds(1f);
-
-        StartCoroutine(ReadyToPlay());
-    }
-
-    public void DisableSceneChange()
-    {
-        sceneChange.SetActive(false);
-    }
-
+   
 
     
 }

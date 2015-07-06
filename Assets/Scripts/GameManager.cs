@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour {
 	public static float slowMo = 0;
 
 	bool firstSpawn = true;
-    bool newHighScore = false;
+    public bool newHighScore = false;
 
 	private Vector2 spawnPos;
 
@@ -59,8 +59,8 @@ public class GameManager : MonoBehaviour {
 
 	int multiplierFontSize;
 	bool isSpawning = false;
+	
 
-    bool gameOver = false;
 
 	
 		
@@ -95,6 +95,8 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	void Update () {
+	
+	
 
         AudioSource[] audioSources;
 
@@ -240,7 +242,7 @@ public class GameManager : MonoBehaviour {
             {
                 StartCoroutine(NewHighScoreFlash());
                 newHighScore = true;
-                gameOver = true;
+                
             }
 
 			highScore = score.GetScore();
@@ -251,16 +253,14 @@ public class GameManager : MonoBehaviour {
 		//Displays game over text when lives are zero, prompt for reset
 		if(playerLives <= 0)
 		{
-            if(gameOver)
-            {
-                SetLeaderboardScore();
-            }
-
-            GameOver();
+		
+			GameOver();
+			
+            
 
 			if(Input.GetKey(KeyCode.Return))
 			{
-				Application.LoadLevel(Application.loadedLevel);
+				//Application.LoadLevel(Application.loadedLevel);
 			}
 
             if (Input.GetButton("Cancel"))
@@ -294,6 +294,11 @@ public class GameManager : MonoBehaviour {
 	public void QuitGame()
 	{
 		Application.Quit();
+	}
+	
+	public void MainMenu()
+	{
+		
 	}
 
 	public void ChangeSlowMoColor()
@@ -330,7 +335,8 @@ public class GameManager : MonoBehaviour {
 
 	void GameOver()
 	{
-        gameOver = false;
+       
+		
         GetComponent<AudioProcessor>().enabled = false;
 		lives.text = "0";
 		gameOverUI.SetActive(true);
@@ -455,13 +461,19 @@ public class GameManager : MonoBehaviour {
 
     }
 
-    void SetLeaderboardScore()
+    public void SetLeaderboardScore()
     {
-        ParseObject gameScore = new ParseObject("GameScore");
-        gameScore["score"] = highScore;
-        gameScore["playerName"] = PlayerPrefs.GetString("UserName");
-        
-        gameScore.SaveAsync();
+    	if(newHighScore)
+    	{
+			print ("Saving to leaderboard");
+			ParseObject gameScore = new ParseObject("GameScore");
+			gameScore["score"] = highScore;
+			gameScore["playerName"] = PlayerPrefs.GetString("UserName");
+			
+			gameScore.SaveAsync();
+    	}
+    	
+       
     }
 
     public void ClearHighScore()
