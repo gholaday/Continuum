@@ -75,6 +75,7 @@
      <Compile Include="Assets\Scripts\MainMenu.cs" />
      <Compile Include="Assets\Scripts\MeteorMovement.cs" />
      <Compile Include="Assets\Scripts\MusicBounce.cs" />
+     <Compile Include="Assets\Scripts\Options.cs" />
      <Compile Include="Assets\Scripts\ParseTest.cs" />
      <Compile Include="Assets\Scripts\ParticleSystemAutoDestroy.cs" />
      <Compile Include="Assets\Scripts\PlayerBulletProperties.cs" />

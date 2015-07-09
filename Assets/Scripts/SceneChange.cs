@@ -9,6 +9,7 @@ public class SceneChange : MonoBehaviour {
 
     public bool usePriorScene = false;
     public bool anyKey = false;
+    public bool automaticChange = false;
     
 
 	// Use this for initialization
@@ -17,10 +18,19 @@ public class SceneChange : MonoBehaviour {
         if(usePriorScene)
         {
             sceneName = InitializePriorScene.priorScene;
+		
         }
 
        
 	
+	}
+	
+	void Start()
+	{
+		if(automaticChange)
+		{
+			Application.LoadLevel(sceneName);
+		}
 	}
 	
 	// Update is called once per frame

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour {
 	
 	public Button[] buttons;
+	public Scrollbar defaultScroll;
 	
 	
 	public float timeToAcceptInput = 4f;
@@ -13,7 +14,12 @@ public class MainMenu : MonoBehaviour {
 	
 	public Image loadPanel;
 	
+	public GameObject mainUI;
+	public GameObject optionsUI;
+	
 	bool splashPlaying = true;
+	
+	bool displayOptions = false;
 	
 
 
@@ -22,6 +28,7 @@ public class MainMenu : MonoBehaviour {
 	void Start () {
 		
 		Invoke("AcceptInput", timeToAcceptInput);
+		InitializePriorScene.priorScene = "MainMenu";
 		
 	
 	}
@@ -39,9 +46,39 @@ public class MainMenu : MonoBehaviour {
 			}
 		}
 	
+		if(displayOptions)
+		{
+			optionsUI.SetActive(true);
+			mainUI.SetActive(false);
+			
+			if(Input.GetButtonDown("Back"))
+			{
+				DisableOptions();
+			}
+		}
+		
 		
 	
 	}
+	
+	void DisableOptions()
+	{
+		foreach(Button button in buttons)
+		{
+			
+			button.interactable = true;
+		}
+		
+		displayOptions = false;
+		buttons[0].Select();
+		
+		optionsUI.SetActive(false);
+		mainUI.SetActive(true);
+		
+	}
+	
+	
+	
 	
 	void AcceptInput()	//function to be called at end of start anim
 	{
@@ -81,6 +118,13 @@ public class MainMenu : MonoBehaviour {
 	
 	public void DisplayOptions()
 	{
+		foreach(Button button in buttons)
+		{
+			
+			button.interactable = false;
+		}
+		
+		displayOptions = true;
 		
 	}
 	

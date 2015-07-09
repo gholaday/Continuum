@@ -248,9 +248,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: Endless
   clickToChange: 1
-  button: Cancel
+  button: Back
   usePriorScene: 1
   anyKey: 0
+  automaticChange: 0
 --- !u!4 &305347685
 Transform:
   m_ObjectHideFlags: 0

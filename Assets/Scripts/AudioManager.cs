@@ -12,17 +12,23 @@ public class AudioManager : MonoBehaviour {
     int count = 0;
 
     AudioSource source;
+    
+    float originalVol;
 
 
 	// Use this for initialization
 	void Awake () {
 
         source = GetComponent<AudioSource>();
+        
+        originalVol = source.volume;
 
         if(shuffle)
         {
             RandomizeArray(clips);
         }
+        
+		source.volume = originalVol * Options.musicVolumeFactor * Options.musicMuteFactor;
 
         source.clip = clips[count];
         source.Play();
@@ -37,6 +43,8 @@ public class AudioManager : MonoBehaviour {
         {
             NextTrack();
         }
+        
+        source.volume = originalVol * Options.musicVolumeFactor * Options.musicMuteFactor;
     }
     
     void NextTrack()

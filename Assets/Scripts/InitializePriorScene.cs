@@ -9,7 +9,7 @@ public class InitializePriorScene : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        priorScene = "testStart";
+        priorScene = "MainMenu";
 	
 	}
 	
