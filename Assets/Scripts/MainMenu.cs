@@ -14,12 +14,18 @@ public class MainMenu : MonoBehaviour {
 	
 	public Image loadPanel;
 	
+	public GameObject HtpPanel;
+	
 	public GameObject mainUI;
 	public GameObject optionsUI;
 	
 	bool splashPlaying = true;
 	
 	bool displayOptions = false;
+	
+	bool displayHTP = true;
+	
+	bool ready = false;
 	
 
 
@@ -29,6 +35,7 @@ public class MainMenu : MonoBehaviour {
 		
 		Invoke("AcceptInput", timeToAcceptInput);
 		InitializePriorScene.priorScene = "MainMenu";
+		displayHTP = Options.showHTP;
 		
 	
 	}
@@ -57,8 +64,29 @@ public class MainMenu : MonoBehaviour {
 			}
 		}
 		
+		if(HtpPanel.activeSelf)
+		{
+			
+			if(Input.GetButtonDown("Submit") && ready)
+			{
+				displayHTP = false;
+				StartGame();
+			}
+		}
+		else 
+		{
+		
+			ready = false;
+			StopCoroutine("CountToStart");
+		}
 		
 	
+	}
+	
+	IEnumerator CountToStart()
+	{
+		yield return new WaitForSeconds(0.1f);
+		ready = true;
 	}
 	
 	void DisableOptions()
@@ -97,9 +125,18 @@ public class MainMenu : MonoBehaviour {
 	
 	public void StartGame()
 	{
-		loadPanel.enabled = true;
-		loadPanel.CrossFadeAlpha(255,2f,true);
-		Invoke ("ChangeLevel", 2);
+		if(displayHTP)
+		{
+			HtpPanel.SetActive(true);
+			StartCoroutine("CountToStart");
+		}
+		else
+		{
+			loadPanel.enabled = true;
+			loadPanel.CrossFadeAlpha(255,1.5f,true);
+			Invoke ("ChangeLevel", 2);
+		}
+		
 	}
 	
 	

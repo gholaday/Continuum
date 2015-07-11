@@ -9,11 +9,15 @@ public class Options : MonoBehaviour {
 	public static float musicVolumeFactor = 1;
 	public static float sfxVolumeFactor = 1;
 	
+	public static bool showHTP = true;
+	
 	public Scrollbar musicVol;
 	public Scrollbar sfxVol;
 	
 	public Toggle muteMusic;
 	public Toggle muteSfx;
+	public Toggle disableHTP;
+	
 	
 	void Update()
 	{
@@ -27,5 +31,7 @@ public class Options : MonoBehaviour {
 		
 		musicMuteFactor = muteMusic.isOn ? 1 : 0;
 		sfxMuteFactor = muteSfx.isOn ? 1 : 0;
+		
+		showHTP = !disableHTP.isOn;
 	}
 }

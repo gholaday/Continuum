@@ -30,7 +30,7 @@ public class Rocket : MonoBehaviour, AudioProcessor.AudioCallbacks {
 	void Awake(){
 
 		rocketRigidbody = GetComponent<Rigidbody>();
-		tr = GetComponent<TrailRenderer>();
+		tr = GetComponentInChildren<TrailRenderer>();
         aSource = GetComponent<AudioSource>();
 
 	}
@@ -84,7 +84,7 @@ public class Rocket : MonoBehaviour, AudioProcessor.AudioCallbacks {
 	
 	private void Explode(){
 		CancelInvoke("Explode");
-        GetComponent<MeshRenderer>().enabled = false;
+        GetComponentInChildren<SpriteRenderer>().enabled = false;
         GetComponent<BoxCollider>().enabled = false;
         GetComponent<Rigidbody>().isKinematic = true;
 		Destroy(gameObject, 3f);

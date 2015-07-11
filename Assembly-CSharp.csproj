@@ -86,6 +86,7 @@
      <Compile Include="Assets\Scripts\Rocket.cs" />
      <Compile Include="Assets\Scripts\RocketLaunch.cs" />
      <Compile Include="Assets\Scripts\SceneChange.cs" />
+     <Compile Include="Assets\Scripts\SfxVolumeOptionsScaler.cs" />
      <Compile Include="Assets\Scripts\TextBounce.cs" />
      <Compile Include="Assets\Scripts\TextFlash.cs" />
      <Compile Include="Assets\Scripts\TextFlashGeneric.cs" />
@@ -93,6 +94,7 @@
      <Compile Include="Assets\Scripts\WaveSystem.cs" />
      <Compile Include="Assets\Scripts\WeaponDoubleLaser.cs" />
      <Compile Include="Assets\Scripts\WeaponLaserBeam.cs" />
+     <Compile Include="Assets\Scripts\Window.cs" />
      <Compile Include="Assets\Scripts\bulletMovement.cs" />
      <Compile Include="Assets\Scripts\enemyBulletMovement.cs" />
      <Compile Include="Assets\Scripts\enemyDeath.cs" />
