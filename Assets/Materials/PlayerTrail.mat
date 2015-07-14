@@ -2,15 +2,16 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: PlayerTrail
-  m_Shader: {fileID: 200, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _EMISSION
+  m_Shader: {fileID: 10755, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: PIXELSNAP_ON _EMISSION
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
+  stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -18,9 +19,9 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: dc758794fb9f22640af710c5b259417d, type: 3}
           m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
+          m_Offset: {x: 1, y: 0}
       data:
         first:
           name: _BumpMap
@@ -87,6 +88,14 @@ Material:
     m_Floats:
       data:
         first:
+          name: _SrcBlend
+        second: 1
+      data:
+        first:
+          name: _DstBlend
+        second: 0
+      data:
+        first:
           name: _Cutoff
         second: 0
       data:
@@ -95,12 +104,8 @@ Material:
         second: .078125
       data:
         first:
-          name: _SrcBlend
+          name: PixelSnap
         second: 1
-      data:
-        first:
-          name: _DstBlend
-        second: 0
       data:
         first:
           name: _InvFade
@@ -153,7 +158,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .776802063, g: .0145977642, b: .992647052, a: 1}
+        second: {r: 1, g: 0, b: 0, a: .392156869}
       data:
         first:
           name: _SpecColor
@@ -165,4 +170,4 @@ Material:
       data:
         first:
           name: _TintColor
-        second: {r: .621450245, g: 0, b: .948529422, a: .611764729}
+        second: {r: 1, g: 0, b: 0, a: .611764729}

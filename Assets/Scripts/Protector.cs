@@ -13,7 +13,8 @@ public class Protector : MonoBehaviour {
      // Use this for initialization
      void Start () {
          
-         target = GameObject.FindGameObjectWithTag("Player").transform;
+         //target = GameObject.FindGameObjectWithTag("Player").transform;
+         
          if (target.gameObject.GetComponent<PlayerProtectorHandler>().numAlive % 2 == 0)
              offset = 1;
          else

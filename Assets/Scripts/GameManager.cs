@@ -258,9 +258,9 @@ public class GameManager : MonoBehaviour {
 			
             
 
-			if(Input.GetKey(KeyCode.Return))
+			if(Input.GetButtonDown("Submit"))
 			{
-				//Application.LoadLevel(Application.loadedLevel);
+				Application.LoadLevel(Application.loadedLevel);
 			}
 
             if (Input.GetButton("Cancel"))
@@ -290,15 +290,16 @@ public class GameManager : MonoBehaviour {
         if (!firstSpawn) totalMultiplier = currentMultiplier * slowMoMulitiplier;
 
     }
+    
 
 	public void QuitGame()
 	{
 		Application.Quit();
 	}
 	
-	public void MainMenu()
+	public void ReturnToMainMenu()
 	{
-		
+		Application.LoadLevel("MainMenu");
 	}
 
 	public void ChangeSlowMoColor()

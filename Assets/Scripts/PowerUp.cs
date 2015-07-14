@@ -6,7 +6,6 @@ public class PowerUp : MonoBehaviour {
 
 	public float fallSpeed = 5.0f;
     public float spawnChance;
-	public GameObject powerUpText;
 
     AudioSource aSource;
 
@@ -32,9 +31,8 @@ public class PowerUp : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		if(powerUpText != null && other.tag == "Player")
+		if(other.tag == "Player")
         {
-            Instantiate(powerUpText, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
             aSource.Play();
             StartCoroutine(DeleteObject());
         }
@@ -51,6 +49,9 @@ public class PowerUp : MonoBehaviour {
     IEnumerator DeleteObject()
     {
         GetComponent<SpriteRenderer>().enabled = false;
+        
+       	transform.GetChild(0).gameObject.SetActive(false);
+        
         GetComponent<BoxCollider>().enabled = false;
         yield return new WaitForSeconds(2f);
         Destroy(gameObject);

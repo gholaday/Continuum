@@ -61,7 +61,7 @@ Transform:
   m_GameObject: {fileID: 122976}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 57.8000031}
-  m_LocalScale: {x: .150000006, y: .075000003, z: .100000001}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 478252}
   m_RootOrder: 0
@@ -72,8 +72,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100944}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.4799995, y: 3.42000008, z: -5.78000021}
-  m_LocalScale: {x: .25, y: .5, z: .100000001}
+  m_LocalPosition: {x: -22.4799995, y: 6.13500023, z: -5.78000021}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 444784}
   - {fileID: 497620}
@@ -86,7 +86,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 193714}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.00999999, z: 0}
+  m_LocalPosition: {x: 0, y: -.140000001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 478252}
@@ -147,7 +147,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: .5, y: .5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &8226358
 AudioSource:
@@ -277,7 +277,7 @@ MonoBehaviour:
   enemies: []
   lifetime: 4
   MissileSpeed: 500
-  color1: {r: .444093615, g: .0175173171, b: .595588207, a: 1}
+  color1: {r: .609127879, g: 0, b: .617647052, a: 1}
   color2: {r: 1, g: .216125757, b: .0367646813, a: 1}
   mat: {fileID: 2100000, guid: d609eda2e1556db498ecb69ba864a6ee, type: 2}
   particles: {fileID: 115864, guid: 1cfda74914cff574fa7f66c94668b059, type: 2}
@@ -305,7 +305,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3e8517a947200b7429c72977510b244e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c17deb6dba8ed1f4788271c8cb285cfa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -318,6 +318,10 @@ Prefab:
       propertyPath: Mute
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: particles
+      value: 
+      objectReference: {fileID: 180896, guid: b6ad06412711dad44b5357d485b0abdf, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100944}

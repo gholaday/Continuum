@@ -24,7 +24,8 @@ public class PlayerProtectorHandler : MonoBehaviour {
         {
             spawn = false;
             numAlive++;
-            Instantiate(obj, transform.position, Quaternion.identity);
+            GameObject go = (GameObject)Instantiate(obj, transform.position, Quaternion.identity);
+            go.GetComponent<Protector>().target = this.gameObject.transform;
             
         }
         yield return new WaitForSeconds(.25f);

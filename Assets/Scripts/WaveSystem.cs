@@ -94,8 +94,8 @@ public class WaveSystem : MonoBehaviour {
 	IEnumerator WaveStart()
 	{
         waveDisplayNumber++;
+        waveDisplay.gameObject.SetActive(true);
 		waveDisplay.text = "Wave " + waveDisplayNumber;
-		waveDisplay.enabled = true;
 		WaveModifier(waveNumber);
 
         if((waveNumber) % 5 == 0)
@@ -129,7 +129,7 @@ public class WaveSystem : MonoBehaviour {
 
         yield return new WaitForSeconds(3.5f);
 
-        waveDisplay.enabled = false;
+        waveDisplay.gameObject.SetActive(false);
         StartCoroutine(WaveSpawn(waveNumber));
 	}
 

@@ -32,6 +32,9 @@ public class Options : MonoBehaviour {
 		musicMuteFactor = muteMusic.isOn ? 1 : 0;
 		sfxMuteFactor = muteSfx.isOn ? 1 : 0;
 		
-		showHTP = !disableHTP.isOn;
+		if(disableHTP != null)
+		{
+			showHTP = !disableHTP.isOn;
+		}
 	}
 }

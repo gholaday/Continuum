@@ -32,6 +32,8 @@ public class MainMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+	
+		Time.timeScale = 1f;
 		
 		Invoke("AcceptInput", timeToAcceptInput);
 		InitializePriorScene.priorScene = "MainMenu";

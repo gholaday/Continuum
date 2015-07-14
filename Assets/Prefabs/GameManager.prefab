@@ -137,6 +137,7 @@ MonoBehaviour:
   highScore: 0
   scoreToExtraLife: 999999
   playerLives: 3
+  newHighScore: 0
   slowMoMulitiplier: 0
 --- !u!114 &11413282
 MonoBehaviour:
@@ -165,8 +166,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 983c1621facee3f44896e1c68cdd8330, type: 3}
   - {fileID: 8300000, guid: 26ab7f9f2013e1244a688b68a28af465, type: 3}
   - {fileID: 8300000, guid: fe4a5ca807872414dba404b2d1534f70, type: 3}
-  - {fileID: 8300000, guid: 480376a05fe3c84488e757a783df4577, type: 3}
-  - {fileID: 8300000, guid: ae8f3d6c01b68db439bda8ff2299b8d9, type: 3}
+  - {fileID: 8300000, guid: 8ef2807038746244d9c8c9095fc8fb62, type: 3}
   shuffle: 1
   nowPlaying: {fileID: 0}
 --- !u!114 &11449906
@@ -184,6 +184,8 @@ MonoBehaviour:
   cameraAnim: {fileID: 0}
   displayText: {fileID: 0}
   hud: {fileID: 0}
+  inputField: {fileID: 0}
+  fadePanel: {fileID: 0}
 --- !u!114 &11456628
 MonoBehaviour:
   m_ObjectHideFlags: 1

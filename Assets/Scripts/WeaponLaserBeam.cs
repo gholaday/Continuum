@@ -16,6 +16,8 @@ public class WeaponLaserBeam : MonoBehaviour {
     public LineRenderer[] lines;
 
     float widthSize = .03f;
+    
+    public GameObject hitParticle;
 
 	// Use this for initialization
 	void Start () {
@@ -35,8 +37,6 @@ public class WeaponLaserBeam : MonoBehaviour {
         damagePerTick = damageBase / shoot.cooldown;
 
 
-        level = Mathf.Clamp(level, 1, 3);
-
         if(level != levelTracker)
         {
             StopAllCoroutines();
@@ -46,6 +46,11 @@ public class WeaponLaserBeam : MonoBehaviour {
         }
             
 	
+	}
+	
+	void OnEnable()
+	{
+		Fire ();
 	}
 
     void OnDisable()
@@ -96,21 +101,27 @@ public class WeaponLaserBeam : MonoBehaviour {
          {
              line.SetPosition(1, hit.point);
 
-             if(hit.collider.tag == "Enemy")
-             {
-                 
-                 hit.transform.GetComponent<Enemy>().health -= damagePerTick;
-
-                 if (hit.transform.GetComponent<enemyDeath>() != null)
-                 {
-                     hit.transform.GetComponent<enemyDeath>().StartCoroutine("Flash");
-                 }
-                 else if(hit.transform.GetComponent<BossDeath>() != null)
-                 {
-                     hit.transform.GetComponent<BossDeath>().StartCoroutine("Flash");
-                 }
-                 
-             }
+				if (hit.collider.tag == "Enemy" || hit.collider.tag == "Meteor")
+				{
+					
+					Instantiate(hitParticle, hit.point, Quaternion.identity);
+					
+					if(hit.collider.tag == "Enemy")
+					{
+						hit.transform.GetComponent<Enemy>().health -= damagePerTick * Time.deltaTime;
+						
+						if (hit.transform.GetComponent<enemyDeath>() != null)
+						{
+							hit.transform.GetComponent<enemyDeath>().StartCoroutine("Flash");
+						}
+						else if (hit.transform.GetComponent<BossDeath>() != null)
+						{
+							hit.transform.GetComponent<BossDeath>().StartCoroutine("Flash");
+						}
+						
+					}
+					
+				}
          }
          
      }
@@ -146,21 +157,27 @@ public class WeaponLaserBeam : MonoBehaviour {
                 {
                     line.SetPosition(1, hit.point);
 
-                    if (hit.collider.tag == "Enemy")
-                    {
-
-                        hit.transform.GetComponent<Enemy>().health -= damagePerTick;
-
-                        if (hit.transform.GetComponent<enemyDeath>() != null)
-                        {
-                            hit.transform.GetComponent<enemyDeath>().StartCoroutine("Flash");
-                        }
-                        else if (hit.transform.GetComponent<BossDeath>() != null)
-                        {
-                            hit.transform.GetComponent<BossDeath>().StartCoroutine("Flash");
-                        }
-
-                    }
+					if (hit.collider.tag == "Enemy" || hit.collider.tag == "Meteor")
+					{
+						
+						Instantiate(hitParticle, hit.point, Quaternion.identity);
+						
+						if(hit.collider.tag == "Enemy")
+						{
+							hit.transform.GetComponent<Enemy>().health -= damagePerTick * Time.deltaTime;
+							
+							if (hit.transform.GetComponent<enemyDeath>() != null)
+							{
+								hit.transform.GetComponent<enemyDeath>().StartCoroutine("Flash");
+							}
+							else if (hit.transform.GetComponent<BossDeath>() != null)
+							{
+								hit.transform.GetComponent<BossDeath>().StartCoroutine("Flash");
+							}
+							
+						}
+						
+					}
                 }
 
             }
@@ -195,20 +212,26 @@ public class WeaponLaserBeam : MonoBehaviour {
                 {
                     line.SetPosition(1, hit.point);
 
-                    if (hit.collider.tag == "Enemy")
+					if (hit.collider.tag == "Enemy" || hit.collider.tag == "Meteor")
                     {
-
-                        hit.transform.GetComponent<Enemy>().health -= damagePerTick;
-
-                        if (hit.transform.GetComponent<enemyDeath>() != null)
-                        {
-                            hit.transform.GetComponent<enemyDeath>().StartCoroutine("Flash");
-                        }
-                        else if (hit.transform.GetComponent<BossDeath>() != null)
-                        {
-                            hit.transform.GetComponent<BossDeath>().StartCoroutine("Flash");
-                        }
-
+						
+						Instantiate(hitParticle, hit.point, Quaternion.identity);
+						
+						if(hit.collider.tag == "Enemy")
+						{
+							hit.transform.GetComponent<Enemy>().health -= damagePerTick * Time.deltaTime;
+							
+							if (hit.transform.GetComponent<enemyDeath>() != null)
+							{
+								hit.transform.GetComponent<enemyDeath>().StartCoroutine("Flash");
+							}
+							else if (hit.transform.GetComponent<BossDeath>() != null)
+							{
+								hit.transform.GetComponent<BossDeath>().StartCoroutine("Flash");
+							}
+							
+						}
+                        
                     }
                 }
 
@@ -244,21 +267,27 @@ public class WeaponLaserBeam : MonoBehaviour {
                 {
                     line.SetPosition(1, hit.point);
 
-                    if (hit.collider.tag == "Enemy")
-                    {
-
-                        hit.transform.GetComponent<Enemy>().health -= damagePerTick;
-
-                        if (hit.transform.GetComponent<enemyDeath>() != null)
-                        {
-                            hit.transform.GetComponent<enemyDeath>().StartCoroutine("Flash");
-                        }
-                        else if (hit.transform.GetComponent<BossDeath>() != null)
-                        {
-                            hit.transform.GetComponent<BossDeath>().StartCoroutine("Flash");
-                        }
-
-                    }
+					if (hit.collider.tag == "Enemy" || hit.collider.tag == "Meteor")
+					{
+						
+						Instantiate(hitParticle, hit.point, Quaternion.identity);
+						
+						if(hit.collider.tag == "Enemy")
+						{
+							hit.transform.GetComponent<Enemy>().health -= damagePerTick * Time.deltaTime;
+							
+							if (hit.transform.GetComponent<enemyDeath>() != null)
+							{
+								hit.transform.GetComponent<enemyDeath>().StartCoroutine("Flash");
+							}
+							else if (hit.transform.GetComponent<BossDeath>() != null)
+							{
+								hit.transform.GetComponent<BossDeath>().StartCoroutine("Flash");
+							}
+							
+						}
+						
+					}
                 }
 
             }

@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityStandardAssets.ImageEffects;
 
 public class playerDeath : MonoBehaviour {
 
 
 	public GameObject death;
 	public int hitpoints = 2;
-	public Transform shield;
-	public bool shieldSound = false;
-	public AudioSource shieldDown;
+
+	
+	
 	public float shakeAmount = 0.1f;
 
 	private GameManager gm;
@@ -25,7 +26,11 @@ public class playerDeath : MonoBehaviour {
     public GameObject particles;
     float timer;
 
+	Text displayText;
 	
+	SpriteRenderer sr;
+	
+	SpinEffect spin;
 
 	void Start () {
 
@@ -41,6 +46,11 @@ public class playerDeath : MonoBehaviour {
 		}
 
 		camShake = GameObject.Find("Main Camera").GetComponent<CameraShake>();
+		
+		displayText = GetComponentInChildren<Text>();
+		
+		sr = GetComponent<SpriteRenderer>();
+		spin = Camera.main.GetComponent<SpinEffect>();
 
 	}
 
@@ -55,13 +65,13 @@ public class playerDeath : MonoBehaviour {
 			if(timer % .1 >= .05)
 			{
 		
-				GetComponent<SpriteRenderer>().enabled = false;
+				sr.enabled = false;
 
 
 			}
 			else
 			{
-                GetComponent<SpriteRenderer>().enabled = true;
+                sr.enabled = true;
 			}
 		}
 
@@ -69,27 +79,59 @@ public class playerDeath : MonoBehaviour {
 		if(timer <= 0)
 		{
 			gameObject.layer = 11;
-            GetComponent<SpriteRenderer>().enabled = true;
+            sr.enabled = true;
             timer = invulTimer;
 		}
 
 		
 		
-		if(hitpoints <= 0 || slowMoTime <= 0){
-
-			if(death != null)
-			{
-				Instantiate(death,transform.position,death.transform.rotation);	
-				
-			}
-
-			//gm.playerFireRate = shoot.cooldown;
-			OnHitShake(shakeAmount);
-			Destroy(gameObject);
-			
-			
+		if(hitpoints <= 0)
+		{ 
+			Death ();
+		}
+		
+		if(slowMoTime <= 0)
+		{
+			spin.StartEffect();
+			Death();
 		}
 	
+	}
+	
+	void Death()
+	{
+		if(death != null)
+		{
+			Instantiate(death,transform.position,death.transform.rotation);	
+			
+		}
+		
+		
+		OnHitShake(shakeAmount);
+		Destroy(gameObject);
+		
+	}
+	
+	void DisplayText(string s)
+	{
+		displayText.CrossFadeAlpha(255,.1f,false);
+		displayText.text = s;
+		Invoke ("DisableText", 1f);
+	}
+	
+	void DisableText()
+	{
+		displayText.CrossFadeAlpha(0, 1.5f,false);
+		
+	}
+	
+	IEnumerator BlinkRed()
+	{
+		sr.color = Color.red;
+		yield return new WaitForSeconds(.5f);
+		sr.color = Color.white;
+		yield return new WaitForSeconds(1.0f);
+		StartCoroutine("BlinkRed");
 	}
 
     void OnTriggerEnter(Collider other)
@@ -107,17 +149,12 @@ public class playerDeath : MonoBehaviour {
                 hitpoints -= 2;
             }
 
-            if (hitpoints < 2 && shieldSound == false)
+            if (hitpoints < 2)
             {
-                shield.gameObject.SetActive(false);
-                //shieldDown.Play();
-                shieldSound = true;
+                StartCoroutine("BlinkRed");
 
             }
-            else
-            {
-                shield.gameObject.SetActive(true);
-            }
+            
 
         }
 
@@ -131,6 +168,8 @@ public class playerDeath : MonoBehaviour {
                 GameObject go = Instantiate(particles, transform.position, Quaternion.identity) as GameObject;
                 go.transform.SetParent(gameObject.transform);
             }
+            
+			DisplayText("Fire Rate Increased!");
         }
 
         else if (other.tag == "ExtraLife")
@@ -142,6 +181,8 @@ public class playerDeath : MonoBehaviour {
                 GameObject go = Instantiate(particles, transform.position, Quaternion.identity) as GameObject;
                 go.transform.SetParent(gameObject.transform);
             }
+            
+			DisplayText("Extra Life!");
         }
         else if(other.tag == "ProtectorPowerUp")
         {
@@ -152,8 +193,7 @@ public class playerDeath : MonoBehaviour {
             }
 
             GetComponent<PlayerProtectorHandler>().spawn = true;
-            GameObject text = Instantiate(powerupdisplaycanvas, transform.position, Quaternion.identity) as GameObject;
-            text.GetComponent<Text>().text = "Protector Spawned!";
+            DisplayText("Protector Spawned!");
             
 
         }
@@ -183,9 +223,8 @@ public class playerDeath : MonoBehaviour {
                 
 
             }
-
-            GameObject text = Instantiate(powerupdisplaycanvas, transform.position, Quaternion.identity) as GameObject;
-            text.GetComponent<Text>().text = "Laser Level " + GetComponentInChildren<WeaponDoubleLaser>().level;
+			string s = "Laser Level " + GetComponentInChildren<WeaponDoubleLaser>().level.ToString();
+			DisplayText(s);
 
         }
         else if (other.tag == "BeamPowerUp")
@@ -213,9 +252,10 @@ public class playerDeath : MonoBehaviour {
                 GetComponentInChildren<WeaponLaserBeam>().level = 1;
 
             }
-
-            GameObject text = Instantiate(powerupdisplaycanvas, transform.position, Quaternion.identity) as GameObject;
-            text.GetComponent<Text>().text = "Beam Level " + GetComponentInChildren<WeaponLaserBeam>().level;
+			
+			string s = "Beam Level " + GetComponentInChildren<WeaponLaserBeam>().level.ToString();
+			
+			DisplayText(s);
 
         }
     }
