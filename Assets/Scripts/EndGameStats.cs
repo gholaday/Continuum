@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class EndGameStats : MonoBehaviour {
 
 	public Animator GOAnim;
-	public Animator cameraAnim;
+	//public Animator cameraAnim;
 	public Text displayText;
 	public GameObject hud;
 	
@@ -22,7 +22,7 @@ public class EndGameStats : MonoBehaviour {
 
 		StartCoroutine("DisplayStats");
 		ps = GetComponent<PlayerScore>();
-		cameraAnim.SetTrigger("Click");
+		//cameraAnim.SetTrigger("Click");
 		
 	
 	}

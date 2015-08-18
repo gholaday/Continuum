@@ -5,16 +5,20 @@ public class bulletMovement : MonoBehaviour {
 	
 	public float speed = 1.0f;
 	public GameObject sparks;
+
+    Vector3 dir;
 	
 	// Use this for initialization
 	void Start () {
+
+        dir = transform.up;
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
-		transform.position += transform.up * speed * Time.deltaTime * playerMovement.timeStop;
+		transform.position += dir * speed * Time.deltaTime * playerMovement.timeStop;
 	
 		
 	}
@@ -26,10 +30,12 @@ public class bulletMovement : MonoBehaviour {
 
 	void OnTriggerEnter (Collider other) {
 
-		//Vector3 pos;
-		//pos = transform.position + new Vector3(0,0,5);
-		Instantiate(sparks,transform.position,Quaternion.Euler(-90,0,0) );
-		Destroy(gameObject);
+		
+         Instantiate(sparks, transform.position, Quaternion.Euler(-90, 0, 0));
+         Destroy(gameObject);
+        
+       
+		
 
 	}
 

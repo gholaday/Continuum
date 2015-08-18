@@ -3,6 +3,8 @@ using System.Collections;
 
 public class ColorShiftBetweenTwoColors : MonoBehaviour {
 
+    public bool is2d = false;
+
     public string shaderName = "Standard";
 
     public Color color1;
@@ -15,15 +17,25 @@ public class ColorShiftBetweenTwoColors : MonoBehaviour {
     bool increasing = true;
 
     MeshRenderer mr;
+    SpriteRenderer sr;
 
     Color color3;
 
 	// Use this for initialization
 	void Start () {
 
-        mr = GetComponent<MeshRenderer>();
-        mr.material.shader = Shader.Find(shaderName);
-        mr.material.SetColor("_Color", color1);
+        if(is2d)
+        {
+            sr = GetComponent<SpriteRenderer>();
+
+        }
+        else
+        {
+            mr = GetComponent<MeshRenderer>();
+            mr.material.shader = Shader.Find(shaderName);
+            mr.material.SetColor("_Color", color1);
+        }
+        
 	
 	}
 	
@@ -55,8 +67,15 @@ public class ColorShiftBetweenTwoColors : MonoBehaviour {
 
         color3 = Color.Lerp(color1, color2, change);
 
+        if (is2d)
+        {
+            sr.color = color3;
+        }
+        else
+        {
+            mr.material.SetColor("_Color", color3);
+        }
         
-        mr.material.SetColor("_Color", color3);
 	
 	}
 }

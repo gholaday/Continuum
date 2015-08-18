@@ -19,6 +19,7 @@ TagManager:
   - BeamPowerUp
   - Shield
   - ProtectorPowerUp
+  - BounceOff
   layers:
   - Default
   - TransparentFX

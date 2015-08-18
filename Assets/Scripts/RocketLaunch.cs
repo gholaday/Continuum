@@ -9,17 +9,22 @@ public class RocketLaunch : MonoBehaviour {
 
 	public GameObject rocketPrefab;
 
+    public AudioSource rocketAudio;
+
 	Vector3 startPosition;
 
 	public static float rocketBar = 0;
 
 	public float barFillUpSpeed = 5f;
 
+    bool playSound = false;
+
 
 	// Use this for initialization
 	void Start () {
 
 		startPosition = this.transform.position;
+        
 	
 	}
 	
@@ -30,12 +35,19 @@ public class RocketLaunch : MonoBehaviour {
 
 		if(rocketBar >= 100)
 		{
+            if(playSound == false)
+            {
+                rocketAudio.Play();
+                playSound = true;
+            }
+
 			rocketBar = 100;
 		}
 			
 
 		if(Input.GetButtonDown("Fire1") && rocketBar >= 100)
 		{
+            playSound = false;
 			rocketBar = 0;
 			StartCoroutine("LaunchRockets");
 

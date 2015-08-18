@@ -19,11 +19,14 @@ public class EnemySeekerAI : MonoBehaviour {
 
 	Transform go;
 
+    Animator anim;
+
 	
 	// Use this for initialization
 	void Start () {
 
 		chance = Random.value;
+        anim = GetComponentInChildren<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -78,6 +81,8 @@ public class EnemySeekerAI : MonoBehaviour {
 		
 		if(foundTarget)
 		{
+            anim.SetTrigger("Found");
+
 			speed = 15.0f;
 
 			if(go != null)

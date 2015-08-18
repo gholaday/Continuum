@@ -9,6 +9,7 @@ public class enemyDeath : MonoBehaviour {
     public float health = 1;
 	public float pointsValue = 100;
 	public GameObject pointsText = null;
+    public SpriteRenderer flashSprite = null;
 
 	float multiplier;
 
@@ -97,9 +98,19 @@ public class enemyDeath : MonoBehaviour {
 
 	public IEnumerator Flash()
 	{
-		sr.color = Color.red;
-		yield return new WaitForSeconds(.1f);
-		sr.color = Color.white;
+        if(flashSprite != null)
+        {
+            flashSprite.color = Color.red;
+            yield return new WaitForSeconds(.1f);
+            flashSprite.color = new Color(1,1,1, 0);
+        }
+        else
+        {
+            sr.color = Color.red;
+            yield return new WaitForSeconds(.1f);
+            sr.color = Color.white;
+        }
+		
 	}
 
     void Death()

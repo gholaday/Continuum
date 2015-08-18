@@ -28,6 +28,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400002}
   - 212: {fileID: 21200000}
+  - 114: {fileID: 11415526}
   m_Layer: 10
   m_Name: EnemyCircleBulletSprite
   m_TagString: Untagged
@@ -98,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31bf49bd207b6ca488b5d741d2598bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -4
+  speed: 0
   destroyTime: 8
 --- !u!114 &11400002
 MonoBehaviour:
@@ -111,6 +112,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4481d878506e634693a55e6215de089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11415526
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ffa1821278742f4f92f6258e5881669, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  is2d: 1
+  shaderName: Standard
+  color1: {r: 1, g: 0, b: 0, a: 1}
+  color2: {r: .986206889, g: 1, b: 0, a: 1}
+  speed: 2
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -136,14 +153,50 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: -5
   m_Sprite: {fileID: 21300002, guid: 0124685c92c98764d987e44dcee3e205, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: color1.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: color1.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: color1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: color2.r
+      value: .823326588
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: color2.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: color2.b
+      value: .0147058964
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100000}
