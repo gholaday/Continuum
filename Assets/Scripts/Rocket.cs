@@ -91,6 +91,7 @@ public class Rocket : MonoBehaviour, AudioProcessor.AudioCallbacks {
         sr.enabled = false;
         GetComponent<BoxCollider>().enabled = false;
         GetComponent<Rigidbody>().isKinematic = true;
+        Invoke("CancelTrail", 1f);
 		Destroy(gameObject, 2f);
 
         if(particles != null)
@@ -98,6 +99,11 @@ public class Rocket : MonoBehaviour, AudioProcessor.AudioCallbacks {
             GameObject go = (GameObject)Instantiate(particles, transform.position, Quaternion.identity);
 			go.transform.localScale = new Vector3(go.transform.localScale.x + Random.Range(-.25f,.25f),go.transform.localScale.y + Random.Range(-.25f,.25f),1);
         }
+	}
+	
+	void CancelTrail()
+	{
+		tr.enabled = false;
 	}
 	
 	void OnTriggerEnter(Collider other){

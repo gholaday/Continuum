@@ -16,8 +16,8 @@ public class BossDeath : MonoBehaviour {
     Enemy enemy;
 
     WaveSystem ws;
-
-    MeshRenderer mr;
+    
+    SpriteRenderer sr;
 
     public bool canBeDamaged = false;
 
@@ -35,7 +35,8 @@ public class BossDeath : MonoBehaviour {
         enemy = GetComponent<Enemy>();
         health += EnemyModifier.bonusHealth * 50;   //set health according to any modifiers
         ws = GameObject.Find("EnemySpawner").GetComponent<WaveSystem>();
-        mr = GetComponentInChildren<MeshRenderer>();
+        //mr = GetComponentInChildren<MeshRenderer>();
+        sr = GetComponentInChildren<SpriteRenderer>();
         ps = GameObject.Find("GameManager").GetComponent<PlayerScore>();
         hpBar.maxValue = health;
         hpBar.value = health;
@@ -106,11 +107,11 @@ public class BossDeath : MonoBehaviour {
 
     void Fade()
     {
-        GetComponentInChildren<ColorShiftBetweenTwoColors>().enabled = false;
+        //GetComponentInChildren<ColorShiftBetweenTwoColors>().enabled = false;
         fadeColor -= .033f;
       
-        mr.material.color = Color.red;
-        mr.material.color = new Color(mr.material.color.r, mr.material.color.b, mr.material.color.g, fadeColor);
+        sr.color = Color.red;
+        sr.color = new Color(sr.color.r, sr.color.b, sr.color.g, fadeColor);
     
     }
 
@@ -128,12 +129,12 @@ public class BossDeath : MonoBehaviour {
 
     public IEnumerator Flash()
     {
-        Color originalColor = mr.material.color;
-        GetComponentInChildren<ColorShiftBetweenTwoColors>().enabled = false;
-        mr.material.color = Color.red;
+        
+        //GetComponentInChildren<ColorShiftBetweenTwoColors>().enabled = false;
+        sr.color = Color.red;
         yield return new WaitForSeconds(.1f);
-        GetComponentInChildren<ColorShiftBetweenTwoColors>().enabled = true;
-        mr.material.color = originalColor;
+        //GetComponentInChildren<ColorShiftBetweenTwoColors>().enabled = true;
+        sr.color = Color.white;
     }
 
     void OnTriggerEnter(Collider other)

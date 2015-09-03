@@ -887,8 +887,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .711575627, y: .419999987, z: .200000003}
-  m_Center: {x: -.0307879448, y: .0199999958, z: 0}
+  m_Size: {x: .4036026, y: .364187807, z: .200000003}
+  m_Center: {x: -.00155067444, y: -.0566363484, z: 0}
 --- !u!82 &8200000
 AudioSource:
   m_ObjectHideFlags: 1
@@ -1675,7 +1675,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1346433363
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1511fd46107b9ad48b489db5c1ba98e8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4a2e0a7d33da4b545a37dc3dd8e5e9f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!222 &22201488
 CanvasRenderer:

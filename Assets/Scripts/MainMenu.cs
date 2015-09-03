@@ -55,7 +55,7 @@ public class MainMenu : MonoBehaviour {
 			}
 		}
 	
-		if(displayOptions)
+		if(displayOptions && HtpPanel.activeSelf == false)
 		{
 			optionsUI.SetActive(true);
 			mainUI.SetActive(false);

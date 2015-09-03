@@ -42,7 +42,11 @@ public class WaveSystem : MonoBehaviour {
 		public GameObject[] enemies;
 	}
 
-
+	bool randomSort = false;
+	
+	GameObject go;
+	
+	public GameObject[] randomEnemies;
 
 	// Use this for initialization
 	void Start () {
@@ -55,6 +59,8 @@ public class WaveSystem : MonoBehaviour {
 		StartCoroutine("WaveStart");
 		otherSpawnTimer = spawnTimer;
         gm = GameObject.Find("GameManager");
+        
+        
     
 	}
 	
@@ -64,8 +70,8 @@ public class WaveSystem : MonoBehaviour {
 		if(spawnTimer <= .3f)
 			spawnTimer = .3f;
 
-
 		
+	
 
 		screenRatio = (float)Screen.width / (float)Screen.height;
 		widthOrtho = Camera.main.orthographicSize * screenRatio;
@@ -75,8 +81,11 @@ public class WaveSystem : MonoBehaviour {
 		{
             waveNumber++;
 
-            if (waveNumber > 10)
-                waveNumber = 1;
+			if (waveNumber > 10)
+			{
+				randomSort = true;	
+			}
+			
 
             if(waveNumber % 10 != 0)
             {
@@ -146,7 +155,9 @@ public class WaveSystem : MonoBehaviour {
                 
                 yield return new WaitForSeconds(spawnTimer);
                 spawnSpot.position = new Vector3(Random.Range(-widthOrtho + 0.5f, widthOrtho - 0.5f), posy, 0);
-                GameObject go = enemyWaves[wave - 1].enemies[Random.Range(0, enemyWaves.Length)];
+                
+                ChooseRandomEnemy(wave);
+                
                 if(wave != 10)
                 {
                     Instantiate(go, spawnSpot.transform.position, Quaternion.identity);
@@ -166,7 +177,9 @@ public class WaveSystem : MonoBehaviour {
                 
                 spawnSpot.position = new Vector3(Random.Range(-widthOrtho + 0.5f, widthOrtho - 0.5f), posy, 0);
                 vec1 = spawnSpot.position;
-                GameObject go = enemyWaves[wave - 1].enemies[Random.Range(0, enemyWaves.Length)];
+                
+				ChooseRandomEnemy(wave);
+				
                 Instantiate(go, spawnSpot.transform.position, Quaternion.identity);
                 
 
@@ -184,8 +197,11 @@ public class WaveSystem : MonoBehaviour {
                     }
                     
                 }
-                go = enemyWaves[wave - 1].enemies[Random.Range(0, enemyWaves.Length)];
+                
+                ChooseRandomEnemy(wave);
+                
                 Instantiate(go, spawnSpot.transform.position, Quaternion.identity);
+                
                 enemiesYetToSpawn -= 2;
                 
             }
@@ -193,6 +209,18 @@ public class WaveSystem : MonoBehaviour {
 		}
 
 
+	}
+	
+	void ChooseRandomEnemy(int wave)
+	{
+		if(randomSort == false)
+		{
+			go = enemyWaves[wave - 1].enemies[Random.Range(0, enemyWaves.Length)];
+		}
+		else
+		{
+			go = randomEnemies[Random.Range(0,randomEnemies.Length)];
+		}
 	}
 
 	//need to eventually add text to tell player which modifier is happening

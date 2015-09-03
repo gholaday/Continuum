@@ -45,7 +45,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 448998}
   - 212: {fileID: 21232436}
-  - 95: {fileID: 9553934}
   m_Layer: 0
   m_Name: EnemyOrangeSprite
   m_TagString: Untagged
@@ -118,23 +117,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.10410357, y: 1.0731802, z: 1}
   m_Center: {x: -.0110691786, y: -.00396966934, z: 0}
---- !u!95 &9553934
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 167428}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b5624c4983693dc499977104eacd9c2f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -219,7 +201,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 27d796de70a0dd347bd443337787bdf5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fbc362569389a464d86f6c5c205b03df, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
