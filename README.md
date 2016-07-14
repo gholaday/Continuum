@@ -12,4 +12,6 @@ Controls:
 - SPACE to slow time
 - TAB to launch missles
 - 
-https://img.itch.io/aW1hZ2UvMjU5MTcvMTQ0NjgwLnBuZw==/original/aGDSQS.png
+
+![](https://img.itch.io/aW1hZ2UvMjU5MTcvMTQ0NjgwLnBuZw==/original/aGDSQS.png)
+![](https://img.itch.io/aW1hZ2UvMjU5MTcvMTQ0NjgyLnBuZw==/original/SRpClG.png)
